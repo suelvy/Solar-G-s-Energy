@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Contacto - Solar Gás Energy</title>
+    
+    <!-- Fonts e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS específico para contacto -->
+    <style>
+        /* ========== CONTACT PAGE STYLES ========== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Contact Intro */
+        .contact-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-intro h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-intro p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+        }
+        
+        /* Contact Grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        /* Contact Info Cards */
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .contact-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, transparent 50%, rgba(46,125,50,0.1) 50%);
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--secondary-color);
+        }
+        
+        .contact-card:hover::before {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .contact-card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .contact-card:hover .contact-card-icon {
+            background: var(--secondary-color);
+            transform: rotate(360deg);
+        }
+        
+        .contact-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card p {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+            display: inline-block;
+        }
+        
+        .contact-card a:hover {
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        .contact-highlight {
+            font-weight: 600;
+            color: var(--primary-color) !important;
+        }
+        
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white !important;
+            padding: 0.8rem 1.5rem;
+            border-radius: var(--radius-full);
+            margin-top: 1rem;
+            transition: var(--transition) !important;
+        }
+        
+        .whatsapp-link:hover {
+            background: #20BA5C;
+            transform: translateY(-3px) !important;
+            box-shadow: 0 5px 15px rgba(37,211,102,0.3);
+        }
+        
+        .whatsapp-link i {
+            font-size: 1.2rem;
+        }
+        
+        /* Business Hours */
+        .hours-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 1rem;
+        }
+        
+        .hours-card h3 {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .hours-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--gray-color);
+        }
+        
+        .hours-item:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-day {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .hours-time {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .hours-closed {
+            color: #f44336;
+            font-weight: 500;
+        }
+        
+        /* Contact Form */
+        .contact-form-container {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-form-container h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .contact-form-container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: var(--radius-full);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+        
+        .form-label i {
+            color: var(--secondary-color);
+            margin-right: 0.5rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid var(--gray-color);
+            border-radius: var(--radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--light-color);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: var(--white);
+            box-shadow: 0 0 0 3px rgba(46,125,50,0.1);
+        }
+        
+        .form-control.error {
+            border-color: #f44336;
+        }
+        
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-check input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .form-check label {
+            cursor: pointer;
+            color: var(--text-color);
+        }
+        
+        .form-check a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .form-check a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn-submit {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: var(--radius-full);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-bounce);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-submit:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn-submit i {
+            transition: transform 0.3s;
+        }
+        
+        .btn-submit:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Form Feedback */
+        .form-feedback {
+            padding: 1rem;
+            border-radius: var(--radius);
+            margin-bottom: 1.5rem;
+            display: none;
+        }
+        
+        .form-feedback.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .form-feedback.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        /* Map Section */
+        .map-section {
+            margin: 4rem 0;
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .map-container {
+            width: 100%;
+            height: 450px;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            max-width: 300px;
+        }
+        
+        .map-overlay h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .map-overlay p {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .map-overlay i {
+            color: var(--secondary-color);
+        }
+        
+        /* Social Section */
+        .social-section {
+            background: var(--light-color);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .social-section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .social-button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.5rem 3rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition-bounce);
+            text-decoration: none;
+            color: var(--text-color);
+            min-width: 150px;
+        }
+        
+        .social-button:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .social-button i {
+            font-size: 2.5rem;
+        }
+        
+        .social-button span {
+            font-weight: 600;
+        }
+        
+        .social-button.facebook:hover {
+            background: #1877f2;
+            color: white;
+        }
+        
+        .social-button.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #d62976, #962fbf, #4f5bd5);
+            color: white;
+        }
+        
+        .social-button.linkedin:hover {
+            background: #0077b5;
+            color: white;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 4rem 0;
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .faq-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .faq-question {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .faq-question i {
+            color: var(--secondary-color);
+        }
+        
+        .faq-answer {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-overlay {
+                position: relative;
+                top: 0;
+                right: 0;
+                max-width: 100%;
+                margin-top: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form-container {
+                padding: 2rem;
+            }
+            
+            .social-buttons {
+                gap: 1rem;
+            }
+            
+            .social-button {
+                padding: 1rem 2rem;
+                min-width: 120px;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+            
+            .contact-card {
+                padding: 1.5rem;
+            }
+            
+            .contact-card-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .social-button {
+                width: 100%;
+            }
+            
+            .map-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info-top">
+                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-btn" data-lang="en">ENG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./img/Logo.png" alt="Solar Gás Energy">
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                <li><a href="contacto.html" class="active" data-pt="Contato" data-en="Contact Us">Contato</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="text-pt">Contacte-nos</h1>
+            <h1 class="text-en" style="display: none;">Contact Us</h1>
+            <p class="text-pt">Estamos prontos para levar energia limpa até si</p>
+            <p class="text-en" style="display: none;">We are ready to bring clean energy to you</p>
+        </div>
+    </section>
+
+    <!-- Contact Intro -->
+    <section>
+        <div class="container">
+            <div class="contact-intro">
+                <h2 class="text-pt">Como podemos ajudar?</h2>
+                <h2 class="text-en" style="display: none;">How can we help?</h2>
+                <p class="text-pt">
+                    Entre em contacto para saber mais sobre os nossos kits de BioPower, fogões de baixo consumo e Kits solares, 
+                    solicitar uma visita técnica ou pedir um orçamento personalizado.
+                </p>
+                <p class="text-en" style="display: none;">
+                    Contact us to learn more about our BioPower kits, low-consumption stoves and solar kits, 
+                    request a technical visit or ask for a customized quote.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Grid -->
+    <section>
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Info Cards -->
+                <div class="contact-info-cards">
+                    <!-- Endereço -->
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>
+                            <span class="text-pt">Nosso Endereço</span>
+                            <span class="text-en" style="display: none;">Our Address</span>
+                        </h3>
+                        <p class="contact-highlight">Av. Samora Machel, n° 262</p>
+                        <p>Matola - Malhampsene</p>
+                        <p>Moçambique</p>
+                        <a href="https://maps.google.com/?q=Av.+Samora+Machel,+262,+Matola" target="_blank" style="margin-top: 1rem; color: var(--primary-color);">
+                            <i class="fas fa-external-link-alt"></i> Ver no mapa
+                        </a>
+                    </div>
+                    
+                    <!-- Telefone -->
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h3>
+                            <span class="text-pt">Telefone</span>
+                            <span class="text-en" style="display: none;">Phone</span>
+                        </h3>
+                        <p><i class="fas fa-mobile-alt" style="color: var(--secondary-color); margin-right: 0.5rem;"></i> <strong>Celular:</strong> <a href="tel:+258868324553">+258 868 324 553</a></p>
+                        <p style="margin-top: 0.5rem;">
+                            <i class="fab fa-whatsapp" style="color: #25D366; margin-right: 0.5rem;"></i> 
+                            <strong>WhatsApp:</strong> <a href="https://wa.me/258857530213" target="_blank">+258 857 530 213</a>
+                        </p>
+                        
+                        <a href="https://wa.me/258857530213" target="_blank" class="whatsapp-link">
+                            <i class="fab fa-whatsapp"></i> 
+                            <span class="text-pt">Fale conosco no WhatsApp</span>
+                            <span class="text-en" style="display: none;">Chat with us on WhatsApp</span>
+                        </a>
+                    </div>
+                    
+                    <!-- Email -->
+                    <div class="contact-card">
+                        <div class="contact-card-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>
+                            <span class="text-pt">Email</span>
+                            <span class="text-en" style="display: none;">Email</span>
+                        </h3>
+                        <p><a href="mailto:Info@solargas-e.com">Info@solargas-e.com</a></p>
+                        <p><a href="mailto:vendas@solargas-e.com">vendas@solargas-e.com</a></p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem;">
+                            <i class="fas fa-clock"></i> 
+                            <span class="text-pt">Respondemos em até 24h</span>
+                            <span class="text-en" style="display: none;">We reply within 24h</span>
+                        </p>
+                    </div>
+                    
+                    <!-- Horário de Funcionamento -->
+                    <div class="hours-card">
+                        <h3>
+                            <i class="fas fa-clock" style="color: var(--secondary-color);"></i>
+                            <span class="text-pt">Horário de Funcionamento</span>
+                            <span class="text-en" style="display: none;">Business Hours</span>
+                        </h3>
+                        
+                        <div class="hours-item">
+                            <span class="hours-day">Segunda - Sexta</span>
+                            <span class="hours-time">08:00 - 17:00</span>
+                        </div>
+                        
+                        <div class="hours-item">
+                            <span class="hours-day">Sábado</span>
+                            <span class="hours-closed">Fechado</span>
+                        </div>
+                        
+                        <div class="hours-item">
+                            <span class="hours-day">Domingo</span>
+                            <span class="hours-closed">Fechado</span>
+                        </div>
+                        
+                        <div class="hours-item">
+                            <span class="hours-day">Feriados</span>
+                            <span class="hours-closed">Fechado</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2>
+                        <span class="text-pt">Envie uma mensagem</span>
+                        <span class="text-en" style="display: none;">Send a message</span>
+                    </h2>
+                    
+                    <div id="form-feedback" class="form-feedback"></div>
+                    
+                    <form id="contactForm" action="#" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="nome">
+                                    <i class="fas fa-user"></i>
+                                    <span class="text-pt">Nome*</span>
+                                    <span class="text-en" style="display: none;">Name*</span>
+                                </label>
+                                <input type="text" class="form-control" id="nome" name="nome" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="email">
+                                    <i class="fas fa-envelope"></i>
+                                    <span class="text-pt">Email*</span>
+                                    <span class="text-en" style="display: none;">Email*</span>
+                                </label>
+                                <input type="email" class="form-control" id="email" name="email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="telefone">
+                                    <i class="fas fa-phone"></i>
+                                    <span class="text-pt">Telefone</span>
+                                    <span class="text-en" style="display: none;">Phone</span>
+                                </label>
+                                <input type="tel" class="form-control" id="telefone" name="telefone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label" for="assunto">
+                                    <i class="fas fa-tag"></i>
+                                    <span class="text-pt">Assunto*</span>
+                                    <span class="text-en" style="display: none;">Subject*</span>
+                                </label>
+                                <select class="form-control" id="assunto" name="assunto" required>
+                                    <option value="" disabled selected class="text-pt">Selecione um assunto</option>
+                                    <option value="" disabled selected class="text-en" style="display: none;">Select a subject</option>
+                                    <option value="informacoes" class="text-pt">Informações sobre produtos</option>
+                                    <option value="informacoes" class="text-en" style="display: none;">Product information</option>
+                                    <option value="orcamento" class="text-pt">Solicitar orçamento</option>
+                                    <option value="orcamento" class="text-en" style="display: none;">Request quote</option>
+                                    <option value="visita" class="text-pt">Visita técnica</option>
+                                    <option value="visita" class="text-en" style="display: none;">Technical visit</option>
+                                    <option value="suporte" class="text-pt">Suporte técnico</option>
+                                    <option value="suporte" class="text-en" style="display: none;">Technical support</option>
+                                    <option value="outro" class="text-pt">Outro</option>
+                                    <option value="outro" class="text-en" style="display: none;">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label" for="mensagem">
+                                <i class="fas fa-comment"></i>
+                                <span class="text-pt">Mensagem*</span>
+                                <span class="text-en" style="display: none;">Message*</span>
+                            </label>
+                            <textarea class="form-control" id="mensagem" name="mensagem" rows="5" required></textarea>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="consentimento" name="consentimento" required>
+                            <label for="consentimento">
+                                <span class="text-pt">Concordo com a política de privacidade e autorizo o contato</span>
+                                <span class="text-en" style="display: none;">I agree to the privacy policy and authorize contact</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <span class="text-pt">Enviar mensagem</span>
+                            <span class="text-en" style="display: none;">Send message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3587.088449441619!2d32.4526!3d-25.9628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjXCsDU3JzQ2LjEiUyAzMsKwMjcnMTMuNCJF!5e0!3m2!1spt-PT!2smz!4v1620000000000!5m2!1spt-PT!2smz" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+        <div class="map-overlay">
+            <h4>
+                <span class="text-pt">Solar Gás Energy</span>
+                <span class="text-en" style="display: none;">Solar Gas Energy</span>
+            </h4>
+            <p><i class="fas fa-map-marker-alt"></i> Av. Samora Machel, n° 262</p>
+            <p><i class="fas fa-city"></i> Matola - Malhampsene</p>
+            <p><i class="fas fa-phone"></i> +258 868 324 553</p>
+            <a href="https://maps.google.com/?q=Av.+Samora+Machel,+262,+Matola" target="_blank" class="btn-primary" style="display: block; text-align: center; margin-top: 1rem; padding: 0.8rem;">
+                <i class="fas fa-directions"></i> 
+                <span class="text-pt">Como chegar</span>
+                <span class="text-en" style="display: none;">Get directions</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section class="social-section">
+        <div class="container">
+            <h2>
+                <span class="text-pt">Siga-nos nas redes sociais</span>
+                <span class="text-en" style="display: none;">Follow us on social media</span>
+            </h2>
+            
+            <div class="social-buttons">
+                <a href="#" target="_blank" class="social-button facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                
+                <a href="https://www.instagram.com/solargas_energy" target="_blank" class="social-button instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                
+                <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank" class="social-button linkedin">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Perguntas Frequentes</span>
+                <span class="text-en" style="display: none;">Frequently Asked Questions</span>
+            </h2>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="text-pt">Como funciona o kit BioPower?</span>
+                        <span class="text-en" style="display: none;">How does the BioPower kit work?</span>
+                    </div>
+                    <div class="faq-answer text-pt">
+                        O biodigestor transforma resíduos orgânicos (esterco, restos de comida) em biogás para cozinhar e biofertilizante para agricultura.
+                    </div>
+                    <div class="faq-answer text-en" style="display: none;">
+                        The biodigester transforms organic waste (manure, food scraps) into biogas for cooking and biofertilizer for agriculture.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="text-pt">Qual o prazo de instalação?</span>
+                        <span class="text-en" style="display: none;">What is the installation deadline?</span>
+                    </div>
+                    <div class="faq-answer text-pt">
+                        A instalação dos kits BioPower leva em média 2-3 dias, dependendo da complexidade e localização.
+                    </div>
+                    <div class="faq-answer text-en" style="display: none;">
+                        The installation of BioPower kits takes an average of 2-3 days, depending on complexity and location.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="text-pt">Fazem manutenção?</span>
+                        <span class="text-en" style="display: none;">Do you do maintenance?</span>
+                    </div>
+                    <div class="faq-answer text-pt">
+                        Sim, oferecemos manutenção preventiva e corretiva para todos os nossos produtos e sistemas.
+                    </div>
+                    <div class="faq-answer text-en" style="display: none;">
+                        Yes, we offer preventive and corrective maintenance for all our products and systems.
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <i class="fas fa-question-circle"></i>
+                        <span class="text-pt">Atendem em todo Moçambique?</span>
+                        <span class="text-en" style="display: none;">Do you serve throughout Mozambique?</span>
+                    </div>
+                    <div class="faq-answer text-pt">
+                        Sim, realizamos projetos e instalações em todo o território nacional.
+                    </div>
+                    <div class="faq-answer text-en" style="display: none;">
+                        Yes, we carry out projects and installations throughout the national territory.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <img src="https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas" alt="Solar Gás Energy">
+                    </div>
+                    <p class="text-pt">Energia limpa e sustentável</p>
+                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-pt">Links Rápidos</h4>
+                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                        <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                        <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                        <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="text-pt">Redes Sociais</h4>
+                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</p>
+                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/258857530213" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Menu Mobile
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    });
+                });
+            }
+
+            // Sistema de Tradução
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
+                });
+
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        link.textContent = link.dataset[lang];
+                    }
+                });
+
+                // Atualizar placeholder do select
+                const select = document.getElementById('assunto');
+                if (select) {
+                    const options = select.querySelectorAll('option');
+                    options.forEach(opt => {
+                        if (opt.classList.contains(`text-${lang}`)) {
+                            opt.style.display = '';
+                        } else {
+                            opt.style.display = 'none';
+                        }
+                    });
+                }
+
+                localStorage.setItem('preferred-language', lang);
+            }
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                setLanguage(savedLang);
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Form Validation
+            const contactForm = document.getElementById('contactForm');
+            const formFeedback = document.getElementById('form-feedback');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+
+                    // Simple validation
+                    const nome = document.getElementById('nome').value;
+                    const email = document.getElementById('email').value;
+                    const assunto = document.getElementById('assunto').value;
+                    const mensagem = document.getElementById('mensagem').value;
+                    const consentimento = document.getElementById('consentimento').checked;
+
+                    if (!nome || !email || !assunto || !mensagem || !consentimento) {
+                        formFeedback.className = 'form-feedback error';
+                        
+                        const currentLang = document.querySelector('.lang-btn.active').dataset.lang;
+                        if (currentLang === 'pt') {
+                            formFeedback.innerHTML = 'Por favor, preencha todos os campos obrigatórios.';
+                        } else {
+                            formFeedback.innerHTML = 'Please fill in all required fields.';
+                        }
+                        
+                        // Highlight empty fields
+                        document.querySelectorAll('[required]').forEach(field => {
+                            if (!field.value || (field.type === 'checkbox' && !field.checked)) {
+                                field.classList.add('error');
+                            } else {
+                                field.classList.remove('error');
+                            }
+                        });
+                    } else {
+                        // Success - In a real scenario, you'd send this to a server
+                        formFeedback.className = 'form-feedback success';
+                        
+                        const currentLang = document.querySelector('.lang-btn.active').dataset.lang;
+                        if (currentLang === 'pt') {
+                            formFeedback.innerHTML = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                        } else {
+                            formFeedback.innerHTML = 'Message sent successfully! We will contact you soon.';
+                        }
+                        
+                        contactForm.reset();
+                        
+                        // Remove error class
+                        document.querySelectorAll('.error').forEach(field => {
+                            field.classList.remove('error');
+                        });
+                        
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            formFeedback.style.display = 'none';
+                            formFeedback.className = 'form-feedback';
+                        }, 5000);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

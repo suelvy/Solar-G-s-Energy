@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Produtos - Solar Gás Energy</title>
+    
+    <!-- Fonts e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS específico para produtos -->
+    <style>
+        /* ========== PRODUCTS PAGE STYLES ========== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Filtros/Categorias */
+        .product-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Categorias de Produtos */
+        .product-category {
+            margin-bottom: 4rem;
+        }
+        
+        .category-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: var(--radius-full);
+        }
+        
+        /* Grid de Produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        /* Card de Produto */
+        .product-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition-bounce);
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            background: var(--light-color);
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 0.3rem 1rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-info h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-subtitle {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+        
+        .product-description {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+        
+        .product-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .product-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .product-features i {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+        
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-color);
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        .product-price small {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+        
+        .btn-product {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: var(--radius-full);
+            font-weight: 500;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+        
+        .btn-product:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Produto em destaque */
+        .featured-product {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin: 4rem 0;
+        }
+        
+        .featured-image {
+            height: 100%;
+            min-height: 400px;
+            background: var(--light-color);
+        }
+        
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .featured-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .featured-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-product {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                min-height: 300px;
+            }
+            
+            .featured-content {
+                padding: 2rem;
+            }
+            
+            .product-filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .filter-btn {
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-image {
+                height: 200px;
+            }
+            
+            .product-footer {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .btn-product {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar (igual ao index) -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info-top">
+                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-btn" data-lang="en">ENG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header (igual ao index) -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./img/Logo.png" alt="Solar Gás Energy">
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                <li><a href="produtos.html" class="active" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                <li><a href="contacto.html" data-pt="Contato" data-en="Contact Us">Contato</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="text-pt">Nossos Produtos</h1>
+            <h1 class="text-en" style="display: none;">Our Products</h1>
+            <p class="text-pt">Soluções completas em energia limpa e sustentável</p>
+            <p class="text-en" style="display: none;">Complete solutions in clean and sustainable energy</p>
+        </div>
+    </section>
+
+    <!-- Product Filters -->
+    <div class="container">
+        <div class="product-filters">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="kits">Kits BioPower</button>
+            <button class="filter-btn" data-filter="fogoes">Fogões</button>
+            <button class="filter-btn" data-filter="solares">Sistemas Solares</button>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            
+            <!-- KITS BIOPOWER CATEGORY -->
+            <div class="product-category" data-category="kits">
+                <h2 class="category-title">
+                    <span class="text-pt">Kits BioPower</span>
+                    <span class="text-en" style="display: none;">BioPower Kits</span>
+                </h2>
+                
+                <div class="products-grid">
+                    <!-- Kit BioPower Doméstico -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/kit-domestico.jpeg" alt="Kit BioPower Doméstico">
+                            <span class="product-badge">Mais Popular</span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Kit BioPower Doméstico</h3>
+                            <p class="product-subtitle text-pt">Ideal para famílias</p>
+                            <p class="product-subtitle text-en" style="display: none;">Ideal for families</p>
+                            
+                            <p class="product-description text-pt">
+                                Kit doméstico ideal para famílias de áreas periurbanas e rurais sem acesso à energia elétrica. Transforma resíduos orgânicos em biogás para cozinhar, aquecer e iluminar.
+                            </p>
+                            <p class="product-description text-en" style="display: none;">
+                                Domestic kit ideal for families in peri-urban and rural areas without access to electricity. Transforms organic waste into biogas for cooking, heating and lighting.
+                            </p>
+                            
+                            <ul class="product-features">
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Fogão a biogás</span><span class="text-en" style="display: none;">Biogas stove</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Lâmpada a biogás</span><span class="text-en" style="display: none;">Biogas lamp</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Purificador e conexões</span><span class="text-en" style="display: none;">Purifier and connections</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Manual de uso</span><span class="text-en" style="display: none;">User manual</span></li>
+                            </ul>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <small>sob consulta</small>
+                                </div>
+                                <a href="contacto.html" class="btn-product">Solicitar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kit BioPower Comercial -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/kit-comercial.jpeg" alt="Kit BioPower Comercial">
+                        </div>
+                        <div class="product-info">
+                            <h3>Kit BioPower Comercial</h3>
+                            <p class="product-subtitle text-pt">Para produtores e agricultores</p>
+                            <p class="product-subtitle text-en" style="display: none;">For producers and farmers</p>
+                            
+                            <p class="product-description text-pt">
+                                Kit comercial personalizado de acordo com as necessidades energéticas do cliente. Gera biogás para cozinhar, iluminar, aquecer e produzir eletricidade.
+                            </p>
+                            <p class="product-description text-en" style="display: none;">
+                                Customized commercial kit according to the customer's energy needs. Generates biogas for cooking, lighting, heating and electricity production.
+                            </p>
+                            
+                            <ul class="product-features">
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Gasómetro</span><span class="text-en" style="display: none;">Gasometer</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Fogão a biogás</span><span class="text-en" style="display: none;">Biogas stove</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Lâmpada a biogás</span><span class="text-en" style="display: none;">Biogas lamp</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Personalizável</span><span class="text-en" style="display: none;">Customizable</span></li>
+                            </ul>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <small>sob consulta</small>
+                                </div>
+                                <a href="contacto.html" class="btn-product">Solicitar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FOGÕES CATEGORY -->
+            <div class="product-category" data-category="fogoes">
+                <h2 class="category-title">
+                    <span class="text-pt">Fogões Melhorados</span>
+                    <span class="text-en" style="display: none;">Improved Stoves</span>
+                </h2>
+                
+                <div class="products-grid">
+                    <!-- Fogão Kupheka - uma boca -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/fogao-nguvur.jpeg" alt="Fogão Kupheka">
+                        </div>
+                        <div class="product-info">
+                            <h3>Fogão Kupheka</h3>
+                            <p class="product-subtitle text-pt">Uma boca</p>
+                            <p class="product-subtitle text-en" style="display: none;">One burner</p>
+                            
+                            <p class="product-description text-pt">
+                                Fogão de baixo consumo de combustível, feito de material inovador. Poupa mais de 40% de Carvão.
+                            </p>
+                            <p class="product-description text-en" style="display: none;">
+                                Low fuel consumption stove, made of innovative material. Saves over 40% of Charcoal.
+                            </p>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <small>sob consulta</small>
+                                </div>
+                                <a href="contacto.html" class="btn-product">Solicitar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fogão Nguvu - duas bocas -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/fogao-nguvu-duasbocas.jpeg" alt="Fogão Nguvu duas bocas">
+                        </div>
+                        <div class="product-info">
+                            <h3>Fogão Nguvu</h3>
+                            <p class="product-subtitle text-pt">Duas bocas</p>
+                            <p class="product-subtitle text-en" style="display: none;">Two burners</p>
+                            
+                            <p class="product-description text-pt">
+                                Ideal para empreendedores que confecionam alimentos nos mercados ou famílias. Poupa o consumo do Carvão em mais de 40%.
+                            </p>
+                            <p class="product-description text-en" style="display: none;">
+                                Ideal for entrepreneurs who prepare food in markets or families. Saves Charcoal consumption by over 40%.
+                            </p>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <small>sob consulta</small>
+                                </div>
+                                <a href="contacto.html" class="btn-product">Solicitar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Fogão Nguvu - uma boca -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/fogao-kupheka-umaboca.jpeg" alt="Fogão Nguvu uma boca">
+                        </div>
+                        <div class="product-info">
+                            <h3>Fogão Nguvu</h3>
+                            <p class="product-subtitle text-pt">Uma boca</p>
+                            <p class="product-subtitle text-en" style="display: none;">One burner</p>
+                            
+                            <p class="product-description text-pt">
+                                Feito de material local, poupa o consumo do carvão em mais de 35%.
+                            </p>
+                            <p class="product-description text-en" style="display: none;">
+                                Made of local material, saves charcoal consumption by over 35%.
+                            </p>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <small>sob consulta</small>
+                                </div>
+                                <a href="contacto.html" class="btn-product">Solicitar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- SISTEMAS SOLARES CATEGORY -->
+            <div class="product-category" data-category="solares">
+                <h2 class="category-title">
+                    <span class="text-pt">Sistemas Solares e Bombas</span>
+                    <span class="text-en" style="display: none;">Solar Systems and Pumps</span>
+                </h2>
+                
+                <div class="products-grid">
+                    <!-- Sistema Solar -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/sistema solar.jpeg" alt="Sistema Solar">
+                        </div>
+                        <div class="product-info">
+                            <h3>Sistema Solar Doméstico</h3>
+                            <p class="product-description text-pt">
+                                Soluções em energia solar para sua casa: sistemas domésticos que geram energia limpa, práticos, econômicos e sustentáveis.
+                            </p>
+                            <p class="product-description text-en" style="display: none;">
+                                Solar energy solutions for your home: domestic systems that generate clean, practical, economical and sustainable energy.
+                            </p>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <small>sob consulta</small>
+                                </div>
+                                <a href="contacto.html" class="btn-product">Solicitar</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bomba Solar -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="./img/bomba-solar.jpeg" alt="Bomba Solar">
+                        </div>
+                        <div class="product-info">
+                            <h3>Bomba Solar</h3>
+                            <p class="product-description text-pt">
+                                Bombas solares eficientes para abastecimento de água. Autonomia e proteção ao meio ambiente.
+                            </p>
+                            <p class="product-description text-en" style="display: none;">
+                                Efficient solar pumps for water supply. Autonomy and environmental protection.
+                            </p>
+                            
+                            <div class="product-footer">
+                                <div class="product-price">
+                                    <small>sob consulta</small>
+                                </div>
+                                <a href="contacto.html" class="btn-product">Solicitar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Product - Acessórios para Biogás -->
+            <div class="featured-product">
+                <div class="featured-image">
+                    <img src="./img/acessorio-bio.jpeg" alt="Acessórios para Biogás">
+                </div>
+                <div class="featured-content">
+                    <h2 class="text-pt">Acessórios para Biogás</h2>
+                    <h2 class="text-en" style="display: none;">Biogas Accessories</h2>
+                    
+                    <p class="text-pt">
+                        Maximize a eficiência da sua casa ou empresa e poupe mais com os acessórios da BioPower, concebidos para se integrarem perfeitamente no biogás produzido pelo seu biodigestor. Saiba mais sobre os nossos fogões, queimadores, lâmpadas de aquecimento, geradores e muito mais.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        Maximize the efficiency of your home or business and save more with BioPower accessories, designed to integrate perfectly with the biogas produced by your biodigester. Learn more about our stoves, burners, heating lamps, generators and more.
+                    </p>
+                    
+                    <a href="contacto.html" class="btn-primary" style="align-self: flex-start;">Saiba mais</a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="background: var(--light-color); text-align: center;">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Precisa de um orçamento personalizado?</span>
+                <span class="text-en" style="display: none;">Need a customized quote?</span>
+            </h2>
+            <p style="max-width: 600px; margin: 0 auto 2rem;">
+                <span class="text-pt">Entre em contacto conosco para solicitar um orçamento adaptado às suas necessidades.</span>
+                <span class="text-en" style="display: none;">Contact us to request a quote tailored to your needs.</span>
+            </p>
+            <a href="contacto.html" class="btn-primary">Contactar</a>
+        </div>
+    </section>
+
+    <!-- Footer (igual ao index) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <img src="https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas" alt="Solar Gás Energy">
+                    </div>
+                    <p class="text-pt">Energia limpa e sustentável</p>
+                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-pt">Links Rápidos</h4>
+                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                        <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                        <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                        <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="text-pt">Redes Sociais</h4>
+                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</p>
+                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/258857530213" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Menu Mobile
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    });
+                });
+            }
+
+            // Sistema de Tradução
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
+                });
+
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        link.textContent = link.dataset[lang];
+                    }
+                });
+
+                localStorage.setItem('preferred-language', lang);
+            }
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                setLanguage(savedLang);
+            }
+
+            // Product Filters
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const productCategories = document.querySelectorAll('.product-category');
+
+            if (filterButtons.length) {
+                filterButtons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        // Remove active class from all buttons
+                        filterButtons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        const filterValue = this.dataset.filter;
+
+                        // Show/hide categories
+                        productCategories.forEach(category => {
+                            if (filterValue === 'all' || category.dataset.category === filterValue) {
+                                category.style.display = 'block';
+                            } else {
+                                category.style.display = 'none';
+                            }
+                        });
+                    });
+                });
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

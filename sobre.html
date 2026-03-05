@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Sobre Nós - Solar Gás Energy</title>
+    
+    <!-- Fonts e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS específico para sobre -->
+    <style>
+        /* ========== ABOUT PAGE STYLES ========== */
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .page-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Intro */
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+        
+        .about-intro-content h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .about-intro-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: var(--radius-full);
+        }
+        
+        .about-intro-content p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        
+        .about-intro-image {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            height: 400px;
+        }
+        
+        .about-intro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .about-intro-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Mission, Vision, Values */
+        .mvv-section {
+            background: var(--light-color);
+            padding: 5rem 0;
+            margin: 3rem 0;
+        }
+        
+        .mvv-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        
+        .mvv-card {
+            background: var(--white);
+            padding: 3rem 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .mvv-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            z-index: 2;
+        }
+        
+        .mvv-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(46,125,50,0.05), rgba(255,179,0,0.05));
+            z-index: -1;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .mvv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .mvv-card:hover::after {
+            opacity: 1;
+        }
+        
+        .mvv-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-light);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+        }
+        
+        .mvv-card:hover .mvv-icon {
+            background: var(--secondary-color);
+            transform: rotate(360deg);
+        }
+        
+        .mvv-card h3 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .mvv-card p {
+            color: var(--text-color);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        /* Valores Lista */
+        .valores-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+        
+        .valores-list li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(46,125,50,0.05);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+        
+        .valores-list li:hover {
+            background: rgba(46,125,50,0.1);
+            transform: translateX(10px);
+        }
+        
+        .valores-list i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            width: 25px;
+        }
+        
+        .valores-list span {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        /* Valores Detalhados */
+        .valores-detalhados {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .valor-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+        
+        .valor-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-left-color: var(--secondary-color);
+        }
+        
+        .valor-item h4 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .valor-item p {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        /* Timeline / História */
+        .historia-section {
+            padding: 4rem 0;
+        }
+        
+        .historia-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .historia-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--secondary-color);
+            border: 4px solid var(--white);
+            border-radius: 50%;
+            box-shadow: var(--shadow);
+            z-index: 1;
+        }
+        
+        .timeline-content {
+            position: relative;
+            width: calc(50% - 40px);
+            padding: 1.5rem;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content {
+            left: calc(50% + 40px);
+        }
+        
+        .timeline-content h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-date {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* Team Section */
+        .team-section {
+            background: var(--light-color);
+            padding: 5rem 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .team-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .team-image {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-social {
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            transition: bottom 0.3s;
+        }
+        
+        .team-card:hover .team-social {
+            bottom: 0;
+        }
+        
+        .team-social a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .team-social a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-info h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+        
+        .team-info p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-intro {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .about-intro-image {
+                height: 350px;
+                order: -1;
+            }
+            
+            .mvv-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .valores-detalhados {
+                grid-template-columns: 1fr;
+            }
+            
+            .historia-timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-dot {
+                left: 30px;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 80px);
+                left: 80px !important;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mvv-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .mvv-card {
+                padding: 2rem;
+            }
+            
+            .mvv-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2rem;
+            }
+            
+            .mvv-card h3 {
+                font-size: 1.8rem;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .team-image {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .about-intro-content h2 {
+                font-size: 2rem;
+            }
+            
+            .about-intro-image {
+                height: 250px;
+            }
+            
+            .mvv-card {
+                padding: 1.5rem;
+            }
+            
+            .valores-list li {
+                padding: 0.6rem;
+            }
+            
+            .timeline-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info-top">
+                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-btn" data-lang="en">ENG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./img/Logo.png" alt="Solar Gás Energy">
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" class="active" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                <li><a href="contacto.html" data-pt="Contato" data-en="Contact Us">Contato</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="text-pt">Sobre Nós</h1>
+            <h1 class="text-en" style="display: none;">About Us</h1>
+            <p class="text-pt">Conheça a história e os valores da Solar Gás Energy</p>
+            <p class="text-en" style="display: none;">Learn about the history and values of Solar Gas Energy</p>
+        </div>
+    </section>
+
+    <!-- About Intro -->
+    <section>
+        <div class="container">
+            <div class="about-intro">
+                <div class="about-intro-content">
+                    <h2>
+                        <span class="text-pt">Quem Somos?</span>
+                        <span class="text-en" style="display: none;">Who We Are?</span>
+                    </h2>
+                    <p class="text-pt">
+                        A Solar Gás Energy é uma empresa moçambicana especializada em soluções de energia limpa e sustentável. 
+                        Atuamos no desenvolvimento e implementação de tecnologias de biogás, energia solar e fogões melhorados, 
+                        levando autonomia energética para famílias, produtores rurais e pequenas empresas.
+                    </p>
+                    <p class="text-pt">
+                        Através da nossa marca BioPower, transformamos resíduos orgânicos em energia limpa e biofertilizante, 
+                        promovendo a economia circular e o desenvolvimento sustentável nas comunidades onde atuamos.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        Solar Gas Energy is a Mozambican company specialized in clean and sustainable energy solutions. 
+                        We operate in the development and implementation of biogas technologies, solar energy and improved stoves, 
+                        bringing energy autonomy to families, rural producers and small businesses.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        Through our BioPower brand, we transform organic waste into clean energy and biofertilizer, 
+                        promoting the circular economy and sustainable development in the communities where we operate.
+                    </p>
+                </div>
+                <div class="about-intro-image">
+                    <img src="./img/quemsomos.jpeg" alt="Solar Gás Energy">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Missão, Visão e Valores -->
+    <section class="mvv-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Nossa Essência</span>
+                <span class="text-en" style="display: none;">Our Essence</span>
+            </h2>
+            
+            <div class="mvv-grid">
+                <!-- Missão -->
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Missão</span>
+                        <span class="text-en" style="display: none;">Mission</span>
+                    </h3>
+                    <p class="text-pt">
+                        Democratizar o acesso à energia limpa nas zonas rurais e periurbanas. Transformamos resíduos orgânicos 
+                        em biogás e biofertilizante, gerando autonomia energética e oportunidades económicas no campo.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        Democratize access to clean energy in rural and peri-urban areas. We transform organic waste into biogas 
+                        and biofertilizer, generating energy autonomy and economic opportunities in the countryside.
+                    </p>
+                </div>
+                
+                <!-- Visão -->
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Visão</span>
+                        <span class="text-en" style="display: none;">Vision</span>
+                    </h3>
+                    <p class="text-pt">
+                        Ser referência em soluções integradas de bioenergia sustentável. Queremos comunidades rurais mais produtivas, 
+                        independentes e ambientalmente resilientes.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        To be a reference in integrated sustainable bioenergy solutions. We want more productive, independent, 
+                        and environmentally resilient rural communities.
+                    </p>
+                </div>
+                
+                <!-- Valores (resumo) -->
+                <div class="mvv-card">
+                    <div class="mvv-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Valores</span>
+                        <span class="text-en" style="display: none;">Values</span>
+                    </h3>
+                    <ul class="valores-list">
+                        <li><i class="fas fa-check-circle"></i> <span>Sustentabilidade</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Impacto Social</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Inovação Acessível</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span>Autonomia</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores Detalhados -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Nossos Valores em Detalhe</span>
+                <span class="text-en" style="display: none;">Our Values in Detail</span>
+            </h2>
+            
+            <div class="valores-detalhados">
+                <div class="valor-item">
+                    <h4><i class="fas fa-leaf"></i> Sustentabilidade</h4>
+                    <p class="text-pt">
+                        Valorizamos resíduos e promovemos soluções que protegem o meio ambiente e reduzem emissões.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        We value waste and promote solutions that protect the environment and reduce emissions.
+                    </p>
+                </div>
+                
+                <div class="valor-item">
+                    <h4><i class="fas fa-users"></i> Impacto Social</h4>
+                    <p class="text-pt">
+                        Trabalhamos para melhorar a qualidade de vida das famílias e produtores rurais.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        We work to improve the quality of life of families and rural producers.
+                    </p>
+                </div>
+                
+                <div class="valor-item">
+                    <h4><i class="fas fa-lightbulb"></i> Inovação Acessível</h4>
+                    <p class="text-pt">
+                        Desenvolvemos soluções simples, adaptadas à realidade local e economicamente viáveis.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        We develop simple solutions, adapted to local reality and economically viable.
+                    </p>
+                </div>
+                
+                <div class="valor-item">
+                    <h4><i class="fas fa-rocket"></i> Autonomia</h4>
+                    <p class="text-pt">
+                        Acreditamos que energia própria significa desenvolvimento e independência.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        We believe that own energy means development and independence.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas (reaproveitando da home) -->
+    <section class="estatisticas">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Estatísticas da Solar Gás Energy</span>
+                <span class="text-en" style="display: none;">Solar Gas Energy Statistics</span>
+            </h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">+80 mil</div>
+                    <div class="stat-label text-pt">m³ de biogás produzido/ano</div>
+                    <div class="stat-label text-en" style="display: none;">m³ of biogas produced/year</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">+550</div>
+                    <div class="stat-label text-pt">Pessoas produzindo e usando biogás</div>
+                    <div class="stat-label text-en" style="display: none;">People producing and using biogas</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">+70 mil</div>
+                    <div class="stat-label text-pt">m³ de biofertilizante produzido/ano</div>
+                    <div class="stat-label text-en" style="display: none;">m³ of biofertilizer produced/year</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">+50</div>
+                    <div class="stat-label text-pt">kits biodigestores BioPower instalados</div>
+                    <div class="stat-label text-en" style="display: none;">BioPower biodigester kits installed</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">+732</div>
+                    <div class="stat-label text-pt">Toneladas de lixo orgânico tratado/ano</div>
+                    <div class="stat-label text-en" style="display: none;">Tons of organic waste treated/year</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">+1000</div>
+                    <div class="stat-label text-pt">Fogões melhorados de baixo consumo vendidos</div>
+                    <div class="stat-label text-en" style="display: none;">Improved low-consumption stoves sold</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nossa Equipe -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Nossa Equipe</span>
+                <span class="text-en" style="display: none;">Our Team</span>
+            </h2>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400/2E7D32/ffffff?text=Team+1" alt="Membro da Equipe">
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>João Silva</h4>
+                        <p>Diretor Executivo</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400/FFB300/ffffff?text=Team+2" alt="Membro da Equipe">
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Maria Santos</h4>
+                        <p>Diretora Técnica</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400/FF8F00/ffffff?text=Team+4" alt="Membro da Equipe">
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Carlos Alberto</h4>
+                        <p>Coordenador de Projetos</p>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://via.placeholder.com/400x400/FF8F00/ffffff?text=Team+4" alt="Membro da Equipe">
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h4>Ana Paula</h4>
+                        <p>Especialista em Biogás</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section style="background: var(--light-color); text-align: center; padding: 4rem 0;">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Faça parte desta transformação</span>
+                <span class="text-en" style="display: none;">Be part of this transformation</span>
+            </h2>
+            <p style="max-width: 600px; margin: 0 auto 2rem;">
+                <span class="text-pt">Junte-se a nós na missão de levar energia limpa e sustentável para todos.</span>
+                <span class="text-en" style="display: none;">Join us in the mission to bring clean and sustainable energy to everyone.</span>
+            </p>
+            <a href="contacto.html" class="btn-primary">Contacte-nos</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <img src="./img/Logo.png" alt="Solar Gás Energy">
+                    </div>
+                    <p class="text-pt">Energia limpa e sustentável</p>
+                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-pt">Links Rápidos</h4>
+                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                        <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                        <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                        <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="text-pt">Redes Sociais</h4>
+                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</p>
+                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/258857530213" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Menu Mobile
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    });
+                });
+            }
+
+            // Sistema de Tradução
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
+                });
+
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        link.textContent = link.dataset[lang];
+                    }
+                });
+
+                localStorage.setItem('preferred-language', lang);
+            }
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                setLanguage(savedLang);
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

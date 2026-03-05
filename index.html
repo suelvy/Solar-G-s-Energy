@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Solar Gás Energy - Energia Sustentável</title>
+    
+    <!-- css -->
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --primary-dark: #1B5E20;
+            --secondary-color: #FFB300;
+            --secondary-dark: #FF8F00;
+            --dark-color: #263238;
+            --light-color: #F5F5F5;
+            --gray-color: #ECEFF1;
+            --text-color: #37474F;
+            --white: #FFFFFF;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 8px 0;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-info-top i {
+            margin-right: 8px;
+            color: var(--secondary-color);
+        }
+
+        .language-selector {
+            display: flex;
+            gap: 5px;
+        }
+
+        .language-selector a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 4px 12px;
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .language-selector a.active {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            font-weight: 600;
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            width: 100%;
+        }
+
+        .logo-container {
+            width: 150px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .logo-container img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Menu */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover::after,
+        .nav-menu a.active::after {
+            width: 100%;
+        }
+
+        .nav-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hamburger */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background: var(--dark-color);
+            transition: all 0.3s ease-in-out;
+            border-radius: 3px;
+        }
+
+        /* Hero Section */
+          .hero {
+          min-height: 80vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+}
+
+        /* Fallback caso a imagem não carregue */
+        .hero.error {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        }
+
+        .hero-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre todo o espaço sem distorcer */
+    object-position: center;
+    display: block;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade aqui (0.3 a 0.7) */
+    z-index: 2;
+}
+
+        .hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 4rem);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+/* Fallback APENAS se a imagem não carregar */
+.hero.error .hero-background {
+    display: none;
+}
+
+.hero.error .hero-overlay {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+}
+
+        /* Buttons */
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,179,0,0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            width: 100%;
+        }
+
+        section:nth-child(even) {
+            background-color: var(--light-color);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        /* Reference Cards - CORRIGIDO */
+        .reference-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .reference-card {
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--white);
+            transition: var(--transition);
+        }
+
+        .reference-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .reference-image {
+            height: 200px;
+            background: #f0f0f0;
+            position: relative;
+        }
+
+        .reference-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .reference-content {
+            padding: 25px;
+        }
+
+        .reference-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .reference-content p {
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .mission-vision-values {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .mission, .vision, .values {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            box-shadow: var(--shadow);
+        }
+
+        .mission h4, .vision h4, .values h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .values-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .values-list li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .values-list i {
+            color: var(--secondary-color);
+        }
+
+        .image-card {
+            background: var(--white);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.05);
+            aspect-ratio: 16/9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e0e0e0, #f5f5f5);
+            color: var(--text-color);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .about-images-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .about-images-grid .image-card:nth-child(3) {
+            grid-column: span 2;
+        }
+
+        /* Estatísticas */
+        .estatisticas {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+        }
+
+        .estatisticas .section-title {
+            color: var(--white);
+        }
+
+        .estatisticas .section-title::after {
+            background: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .contact-item i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            min-width: 30px;
+        }
+
+        .contact-item a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+            width: 100%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: var(--white);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            box-shadow: 0 4px 10px rgba(37,211,102,0.3);
+            transition: all 0.3s;
+            z-index: 100;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            animation: none;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37,211,102,0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37,211,102,0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37,211,102,0);
+            }
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 992px) {
+            .reference-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block !important;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: var(--white);
+                width: 100%;
+                height: calc(100vh - 80px);
+                text-align: center;
+                transition: left 0.3s ease-in-out;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                padding: 2rem 0;
+                gap: 0;
+                overflow-y: auto;
+                z-index: 1000;
+                display: flex !important;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 1.5rem 0;
+                width: 100%;
+            }
+
+            .nav-menu a {
+                font-size: 1.1rem;
+                display: block;
+                padding: 10px;
+                width: 100%;
+            }
+
+            .nav-menu a::after {
+                display: none;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .about-content,
+            .contact-content,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .about-images-grid {
+                order: -1;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .hero {
+                min-height: 60vh;
+                background-attachment: scroll;
+            }
+
+            .top-bar-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-container {
+                width: 120px;
+                height: 50px;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                line-height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .reference-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .logo-container {
+                width: 100px;
+                height: 40px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn-primary {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info-top">
+                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-btn" data-lang="en">ENG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo-container">
+                <img src="./img/Logo.png" alt="Solar Gás Energy" class="logo" onerror="this.src='https://via.placeholder.com/150x60?text=Solar+Gas'">
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                <li><a href="contacto.html" data-pt="Contato" data-en="Contact Us">Contato</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+         <div class="hero-background">
+            <img src="./img/hero-bg.jpn.jpeg" alt="Energia Sustentável" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, var(--primary-color), var(--primary-dark))';">
+         </div>
+
+         <!-- Overlay escuro para melhor legibilidade do texto -->
+    <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+            <h1 class="text-pt">Solar Gás Energy</h1>
+            <h1 class="text-en" style="display: none;">Solar Gas Energy</h1>
+            <p class="text-pt">Energia limpa e sustentável para um futuro melhor</p>
+            <p class="text-en" style="display: none;">Clean and sustainable energy for a better future</p>
+            <a href="contacto.html" class="btn-primary text-pt">Solicite um orçamento</a>
+            <a href="contacto.html" class="btn-primary text-en" style="display: none;">Request a quote</a>
+        </div>
+    </section>
+
+    <!-- Nossa Referência Section - CORRIGIDA -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Nossa Referência</span>
+                <span class="text-en" style="display: none;">Our Reference</span>
+            </h2>
+            
+            <!-- Cards de Referência - CORRIGIDOS -->
+            <div class="reference-cards">
+                <!-- Card 1 -->
+                <div class="reference-card">
+                    <div class="reference-image">
+                        <img src="./img/referencia1.jpg" alt="Kit BioPower" onerror="this.src='https://via.placeholder.com/400x200?text=Kit+BioPower'">
+                    </div>
+                    <div class="reference-content">
+                        <h3>Kit BioPower</h3>
+                        <p class="text-pt">Apoiamos famílias e agricultores, periurbanos e rurais, a transformar resíduos animais e agrícolas em energia limpa, biogás sustentável e biofertilizante rico em nutrientes.</p>
+                        <p class="text-pt">Com os biodigestores BioPower, promovemos acesso à energia em comunidades sem eletricidade, tornamos a agricultura mais sustentável e ajudamos a cuidar do planeta, reduzindo o consumo de lenha e aproveitando os resíduos que antes eram desperdiçados para gerar energia. </p>
+                        <p class="text-en" style="display: none;">We support families and farmers, peri-urban and rural, to transform animal and agricultural waste into clean energy, sustainable biogas and nutrient-rich biofertilizer.</p>
+                        <p class="text-en" style="display: none;">With BioPower biodigesters, we promote access to energy in communities without electricity, make agriculture more sustainable and help take care of the planet by reducing wood consumption and taking advantage of waste that was previously wasted to generate energy.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="reference-card">
+                    <div class="reference-image">
+                        <img src="./img/referencia2.jpg" alt="Acessórios" onerror="this.src='https://via.placeholder.com/400x200?text=Acessorios'">
+                    </div>
+                    <div class="reference-content">
+                        <h3>Acessórios para Biogás</h3>
+                        <p class="text-pt">Maximize a eficiência da sua casa ou empresa e poupe mais com os acessórios da BioPower, concebidos para se integrarem perfeitamente no biogás produzido pelo seu biodigestor.</p>
+                        <p class="text-pt">Saiba mais sobre os nossos fogões, queimadores, lâmpadas de aquecimento, geradores e muito mais.</p>
+                        <p class="text-en" style="display: none;">Maximize the efficiency of your home or business and save more with BioPower accessories, designed to integrate perfectly with the biogas produced by your biodigester.</p>
+                        <p class="text-en" style="display: none;">Learn more about our stoves, burners, heating lamps, generators and more.</p>
+                    </div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="reference-card">
+                    <div class="reference-image">
+                        <img src="./img/referencia3.jpg" alt="Programas" onerror="this.src='https://via.placeholder.com/400x200?text=Programas'">
+                    </div>
+                    <div class="reference-content">
+                        <h3>Programas de Impacto</h3>
+                        <p class="text-pt">A BioPower da SolarGas Energy promove um futuro de Pecuária e agricultura regenerativa através de parcerias com empresas, governos e instituições empenhadas no combate às alterações climáticas.</p>
+                        <p class="text-pt">Apoiamos o desenvolvimento do acesso a energia limpa através de projetos de investimento na redução das emissões de carbono.</p>
+                        <p class="text-en" style="display: none;">BioPower from SolarGas Energy promotes a future of regenerative livestock and agriculture through partnerships with companies, governments and institutions committed to combating climate change.</p>
+                        <p class="text-en" style="display: none;">We support the development of access to clean energy through investment projects to reduce carbon emissions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quem Somos -->
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>
+                        <span class="text-pt">Quem somos?</span>
+                        <span class="text-en" style="display: none;">Who we are?</span>
+                    </h3>
+                    
+                    <div class="mission-vision-values">
+                        <div class="mission">
+                            <h4><i class="fas fa-globe"></i> <span class="text-pt">🌍 Missão</span><span class="text-en" style="display: none;">🌍 Mission</span></h4>
+                            <p class="text-pt">Democratizar o acesso à energia limpa nas zonas rurais e periurbanas.</p>
+                            <p class="text-pt">Transformamos resíduos orgânicos em biogás e biofertilizante, gerando autonomia energética e oportunidades económicas no campo.</p>
+                            <p class="text-en" style="display: none;">Democratize access to clean energy in rural and peri-urban areas.</p>
+                            <p class="text-en" style="display: none;">We transform organic waste into biogas and biofertilizer, generating energy autonomy and economic opportunities in the countryside.</p>
+                        </div>
+                        
+                        <div class="vision">
+                            <h4><i class="fas fa-leaf"></i> <span class="text-pt">🌱 Visão</span><span class="text-en" style="display: none;">🌱 Vision</span></h4>
+                            <p class="text-pt">Ser referência em soluções integradas de bioenergia sustentável.</p>
+                            <p class="text-pt">Queremos comunidades rurais mais produtivas, independentes e ambientalmente resilientes.</p>
+                            <p class="text-en" style="display: none;">To be a reference in integrated sustainable bioenergy solutions.</p>
+                            <p class="text-en" style="display: none;">We want more productive, independent, and environmentally resilient rural communities.</p>
+                        </div>
+                        
+                        <div class="values">
+                            <h4><i class="fas fa-handshake"></i> <span class="text-pt">🤝 Valores</span><span class="text-en" style="display: none;">🤝 Values</span></h4>
+                            <ul class="values-list">
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Sustentabilidade</span><span class="text-en" style="display: none;">Sustainability</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Impacto Social</span><span class="text-en" style="display: none;">Social Impact</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Inovação Acessível</span><span class="text-en" style="display: none;">Accessible Innovation</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="text-pt">Autonomia</span><span class="text-en" style="display: none;">Autonomy</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-images-grid">
+                    <div class="image-card">
+                        <i class="fas fa-solar-panel" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 10px;"></i>
+                        <span class="text-pt">Energia Solar</span>
+                        <span class="text-en" style="display: none;">Solar Energy</span>
+                    </div>
+                    <div class="image-card">
+                        <i class="fas fa-fire" style="font-size: 3rem; color: var(--secondary-color); margin-bottom: 10px;"></i>
+                        <span class="text-pt">Biogás</span>
+                        <span class="text-en" style="display: none;">Biogas</span>
+                    </div>
+                    <div class="image-card">
+                        <i class="fas fa-water" style="font-size: 3rem; color: var(--primary-dark); margin-bottom: 10px;"></i>
+                        <span class="text-pt">Biofertilizante</span>
+                        <span class="text-en" style="display: none;">Biofertilizer</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estatísticas -->
+    <section class="estatisticas">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Estatísticas da Solar Gás Energy</span>
+                <span class="text-en" style="display: none;">Solar Gas Energy Statistics</span>
+            </h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">+50</div>
+                    <div class="stat-label text-pt">kits biodigestores BioPower instalados</div>
+                    <div class="stat-label text-en" style="display: none;">BioPower biodigester kits installed</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">+550</div>
+                    <div class="stat-label text-pt">Pessoas produzindo e usando biogás</div>
+                    <div class="stat-label text-en" style="display: none;">People producing and using biogas</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-number">+80 mil</div>
+                    <div class="stat-label text-pt">m³ de biogás produzido/ano</div>
+                    <div class="stat-label text-en" style="display: none;">m³ of biogas produced/year</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">+70 mil</div>
+                    <div class="stat-label text-pt">m³ de biofertilizante produzido/ano</div>
+                    <div class="stat-label text-en" style="display: none;">m³ of biofertilizer produced/year</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">+732</div>
+                    <div class="stat-label text-pt">Toneladas de lixo orgânico tratado/ano</div>
+                    <div class="stat-label text-en" style="display: none;">Tons of organic waste treated/year</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-number">+1000</div>
+                    <div class="stat-label text-pt">Fogões melhorados de baixo consumo vendidos</div>
+                    <div class="stat-label text-en" style="display: none;">Improved low-consumption stoves sold</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Contacto</span>
+                <span class="text-en" style="display: none;">Contact</span>
+            </h2>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3 class="text-pt">Estamos prontos para levar energia limpa até si.</h3>
+                    <h3 class="text-en" style="display: none;">We are ready to bring clean energy to you.</h3>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>Av. Samora Machel, n° 262, Matola - Malhampsene</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <p>Cel: +258 868 324 553</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <p><a href="https://wa.me/258857530213" target="_blank">+258 857 530 213</a></p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <p><a href="mailto:Info@solargas-e.com">Info@solargas-e.com</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-image">
+                    <div class="image-card">
+                        <i class="fas fa-map-marked-alt" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 10px;"></i>
+                        <span class="text-pt">Nossa Localização</span>
+                        <span class="text-en" style="display: none;">Our Location</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container" style="margin-bottom: 1rem;">
+                        <img src="./img/Logo.png" alt="Solar Gás Energy">
+                    </div>
+                    <p class="text-pt">Energia limpa e sustentável</p>
+                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-pt">Links Rápidos</h4>
+                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                        <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                        <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                        <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
+                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="text-pt">Redes Sociais</h4>
+                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</p>
+                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/258857530213" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // ==================== MENU MOBILE ====================
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+
+            if (hamburger && navMenu) {
+                
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    });
+                });
+
+                document.addEventListener('click', function(e) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(e.target) && 
+                        !hamburger.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    }
+                });
+
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    }
+                });
+            }
+
+            // ==================== SISTEMA DE TRADUÇÃO ====================
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    if (el.classList.contains(`text-${lang}`)) {
+                        el.style.display = '';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        link.textContent = link.dataset[lang];
+                    }
+                });
+
+                localStorage.setItem('preferred-language', lang);
+            }
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
+                setLanguage(savedLang);
+            }
+
+            // ==================== HEADER SCROLL EFFECT ====================
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255,255,255,0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+                } else {
+                    header.style.background = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                    header.style.boxShadow = 'var(--shadow)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
