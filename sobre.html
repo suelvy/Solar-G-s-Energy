@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Sobre Nós - Solar Gás Energy</title>
+    <title>Sobre Nós - SolarGas Energy</title>
     
     <!-- Fonts e ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,26 +14,82 @@
     
     <!-- CSS específico para sobre -->
     <style>
+
+        /* ========== logo ==============*/
+        .logo-container {
+        max-width: 60px;
+        height: auto;
+     }
+
+      .logo-container img{
+        width: 100%;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+      }
         /* ========== ABOUT PAGE STYLES ========== */
         .page-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: var(--white);
-            padding: 60px 0;
+            min-height: 150vh; /* Ajuste conforme necessário */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            margin-bottom: 40px;
+            color: var(--white);
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            background: none; 
         }
         
-        .page-header h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-        }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        .page-header .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.page-header .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Overlay escuro para legibilidade do texto */
+.page-header .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade (0.3 a 0.7) */
+    z-index: 2;
+}
+
+/* Conteúdo do hero */
+.page-header .container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
         
         /* About Intro */
         .about-intro {
@@ -489,6 +545,124 @@
                 padding: 1rem;
             }
         }
+
+        /* ========== MENU DROPDOWN ========== */
+.nav-menu li {
+    position: relative;
+}
+
+/* Estilo do dropdown */
+.nav-menu .dropdown {
+    position: relative;
+}
+
+.nav-menu .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
+    padding: 0.8rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: 10px;
+}
+
+/* Seta do dropdown */
+.nav-menu .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--white);
+}
+
+/* Mostrar dropdown ao passar o mouse */
+.nav-menu .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+/* Itens do dropdown */
+.nav-menu .dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+
+.nav-menu .dropdown-menu a {
+    padding: 0.8rem 1.5rem;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: none;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.nav-menu .dropdown-menu a:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding-left: 2rem;
+}
+
+.nav-menu .dropdown-menu a::after {
+    display: none;
+}
+
+/* Indicador de dropdown (seta para baixo) */
+.nav-menu .dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.nav-menu .dropdown > a i {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.nav-menu .dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+/* Mobile - ajustes */
+@media (max-width: 768px) {
+    .nav-menu .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        min-width: 100%;
+        transform: none;
+        display: none;
+    }
+    
+    .nav-menu .dropdown-menu::before {
+        display: none;
+    }
+    
+    .nav-menu .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    
+    .nav-menu .dropdown > a i {
+        margin-left: auto;
+    }
+}
     </style>
 </head>
 <body>
@@ -512,18 +686,43 @@
         <nav class="navbar container">
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="./img/Logo.png" alt="Solar Gás Energy">
+                    <img src="./img/Logo.png" alt="SolarGas Energy">
                 </a>
             </div>
             
             <ul class="nav-menu">
-                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-                <li><a href="sobre.html" class="active" data-pt="Sobre" data-en="About us">Sobre</a></li>
-                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
-                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                <li><a href="contacto.html" data-pt="Contato" data-en="Contact Us">Contato</a></li>
-            </ul>
+    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+    
+    <!-- DROPDOWN DE PROJECTOS -->
+    <li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle">
+            <span class="text-pt">Projectos</span>
+            <span class="text-en" style="display: none;">Projects</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="projectos.html">
+                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Nossos Projectos</span>
+                    <span class="text-en" style="display: none;">Our Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="galeria-projecto.html">
+                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Galeria Projectos</span>
+                    <span class="text-en" style="display: none;">Projects Gallery</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+</ul>
             
             <div class="hamburger">
                 <span class="bar"></span>
@@ -533,16 +732,27 @@
         </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="text-pt">Sobre Nós</h1>
-            <h1 class="text-en" style="display: none;">About Us</h1>
-            <p class="text-pt">Conheça a história e os valores da Solar Gás Energy</p>
-            <p class="text-en" style="display: none;">Learn about the history and values of Solar Gas Energy</p>
-        </div>
-    </section>
+    
 
+    <!-- Page Header -->
+    <!-- Page Header COM IMAGEM DE FUNDO -->
+<section class="page-header">
+    <!-- Imagem de fundo -->
+    <div class="hero-background">
+        <img src="./img/sobre-nos.jpeg" alt="Sobre a SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Sobre+Nós'">
+    </div>
+    
+    <!-- Overlay escuro -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Conteúdo -->
+    <div class="container">
+        <h1 class="text-pt">Sobre Nós</h1>
+        <h1 class="text-en" style="display: none;">About Us</h1>
+        <p class="text-pt">Conheça a história e os valores da SolarGas Energy</p>
+        <p class="text-en" style="display: none;">Learn about the history and values of SolarGas Energy</p>
+    </div>
+</section>
     <!-- About Intro -->
     <section>
         <div class="container">
@@ -553,7 +763,7 @@
                         <span class="text-en" style="display: none;">Who We Are?</span>
                     </h2>
                     <p class="text-pt">
-                        A Solar Gás Energy é uma empresa moçambicana especializada em soluções de energia limpa e sustentável. 
+                        A SolarGas Energy é uma empresa moçambicana especializada em soluções de energia limpa e sustentável. 
                         Atuamos no desenvolvimento e implementação de tecnologias de biogás, energia solar e fogões melhorados, 
                         levando autonomia energética para famílias, produtores rurais e pequenas empresas.
                     </p>
@@ -562,7 +772,7 @@
                         promovendo a economia circular e o desenvolvimento sustentável nas comunidades onde atuamos.
                     </p>
                     <p class="text-en" style="display: none;">
-                        Solar Gas Energy is a Mozambican company specialized in clean and sustainable energy solutions. 
+                        SolarGas Energy is a Mozambican company specialized in clean and sustainable energy solutions. 
                         We operate in the development and implementation of biogas technologies, solar energy and improved stoves, 
                         bringing energy autonomy to families, rural producers and small businesses.
                     </p>
@@ -634,10 +844,10 @@
                         <span class="text-en" style="display: none;">Values</span>
                     </h3>
                     <ul class="valores-list">
-                        <li><i class="fas fa-check-circle"></i> <span>Sustentabilidade</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Impacto Social</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Inovação Acessível</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span>Autonomia</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Sustentabilidade</span><span class="text-en" style="display: none;">Sustainability</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Impacto Social</span><span class="text-en" style="display: none;">Social Impact</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Inovação Acessível</span><span class="text-en" style="display: none;">Accessible</span></li>
+                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Autonomia</span><span class="text-en" style="display: none;">Autonomy</span></li>
                     </ul>
                 </div>
             </div>
@@ -700,8 +910,8 @@
     <section class="estatisticas">
         <div class="container">
             <h2 class="section-title">
-                <span class="text-pt">Estatísticas da Solar Gás Energy</span>
-                <span class="text-en" style="display: none;">Solar Gas Energy Statistics</span>
+                <span class="text-pt">Estatísticas da SolarGas Energy</span>
+                <span class="text-en" style="display: none;">SolarGas Energy Statistics</span>
             </h2>
             
             <div class="stats-grid">
@@ -744,78 +954,6 @@
         </div>
     </section>
 
-    <!-- Nossa Equipe -->
-    <section class="team-section">
-        <div class="container">
-            <h2 class="section-title">
-                <span class="text-pt">Nossa Equipe</span>
-                <span class="text-en" style="display: none;">Our Team</span>
-            </h2>
-            
-            <div class="team-grid">
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="https://via.placeholder.com/400x400/2E7D32/ffffff?text=Team+1" alt="Membro da Equipe">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-info">
-                        <h4>João Silva</h4>
-                        <p>Diretor Executivo</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="https://via.placeholder.com/400x400/FFB300/ffffff?text=Team+2" alt="Membro da Equipe">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-info">
-                        <h4>Maria Santos</h4>
-                        <p>Diretora Técnica</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="https://via.placeholder.com/400x400/FF8F00/ffffff?text=Team+4" alt="Membro da Equipe">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-info">
-                        <h4>Carlos Alberto</h4>
-                        <p>Coordenador de Projetos</p>
-                    </div>
-                </div>
-                
-                <div class="team-card">
-                    <div class="team-image">
-                        <img src="https://via.placeholder.com/400x400/FF8F00/ffffff?text=Team+4" alt="Membro da Equipe">
-                        <div class="team-social">
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fas fa-envelope"></i></a>
-                        </div>
-                    </div>
-                    <div class="team-info">
-                        <h4>Ana Paula</h4>
-                        <p>Especialista em Biogás</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- CTA Section -->
     <section style="background: var(--light-color); text-align: center; padding: 4rem 0;">
         <div class="container">
@@ -827,7 +965,7 @@
                 <span class="text-pt">Junte-se a nós na missão de levar energia limpa e sustentável para todos.</span>
                 <span class="text-en" style="display: none;">Join us in the mission to bring clean and sustainable energy to everyone.</span>
             </p>
-            <a href="contacto.html" class="btn-primary">Contacte-nos</a>
+            <a href="contacto.html" class="btn-primary"><h1 class="text-pt">Contacte-nos</h1><h1 class="text-en">Contact us</h1></a>
         </div>
     </section>
 
@@ -851,8 +989,8 @@
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
                         <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
                         <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                        <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                        <li><a href="projectos.html" data-pt="Projectos" data-en="Projects">Projectos</a></li>
+                        <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
                     </ul>
                 </div>
                 
@@ -947,6 +1085,19 @@
                     header.classList.remove('scrolled');
                 }
             });
+
+            // Dropdown para mobile
+const dropdowns = document.querySelectorAll('.dropdown');
+
+if (window.innerWidth <= 768) {
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.dropdown-toggle');
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+    });
+}
         });
     </script>
 </body>

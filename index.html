@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Solar Gás Energy - Energia Sustentável</title>
+    <title>SolarGas Energy - Energia Sustentável</title>
     
     <!-- css -->
     <style>
@@ -19,6 +19,7 @@
             --white: #FFFFFF;
             --shadow: 0 4px 6px rgba(0,0,0,0.1);
             --border-radius: 8px;
+            --border-radius-lg: 12px;
             --transition: all 0.3s ease;
         }
 
@@ -106,7 +107,7 @@
 
         .logo-container {
             width: 150px;
-            height: 60px;
+            height: 90px;
             display: flex;
             align-items: center;
             justify-content: flex-start;
@@ -186,82 +187,216 @@
             border-radius: 3px;
         }
 
-        /* Hero Section */
-          .hero {
-          min-height: 80vh;
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-    overflow: hidden;
-}
-
-        /* Fallback caso a imagem não carregue */
-        .hero.error {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        /* ========== HERO SECTION ========== */
+        .hero {
+            min-height: 80vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
         }
 
         .hero-background {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
 
-    .hero-background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Cobre todo o espaço sem distorcer */
-    object-position: center;
-    display: block;
-}
+        .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade aqui (0.3 a 0.7) */
-    z-index: 2;
-}
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 0;
+        }
 
         .hero-content {
-    position: relative;
-    z-index: 3;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-    width: 100%;
-}
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 20px;
+        }
 
-.hero h1 {
-    font-size: clamp(2rem, 5vw, 4rem);
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    animation: fadeInUp 1s ease;
-}
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
 
-.hero p {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    margin-bottom: 2rem;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-    animation: fadeInUp 1s ease 0.2s both;
-}
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
 
-/* Fallback APENAS se a imagem não carregar */
-.hero.error .hero-background {
-    display: none;
-}
+        /* ========== SEÇÃO ODS (ÍCONES EM BAIXO DO HERO) ========== */
+        .ods-section {
+            padding: 60px 0;
+            background: linear-gradient(135deg, var(--light-color) 0%, var(--white) 100%);
+            position: relative;
+        }
 
-.hero.error .hero-overlay {
-    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-}
+        .ods-section .section-title {
+            margin-bottom: 3rem;
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+        }
+
+        .ods-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .ods-card {
+            flex: 1 1 180px;
+            max-width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem 1rem;
+            background: var(--white);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .ods-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-color: var(--secondary-color);
+        }
+
+        .ods-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            position: relative;
+            color: white;
+        }
+
+        .ods-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            font-family: 'Arial Black', 'Poppins', sans-serif;
+        }
+
+        .ods-symbols {
+            display: flex;
+            gap: 5px;
+            margin-top: 2px;
+        }
+
+        .ods-symbols i {
+            font-size: 0.9rem;
+            color: white;
+            filter: drop-shadow(0 2px rgba(0,0,0,0.2));
+        }
+
+        /* Cores oficiais dos ODS */
+        .ods-2 { background: #DDA63A; } /* Amarelo/dourado ODS 2 */
+        .ods-7 { background: #FCC30B; } /* Amarelo ODS 7 */
+        .ods-8 { background: #A21942; } /* Bordô ODS 8 */
+        .ods-13 { background: #3F7E44; } /* Verde ODS 13 */
+        .ods-12 { background: #BF8B2E; } /* Mostarda ODS 12 */
+
+        .ods-text p {
+            font-size: 0.8rem;
+            font-weight: 600;
+            line-height: 1.3;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            margin: 0;
+        }
+
+        /* Media Queries para os ícones */
+         @media (max-width: 992px) {
+            .ods-icon{
+                width: 90px;
+                height: 90px;
+            }
+        }
+
+        .ods-number {
+        font-size: 2rem;
+    }
+
+          @media (max-width: 768px) {
+            .ods-icon{
+                width: 80px;
+                height: 80px;
+            }
+
+          }
+
+          .ods-number {
+            font-size: 1.8rem;
+          }
+
+          .ods-symbols {
+            font-size: 0.8rem;
+          }
+
+          @media (max-width: 480px) {
+            .ods-card{
+                flex-direction: row;
+                text-align: left;
+                gap: 1rem;
+                max-width: 100%;
+            }
+          }
+
+          .ods-icon {
+            width: 70px;
+            height: 70px;
+            margin-bottom: 0;
+          }
+
+          .ods-number{
+            font-size: 1.6rem;
+          }
+      
+
+        /* Linha divisória entre hero e ODS */
+        .ods-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            border-radius: 3px;
+        }
 
         /* Buttons */
         .btn-primary {
@@ -311,11 +446,11 @@
             border-radius: 2px;
         }
 
-        /* Reference Cards - CORRIGIDO */
+        /* Reference Cards */
         .reference-cards {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 40px;
             margin-bottom: 60px;
         }
 
@@ -333,7 +468,7 @@
         }
 
         .reference-image {
-            height: 200px;
+            height: 300px;
             background: #f0f0f0;
             position: relative;
         }
@@ -635,6 +770,25 @@
             .reference-cards {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .ods-grid {
+                gap: 1.5rem;
+            }
+            
+            .ods-card {
+                flex: 1 1 160px;
+                max-width: 180px;
+                padding: 1rem;
+            }
+            
+            .ods-icon {
+                width: 90px;
+                height: 90px;
+            }
+            
+            .ods-number {
+                font-size: 3rem;
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -710,7 +864,6 @@
 
             .hero {
                 min-height: 60vh;
-                background-attachment: scroll;
             }
 
             .top-bar-content {
@@ -734,6 +887,35 @@
 
             .reference-cards {
                 grid-template-columns: 1fr;
+            }
+            
+            .ods-section {
+                padding: 40px 0;
+            }
+            
+            .ods-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .ods-card {
+                max-width: none;
+                width: 100%;
+                padding: 1rem 0.5rem;
+            }
+            
+            .ods-icon {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .ods-number {
+                font-size: 2.5rem;
+            }
+            
+            .ods-text p {
+                font-size: 0.7rem;
             }
         }
 
@@ -759,7 +941,158 @@
             .section-title {
                 font-size: 1.8rem;
             }
+            
+            .ods-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .ods-card {
+                flex-direction: row;
+                text-align: left;
+                gap: 1rem;
+                max-width: 100%;
+            }
+            
+            .ods-icon {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 0;
+            }
+            
+            .ods-number {
+                font-size: 2.2rem;
+            }
+            
+            .ods-text p {
+                font-size: 0.8rem;
+            }
         }
+
+        /* Para telas grandes, 5 cards em linha */
+        @media (min-width: 1200px) {
+            .ods-grid {
+                flex-wrap: nowrap;
+            }
+        }
+
+        /* ========== MENU DROPDOWN ========== */
+.nav-menu li {
+    position: relative;
+}
+
+/* Estilo do dropdown */
+.nav-menu .dropdown {
+    position: relative;
+}
+
+.nav-menu .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
+    padding: 0.8rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: 10px;
+}
+
+/* Seta do dropdown */
+.nav-menu .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--white);
+}
+
+/* Mostrar dropdown ao passar o mouse */
+.nav-menu .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+/* Itens do dropdown */
+.nav-menu .dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+
+.nav-menu .dropdown-menu a {
+    padding: 0.8rem 1.5rem;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: none;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.nav-menu .dropdown-menu a:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding-left: 2rem;
+}
+
+.nav-menu .dropdown-menu a::after {
+    display: none;
+}
+
+/* Indicador de dropdown (seta para baixo) */
+.nav-menu .dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.nav-menu .dropdown > a i {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.nav-menu .dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+/* Mobile - ajustes */
+@media (max-width: 768px) {
+    .nav-menu .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        min-width: 100%;
+        transform: none;
+        display: none;
+    }
+    
+    .nav-menu .dropdown-menu::before {
+        display: none;
+    }
+    
+    .nav-menu .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    
+    .nav-menu .dropdown > a i {
+        margin-left: auto;
+    }
+}
     </style>
 
     <!-- Font Awesome -->
@@ -788,17 +1121,42 @@
     <header class="header">
         <nav class="navbar container">
             <div class="logo-container">
-                <img src="./img/Logo.png" alt="Solar Gás Energy" class="logo" onerror="this.src='https://via.placeholder.com/150x60?text=Solar+Gas'">
+                <img src="./img/Logo.png" alt="SolarGas Energy" class="logo" onerror="this.src='https://via.placeholder.com/150x60?text=Solar+Gas'">
             </div>
             
             <ul class="nav-menu">
-                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-                <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
-                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
-                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                <li><a href="contacto.html" data-pt="Contato" data-en="Contact Us">Contato</a></li>
-            </ul>
+    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+    
+    <!-- DROPDOWN DE PROJECTOS -->
+    <li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle">
+            <span class="text-pt">Projectos</span>
+            <span class="text-en" style="display: none;">Projects</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="projectos.html">
+                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Nossos Projectos</span>
+                    <span class="text-en" style="display: none;">Our Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="galeria-projecto.html">
+                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Galeria Projectos</span>
+                    <span class="text-en" style="display: none;">Projects Gallery</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+</ul>
             
             <div class="hamburger">
                 <span class="bar"></span>
@@ -808,26 +1166,110 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (SIMPLIFICADA) -->
     <section id="home" class="hero">
-         <div class="hero-background">
-            <img src="./img/hero-bg.jpn.jpeg" alt="Energia Sustentável" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, var(--primary-color), var(--primary-dark))';">
-         </div>
-
-         <!-- Overlay escuro para melhor legibilidade do texto -->
-    <div class="hero-overlay"></div>
-
+        <div class="hero-background">
+            <img src="./img/hero-principal.jpeg" alt="Energia Sustentável" onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg, var(--primary-color), var(--primary-dark))';">
+        </div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="text-pt">Solar Gás Energy</h1>
-            <h1 class="text-en" style="display: none;">Solar Gas Energy</h1>
-            <p class="text-pt">Energia limpa e sustentável para um futuro melhor</p>
-            <p class="text-en" style="display: none;">Clean and sustainable energy for a better future</p>
+            <h1 class="text-pt">SolarGas Energy</h1>
+            <h1 class="text-en" style="display: none;">SolarGas Energy</h1>
+            <p class="text-pt">Soluções Energéticas Limpas e Sustentáveis para Moçambique</p>
+            <p class="text-en" style="display: none;">Clean and Sustainable Energy Solutions for Mozambique</p>
             <a href="contacto.html" class="btn-primary text-pt">Solicite um orçamento</a>
             <a href="contacto.html" class="btn-primary text-en" style="display: none;">Request a quote</a>
         </div>
     </section>
 
-    <!-- Nossa Referência Section - CORRIGIDA -->
+    <!-- SEÇÃO ODS CORRIGIDA - COM SÍMBOLOS IGUAIS À IMAGEM -->
+<section class="ods-section">
+    <div class="container">
+        <h2 class="section-title">
+            <span class="text-pt">Contribuímos para os Objetivos de Desenvolvimento Sustentável</span>
+            <span class="text-en" style="display: none;">We contribute to the Sustainable Development Goals</span>
+        </h2>
+        
+        <div class="ods-grid">
+            <!-- ODS 2 - Fome Zero (com símbolos de planta e trigo) -->
+            <div class="ods-card">
+                <div class="ods-icon ods-2">
+                    <span class="ods-number">2</span>
+                    <div class="ods-symbols">
+                        <i class="fas fa-seedling"></i>
+                        <i class="fas fa-wheat-alt"></i>
+                    </div>
+                </div>
+                <div class="ods-text">
+                    <p class="text-pt">FOME ZERO E<br>AGRICULTURA SUSTENTÁVEL</p>
+                    <p class="text-en" style="display: none;">ZERO HUNGER AND<br>SUSTAINABLE AGRICULTURE</p>
+                </div>
+            </div>
+
+            <!-- ODS 7 - Energia Limpa (com símbolos de sol e raio) -->
+            <div class="ods-card">
+                <div class="ods-icon ods-7">
+                    <span class="ods-number">7</span>
+                    <div class="ods-symbols">
+                        <i class="fas fa-sun"></i>
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                </div>
+                <div class="ods-text">
+                    <p class="text-pt">ENERGIA ACESSÍVEL<br>E LIMPA</p>
+                    <p class="text-en" style="display: none;">AFFORDABLE AND<br>CLEAN ENERGY</p>
+                </div>
+            </div>
+
+            <!-- ODS 8 - Trabalho Decente (com símbolos de maleta e gráfico) -->
+            <div class="ods-card">
+                <div class="ods-icon ods-8">
+                    <span class="ods-number">8</span>
+                    <div class="ods-symbols">
+                        <i class="fas fa-briefcase"></i>
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <div class="ods-text">
+                    <p class="text-pt">TRABALHO DECENTE E<br>CRESCIMENTO ECONÓMICO</p>
+                    <p class="text-en" style="display: none;">DECENT WORK AND<br>ECONOMIC GROWTH</p>
+                </div>
+            </div>
+
+            <!-- ODS 13 - Ação Climática (com símbolos de planeta e temperatura) -->
+            <div class="ods-card">
+                <div class="ods-icon ods-13">
+                    <span class="ods-number">13</span>
+                    <div class="ods-symbols">
+                        <i class="fas fa-globe-africa"></i>
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                </div>
+                <div class="ods-text">
+                    <p class="text-pt">AÇÃO CONTRA A<br>MUDANÇA GLOBAL DO CLIMA</p>
+                    <p class="text-en" style="display: none;">CLIMATE ACTION</p>
+                </div>
+            </div>
+
+            <!-- ODS 12 - Consumo Responsável (com símbolos de reciclagem e folha) -->
+            <div class="ods-card">
+                <div class="ods-icon ods-12">
+                    <span class="ods-number">12</span>
+                    <div class="ods-symbols">
+                        <i class="fas fa-recycle"></i>
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                </div>
+                <div class="ods-text">
+                    <p class="text-pt">CONSUMO E PRODUÇÃO<br>RESPONSÁVEIS</p>
+                    <p class="text-en" style="display: none;">RESPONSIBLE CONSUMPTION<br>AND PRODUCTION</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Nossa Referência Section -->
     <section id="about" class="about">
         <div class="container">
             <h2 class="section-title">
@@ -835,17 +1277,17 @@
                 <span class="text-en" style="display: none;">Our Reference</span>
             </h2>
             
-            <!-- Cards de Referência - CORRIGIDOS -->
+            <!-- Cards de Referência -->
             <div class="reference-cards">
                 <!-- Card 1 -->
                 <div class="reference-card">
                     <div class="reference-image">
-                        <img src="./img/referencia1.jpg" alt="Kit BioPower" onerror="this.src='https://via.placeholder.com/400x200?text=Kit+BioPower'">
+                        <img src="./img/referencia.jpeg" alt="Kit Biodigestor BioPower" onerror="this.src='https://via.placeholder.com/400x200?text=Kit+BioPower'">
                     </div>
                     <div class="reference-content">
                         <h3>Kit BioPower</h3>
                         <p class="text-pt">Apoiamos famílias e agricultores, periurbanos e rurais, a transformar resíduos animais e agrícolas em energia limpa, biogás sustentável e biofertilizante rico em nutrientes.</p>
-                        <p class="text-pt">Com os biodigestores BioPower, promovemos acesso à energia em comunidades sem eletricidade, tornamos a agricultura mais sustentável e ajudamos a cuidar do planeta, reduzindo o consumo de lenha e aproveitando os resíduos que antes eram desperdiçados para gerar energia. </p>
+                        <p class="text-pt">Com os biodigestores BioPower, promovemos acesso à energia em comunidades sem eletricidade, tornamos a agricultura mais sustentável e ajudamos a cuidar do planeta, reduzindo o consumo de lenha e aproveitando os resíduos que antes eram desperdiçados para gerar energia.</p>
                         <p class="text-en" style="display: none;">We support families and farmers, peri-urban and rural, to transform animal and agricultural waste into clean energy, sustainable biogas and nutrient-rich biofertilizer.</p>
                         <p class="text-en" style="display: none;">With BioPower biodigesters, we promote access to energy in communities without electricity, make agriculture more sustainable and help take care of the planet by reducing wood consumption and taking advantage of waste that was previously wasted to generate energy.</p>
                     </div>
@@ -854,7 +1296,7 @@
                 <!-- Card 2 -->
                 <div class="reference-card">
                     <div class="reference-image">
-                        <img src="./img/referencia2.jpg" alt="Acessórios" onerror="this.src='https://via.placeholder.com/400x200?text=Acessorios'">
+                        <img src="./img/referencia-2.jpeg" alt="Acessórios" onerror="this.src='https://via.placeholder.com/400x200?text=Acessorios'">
                     </div>
                     <div class="reference-content">
                         <h3>Acessórios para Biogás</h3>
@@ -942,8 +1384,8 @@
     <section class="estatisticas">
         <div class="container">
             <h2 class="section-title">
-                <span class="text-pt">Estatísticas da Solar Gás Energy</span>
-                <span class="text-en" style="display: none;">Solar Gas Energy Statistics</span>
+                <span class="text-pt">Estatísticas da SolarGas Energy</span>
+                <span class="text-en" style="display: none;">SolarGas Energy Statistics</span>
             </h2>
             
             <div class="stats-grid">
@@ -1053,8 +1495,8 @@
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
                         <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
                         <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                        <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                        <li><a href="projectos.html" data-pt="Projectos" data-en="Projects">Projectos</a></li>
+                        <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
                     </ul>
                 </div>
                 
@@ -1183,6 +1625,19 @@
                     header.style.boxShadow = 'var(--shadow)';
                 }
             });
+
+            // Dropdown para mobile
+const dropdowns = document.querySelectorAll('.dropdown');
+
+if (window.innerWidth <= 768) {
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.dropdown-toggle');
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+    });
+}
         });
     </script>
 </body>

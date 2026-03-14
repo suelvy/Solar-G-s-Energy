@@ -14,180 +14,278 @@
     
     <!-- CSS específico para serviços -->
     <style>
-        /* ========== SERVICES PAGE STYLES ========== */
-        .page-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        /* ========== HERO DA PÁGINA DE SERVIÇOS ========== */
+        .page-hero {
+            min-height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
             color: var(--white);
-            padding: 60px 0;
-            text-align: center;
-            margin-bottom: 40px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
-        
-        .page-header h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
+
+        .page-hero .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
+
+        .page-hero .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
         }
-        
-        /* Services Intro */
-        .services-intro {
-            text-align: center;
+
+        .page-hero .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .page-hero .hero-content {
+            position: relative;
+            z-index: 3;
             max-width: 800px;
-            margin: 0 auto 4rem;
+            padding: 0 20px;
         }
-        
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+          .logo-container {
+        max-width: 60px;
+        height: auto;
+     }
+
+      .logo-container img{
+        width: 100%;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+      }
+
+        /* ========== INTRO SECTION ========== */
+        .services-intro {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, #ffffff, var(--light-color));
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            border: 1px solid rgba(46,125,50,0.1);
+        }
+
         .services-intro h2 {
             color: var(--primary-color);
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
         }
-        
+
+        .services-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
         .services-intro p {
-            font-size: 1.1rem;
-            color: var(--text-light);
+            font-size: 1.2rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
         }
-        
-        /* Services Grid */
-        .services-grid {
+
+        /* ========== SERVIÇOS PRINCIPAIS (COM IMAGENS) ========== */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .services-grid-main {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            margin-bottom: 4rem;
+            margin: 3rem 0;
         }
-        
-        /* Service Card - Principal */
+
         .service-card-main {
             background: var(--white);
-            border-radius: var(--radius-lg);
+            border-radius: 16px;
             overflow: hidden;
             box-shadow: var(--shadow);
-            transition: var(--transition-bounce);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(0,0,0,0.05);
             height: 100%;
             display: flex;
             flex-direction: column;
-            position: relative;
         }
-        
+
         .service-card-main:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
         }
-        
-        .service-card-main::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-        }
-        
+
         .service-image {
-            height: 250px;
+            height: 550px;
             overflow: hidden;
             position: relative;
         }
-        
+
         .service-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
-        
+
         .service-card-main:hover .service-image img {
             transform: scale(1.1);
         }
-        
+
         .service-content {
             padding: 2rem;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-        
+
         .service-content h3 {
-            font-size: 1.8rem;
             color: var(--primary-color);
+            font-size: 1.5rem;
             margin-bottom: 1rem;
             position: relative;
-            padding-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
         }
-        
+
         .service-content h3::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            width: 60px;
+            width: 50px;
             height: 3px;
             background: var(--secondary-color);
-            border-radius: var(--radius-full);
+            border-radius: 2px;
         }
-        
+
         .service-description {
             color: var(--text-color);
-            margin-bottom: 1.5rem;
             line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
-        
+
         .service-features {
             list-style: none;
-            margin-bottom: 2rem;
+            margin: 1rem 0;
         }
-        
+
         .service-features li {
             display: flex;
             align-items: center;
             gap: 0.8rem;
             margin-bottom: 0.8rem;
+            font-size: 0.95rem;
         }
-        
+
         .service-features i {
             color: var(--secondary-color);
             font-size: 1rem;
             width: 20px;
         }
-        
-        /* Service Card - Secundário */
+
+        .btn-service {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            align-self: flex-start;
+            margin-top: 1rem;
+            border: 2px solid transparent;
+        }
+
+        .btn-service:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* ========== SERVIÇOS ESPECIALIZADOS (CARDS MENORES) ========== */
         .services-grid-secondary {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0 5rem;
         }
-        
+
         .service-card {
             background: var(--white);
-            border-radius: var(--radius);
-            padding: 2rem;
+            border-radius: 16px;
+            padding: 2rem 1.5rem;
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            transition: all 0.3s ease;
             border: 1px solid rgba(0,0,0,0.05);
             height: 100%;
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow: hidden;
+            text-align: center;
         }
-        
+
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
-            border-color: var(--primary-light);
+            border-color: var(--primary-color);
         }
-        
+
         .service-icon {
-            width: 70px;
-            height: 70px;
+            width: 80px;
+            height: 80px;
             background: var(--primary-light);
             color: var(--white);
             border-radius: 50%;
@@ -195,167 +293,313 @@
             align-items: center;
             justify-content: center;
             font-size: 2rem;
-            margin-bottom: 1.5rem;
-            transition: var(--transition);
+            margin: 0 auto 1.5rem;
+            transition: all 0.3s ease;
         }
-        
+
         .service-card:hover .service-icon {
-            background: var(--primary-color);
+            background: var(--secondary-color);
             transform: rotate(360deg);
         }
-        
+
         .service-card h3 {
-            font-size: 1.4rem;
             color: var(--primary-color);
+            font-size: 1.3rem;
             margin-bottom: 1rem;
         }
-        
+
         .service-card p {
             color: var(--text-color);
-            margin-bottom: 1.5rem;
             line-height: 1.6;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
+            font-size: 0.95rem;
         }
-        
+
         .service-link {
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 600;
-            display: flex;
+            display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
             transition: gap 0.3s;
             margin-top: auto;
         }
-        
+
         .service-link:hover {
             gap: 1rem;
             color: var(--primary-dark);
         }
-        
-        /* Specialties Grid */
-        .specialties-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
+
+        /* ========== CAPACITAÇÃO ESPECIAL (COM DUAS OPÇÕES) ========== */
+        .training-card {
+            background: linear-gradient(135deg, var(--primary-light), var(--primary-color));
+            color: var(--white);
         }
-        
-        .specialty-item {
-            display: flex;
-            gap: 1rem;
-            align-items: flex-start;
-            padding: 1.5rem;
+
+        .training-card .service-icon {
             background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-        
-        .specialty-item:hover {
-            transform: translateX(10px);
-            box-shadow: var(--shadow);
-            background: var(--primary-light);
-            color: var(--white);
-        }
-        
-        .specialty-item:hover i {
-            color: var(--white);
-        }
-        
-        .specialty-item i {
-            font-size: 2rem;
             color: var(--primary-color);
+        }
+
+        .training-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .training-option {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            padding: 0.8rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
             transition: var(--transition);
         }
-        
-        .specialty-content h4 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+
+        .training-option:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
         }
-        
-        /* CTA Section */
-        .services-cta {
+
+        .training-option i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .training-option h4 {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--white);
+        }
+
+        .training-option p {
+            font-size: 0.85rem;
+            margin: 0;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
             background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
             color: var(--white);
             padding: 4rem 0;
-            margin-top: 3rem;
+            margin: 4rem 0;
             text-align: center;
-            border-radius: var(--radius-lg);
+            border-radius: 20px;
         }
-        
-        .services-cta h2 {
-            font-size: 2rem;
+
+        .cta-section h2 {
+            font-size: 2.2rem;
             margin-bottom: 1rem;
         }
-        
-        .services-cta p {
-            font-size: 1.1rem;
+
+        .cta-section p {
+            font-size: 1.2rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .services-cta .btn-primary {
+
+        .cta-section .btn-primary {
             background: var(--white);
             color: var(--primary-color);
+            font-size: 1.1rem;
+            padding: 1rem 3rem;
         }
-        
-        .services-cta .btn-primary:hover {
+
+        .cta-section .btn-primary:hover {
             background: var(--secondary-color);
             color: var(--dark-color);
+            transform: translateY(-3px);
         }
-        
-        /* Responsividade */
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 1024px) {
+            .services-grid-secondary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 992px) {
-            .specialties-grid {
+            .services-grid-main {
                 grid-template-columns: 1fr;
             }
         }
-        
+
         @media (max-width: 768px) {
-            .services-grid,
+            .services-intro {
+                padding: 2rem;
+                margin: 2rem auto;
+            }
+
+            .services-intro h2 {
+                font-size: 1.8rem;
+            }
+
+            .services-intro p {
+                font-size: 1rem;
+            }
+
             .services-grid-secondary {
                 grid-template-columns: 1fr;
             }
-            
+
             .service-image {
                 height: 200px;
             }
-            
+
             .service-content {
                 padding: 1.5rem;
             }
-            
-            .service-content h3 {
-                font-size: 1.5rem;
+
+            .cta-section {
+                padding: 3rem 1rem;
             }
-            
+
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
             .service-icon {
                 width: 60px;
                 height: 60px;
                 font-size: 1.5rem;
             }
-            
-            .specialty-item {
-                padding: 1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .service-content h3 {
-                font-size: 1.3rem;
-            }
-            
+
             .service-card {
                 padding: 1.5rem;
             }
-            
-            .service-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
         }
+
+        /* ========== MENU DROPDOWN ========== */
+.nav-menu li {
+    position: relative;
+}
+
+/* Estilo do dropdown */
+.nav-menu .dropdown {
+    position: relative;
+}
+
+.nav-menu .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
+    padding: 0.8rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: 10px;
+}
+
+/* Seta do dropdown */
+.nav-menu .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--white);
+}
+
+/* Mostrar dropdown ao passar o mouse */
+.nav-menu .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+/* Itens do dropdown */
+.nav-menu .dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+
+.nav-menu .dropdown-menu a {
+    padding: 0.8rem 1.5rem;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: none;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.nav-menu .dropdown-menu a:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding-left: 2rem;
+}
+
+.nav-menu .dropdown-menu a::after {
+    display: none;
+}
+
+/* Indicador de dropdown (seta para baixo) */
+.nav-menu .dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.nav-menu .dropdown > a i {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.nav-menu .dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+/* Mobile - ajustes */
+@media (max-width: 768px) {
+    .nav-menu .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        min-width: 100%;
+        transform: none;
+        display: none;
+    }
+    
+    .nav-menu .dropdown-menu::before {
+        display: none;
+    }
+    
+    .nav-menu .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    
+    .nav-menu .dropdown > a i {
+        margin-left: auto;
+    }
+}
+
     </style>
 </head>
 <body>
@@ -379,18 +623,43 @@
         <nav class="navbar container">
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="./img/Logo.png" alt="Solar Gás Energy">
+                    <img src="./img/Logo.png" alt="Solar Gás Energy" onerror="this.src='https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas'">
                 </a>
             </div>
             
             <ul class="nav-menu">
-                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-                <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
-                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
-                <li><a href="servicos.html" class="active" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                <li><a href="contacto.html" data-pt="Contato" data-en="Contact Us">Contato</a></li>
-            </ul>
+    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+    
+    <!-- DROPDOWN DE PROJECTOS -->
+    <li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle">
+            <span class="text-pt">Projectos</span>
+            <span class="text-en" style="display: none;">Projects</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="projectos.html">
+                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Nossos Projectos</span>
+                    <span class="text-en" style="display: none;">Our Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="galeria-projecto.html">
+                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Galeria Projectos</span>
+                    <span class="text-en" style="display: none;">Projects Gallery</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+</ul>
             
             <div class="hamburger">
                 <span class="bar"></span>
@@ -400,255 +669,301 @@
         </nav>
     </header>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
+    <!-- HERO DA PÁGINA DE SERVIÇOS -->
+    <section class="page-hero">
+        <div class="hero-background">
+            <img src="./img/serviços-hero.jpeg" alt="Serviços Solar Gás Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Serviços+Profissionais'">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
             <h1 class="text-pt">Nossos Serviços</h1>
             <h1 class="text-en" style="display: none;">Our Services</h1>
-            <p class="text-pt">Soluções completas em energia limpa com suporte técnico especializado</p>
-            <p class="text-en" style="display: none;">Complete clean energy solutions with specialized technical support</p>
+            <p class="text-pt">Soluções completas com suporte técnico especializado</p>
+            <p class="text-en" style="display: none;">Complete solutions with specialized technical support</p>
         </div>
     </section>
 
-    <!-- Services Intro -->
-    <section>
-        <div class="container">
-            <div class="services-intro">
-                <h2 class="text-pt">Que Serviços Oferecemos?</h2>
-                <h2 class="text-en" style="display: none;">What Services Do We Offer?</h2>
-                <p class="text-pt">
-                    Oferecemos serviços completos para garantir que cada equipamento e instalação funcione de forma eficiente, 
-                    segura e sustentável. Do dimensionamento à manutenção, acompanhamos cada cliente em todas as etapas do processo.
-                </p>
-                <p class="text-en" style="display: none;">
-                    We offer complete services to ensure that each equipment and installation works efficiently, 
-                    safely and sustainably. From sizing to maintenance, we accompany each client in all stages of the process.
-                </p>
-            </div>
-
-            <!-- Serviços Principais (com imagens) -->
-            <div class="services-grid">
-                <!-- Instalação de Sistemas -->
-                <div class="service-card-main">
-                    <div class="service-image">
-                        <img src="./img/instalacao.jpeg" alt="Instalação de Sistemas">
-                    </div>
-                    <div class="service-content">
-                        <h3>
-                            <span class="text-pt">Instalação de Sistemas de Energias Renováveis</span>
-                            <span class="text-en" style="display: none;">Renewable Energy Systems Installation</span>
-                        </h3>
-                        <p class="service-description text-pt">
-                            Realizamos a instalação completa dos sistemas (Kit BioPower e sistemas solares), 
-                            garantindo segurança, eficiência e adaptação às necessidades de cada cliente.
-                        </p>
-                        <p class="service-description text-en" style="display: none;">
-                            We carry out the complete installation of systems (BioPower Kit and solar systems), 
-                            ensuring safety, efficiency and adaptation to each client's needs.
-                        </p>
-                        <a href="contacto.html" class="btn-product" style="align-self: flex-start;">Contacta-nos</a>
-                    </div>
-                </div>
-
-                <!-- Manutenção e Assistência Técnica -->
-                <div class="service-card-main">
-                    <div class="service-image">
-                        <img src="./img/manuntecao.jpeg" alt="Manutenção">
-                    </div>
-                    <div class="service-content">
-                        <h3>
-                            <span class="text-pt">Manutenção e Assistência Técnica</span>
-                            <span class="text-en" style="display: none;">Maintenance and Technical Assistance</span>
-                        </h3>
-                        <p class="service-description text-pt">
-                            Oferecemos manutenção preventiva e corretiva, além de acompanhamento técnico contínuo 
-                            para assegurar o funcionamento sustentável do equipamento.
-                        </p>
-                        <p class="service-description text-en" style="display: none;">
-                            We offer preventive and corrective maintenance, as well as continuous technical monitoring 
-                            to ensure sustainable operation of the equipment.
-                        </p>
-                        <a href="contacto.html" class="btn-product" style="align-self: flex-start;">Contacta-nos</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Serviços Especializados -->
-            <h2 style="color: var(--primary-color); margin: 3rem 0 2rem; text-align: center;">
-                <span class="text-pt">Serviços Especializados</span>
-                <span class="text-en" style="display: none;">Specialized Services</span>
+    <!-- INTRODUÇÃO - QUE SERVIÇOS OFERECEMOS? -->
+    <div class="container">
+        <div class="services-intro">
+            <h2>
+                <span class="text-pt">Que Serviços Oferecemos?</span>
+                <span class="text-en" style="display: none;">What Services Do We Offer?</span>
             </h2>
+            <p class="text-pt">
+                Oferecemos serviços completos para garantir que cada equipamento e instalação funcione de forma eficiente, 
+                segura e sustentável. Do dimensionamento à manutenção, acompanhamos cada cliente em todas as etapas do processo.
+            </p>
+            <p class="text-en" style="display: none;">
+                We offer complete services to ensure that each equipment and installation works efficiently, 
+                safely and sustainably. From sizing to maintenance, we accompany each client in all stages of the process.
+            </p>
+        </div>
+    </div>
 
-            <div class="services-grid-secondary">
-                <!-- Dimensionamento Personalizado -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-ruler-combined"></i>
-                    </div>
+    <!-- SERVIÇOS PRINCIPAIS (4 CARDS COM IMAGENS) -->
+    <div class="container">
+        <h2 class="section-title">
+            <span class="text-pt">Serviços Principais</span>
+            <span class="text-en" style="display: none;">Main Services</span>
+        </h2>
+
+        <div class="services-grid-main">
+            <!-- Serviço 1: Instalação de Sistemas -->
+            <div class="service-card-main">
+                <div class="service-image">
+                    <img src="./img/instalacao-SGE.jpeg" alt="Instalação de Sistemas" onerror="this.src='https://via.placeholder.com/600x400/2E7D32/ffffff?text=Instalação'">
+                </div>
+                <div class="service-content">
+                    <h3>
+                        <span class="text-pt">Instalação de Sistemas de Energias Renováveis</span>
+                        <span class="text-en" style="display: none;">Renewable Energy Systems Installation</span>
+                    </h3>
+                    <p class="service-description text-pt">
+                        Realizamos a instalação completa dos sistemas (Kit BioPower e sistemas solares), 
+                        garantindo segurança, eficiência e adaptação às necessidades de cada cliente.
+                    </p>
+                    <p class="service-description text-en" style="display: none;">
+                        We carry out the complete installation of systems (BioPower Kit and solar systems), 
+                        ensuring safety, efficiency and adaptation to each client's needs.
+                    </p>
+                    <a href="contacto.html" class="btn-service">
+                        <span class="text-pt">Contacta-nos</span>
+                        <span class="text-en" style="display: none;">Contact us</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Serviço 2: Manutenção e Assistência Técnica -->
+            <div class="service-card-main">
+                <div class="service-image">
+                    <img src="./img/manuntecao.jpeg" alt="Manutenção e Assistência Técnica" onerror="this.src='https://via.placeholder.com/600x400/FFB300/ffffff?text=Manutenção'">
+                </div>
+                <div class="service-content">
+                    <h3>
+                        <span class="text-pt">Manutenção e Assistência Técnica</span>
+                        <span class="text-en" style="display: none;">Maintenance and Technical Assistance</span>
+                    </h3>
+                    <p class="service-description text-pt">
+                        Oferecemos manutenção preventiva e corretiva, além de acompanhamento técnico contínuo 
+                        para assegurar o funcionamento sustentável do equipamento.
+                    </p>
+                    <p class="service-description text-en" style="display: none;">
+                        We offer preventive and corrective maintenance, as well as continuous technical monitoring 
+                        to ensure sustainable operation of the equipment.
+                    </p>
+                    <a href="contacto.html" class="btn-service">
+                        <span class="text-pt">Contacta-nos</span>
+                        <span class="text-en" style="display: none;">Contact us</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Serviço 3: Dimensionamento Personalizado -->
+            <div class="service-card-main">
+                <div class="service-image">
+                    <img src="./img/dimencionamento.jpeg" alt="Dimensionamento Personalizado" onerror="this.src='https://via.placeholder.com/600x400/4CAF50/ffffff?text=Dimensionamento'">
+                </div>
+                <div class="service-content">
                     <h3>
                         <span class="text-pt">Dimensionamento Personalizado</span>
                         <span class="text-en" style="display: none;">Custom Sizing</span>
                     </h3>
-                    <p class="text-pt">
+                    <p class="service-description text-pt">
                         <strong>BioPower:</strong> Analisamos o volume de resíduos disponível e as necessidades energéticas 
                         do cliente para recomendar a solução mais adequada.
                     </p>
-                    <p class="text-pt">
+                    <p class="service-description text-pt">
                         <strong>Sistemas Solares:</strong> Propostas de acordo com a demanda energética do cliente.
                     </p>
-                    <p class="text-en" style="display: none;">
+                    <p class="service-description text-en" style="display: none;">
                         <strong>BioPower:</strong> We analyze the volume of waste available and the energy needs 
                         of the client to recommend the most suitable solution.
                     </p>
-                    <p class="text-en" style="display: none;">
+                    <p class="service-description text-en" style="display: none;">
                         <strong>Solar Systems:</strong> Proposals according to the client's energy demand.
                     </p>
-                    <a href="contacto.html" class="service-link">Contacta-nos <i class="fas fa-arrow-right"></i></a>
+                    <a href="contacto.html" class="btn-service">
+                        <span class="text-pt">Contacta-nos</span>
+                        <span class="text-en" style="display: none;">Contact us</span>
+                    </a>
                 </div>
+            </div>
 
-                <!-- Consultoria e Parcerias -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
+            <!-- Serviço 4: Consultoria e Parcerias -->
+            <div class="service-card-main">
+                <div class="service-image">
+                    <img src="./img/consultoria.jpeg" alt="Consultoria e Parcerias" onerror="this.src='https://via.placeholder.com/600x400/1B5E20/ffffff?text=Consultoria'">
+                </div>
+                <div class="service-content">
                     <h3>
                         <span class="text-pt">Consultoria e Parcerias</span>
                         <span class="text-en" style="display: none;">Consulting and Partnerships</span>
                     </h3>
-                    <p class="text-pt">
+                    <p class="service-description text-pt">
                         Projetos Comunitários e Institucionais. Prestamos apoio técnico a cooperativas, 
                         ONGs e instituições interessadas em implementar soluções de bioenergia sustentável.
                     </p>
-                    <p class="text-en" style="display: none;">
+                    <p class="service-description text-en" style="display: none;">
                         Community and Institutional Projects. We provide technical support to cooperatives, 
                         NGOs and institutions interested in implementing sustainable bioenergy solutions.
                     </p>
-                    <a href="contacto.html" class="service-link">Contacta-nos <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Capacitação e Formação -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>
-                        <span class="text-pt">Capacitação e Formação</span>
-                        <span class="text-en" style="display: none;">Training and Education</span>
-                    </h3>
-                    
-                    <div class="specialties-grid" style="margin-top: 1rem;">
-                        <div class="specialty-item">
-                            <i class="fas fa-tools"></i>
-                            <div class="specialty-content">
-                                <h4 class="text-pt">Formação Técnica</h4>
-                                <h4 class="text-en" style="display: none;">Technical Training</h4>
-                                <p class="text-pt">Uso correto de biodigestores, fogões e sistemas solares</p>
-                                <p class="text-en" style="display: none;">Correct use of biodigesters, stoves and solar systems</p>
-                            </div>
-                        </div>
-                        
-                        <div class="specialty-item">
-                            <i class="fas fa-users"></i>
-                            <div class="specialty-content">
-                                <h4 class="text-pt">Capacitação Comunitária</h4>
-                                <h4 class="text-en" style="display: none;">Community Training</h4>
-                                <p class="text-pt">Aproveitamento de resíduos e economia circular</p>
-                                <p class="text-en" style="display: none;">Waste utilization and circular economy</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <a href="contacto.html" class="service-link" style="margin-top: 1rem;">Contacta-nos <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Consultoria Energética -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>
-                        <span class="text-pt">Consultoria Energética</span>
-                        <span class="text-en" style="display: none;">Energy Consulting</span>
-                    </h3>
-                    <p class="text-pt">
-                        Análise e orientação para ajudar famílias, produtores e PMEs a reduzir custos e melhorar 
-                        o uso de energia. Avaliamos o consumo atual e o potencial de aproveitamento de resíduos.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        Analysis and guidance to help families, producers and SMEs reduce costs and improve 
-                        energy use. We evaluate current consumption and waste utilization potential.
-                    </p>
-                    <a href="contacto.html" class="service-link">Contacta-nos <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Projetos Personalizados -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>
-                        <span class="text-pt">Projetos Personalizados</span>
-                        <span class="text-en" style="display: none;">Custom Projects</span>
-                    </h3>
-                    <p class="text-pt">
-                        Desenvolvemos projetos personalizados de energia sustentável, adaptados às necessidades 
-                        específicas de cada cliente. Analisamos o consumo energético e criamos soluções eficientes.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        We develop customized sustainable energy projects, adapted to the specific needs 
-                        of each client. We analyze energy consumption and create efficient solutions.
-                    </p>
-                    <a href="contacto.html" class="service-link">Contacta-nos <i class="fas fa-arrow-right"></i></a>
-                </div>
-
-                <!-- Assistência Técnica Pós-Venda -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>
-                        <span class="text-pt">Assistência Técnica Pós-Venda</span>
-                        <span class="text-en" style="display: none;">After-Sales Technical Support</span>
-                    </h3>
-                    <p class="text-pt">
-                        Acompanhamento contínuo para garantir eficiência do sistema. Suporte técnico especializado 
-                        sempre que necessário.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        Continuous monitoring to ensure system efficiency. Specialized technical support 
-                        whenever needed.
-                    </p>
-                    <a href="contacto.html" class="service-link">Contacta-nos <i class="fas fa-arrow-right"></i></a>
+                    <a href="contacto.html" class="btn-service">
+                        <span class="text-pt">Contacta-nos</span>
+                        <span class="text-en" style="display: none;">Contact us</span>
+                    </a>
                 </div>
             </div>
-
-            <!-- CTA Section -->
-            <div class="services-cta">
-                <div class="container">
-                    <h2 class="text-pt">Precisa de um serviço personalizado?</h2>
-                    <h2 class="text-en" style="display: none;">Need a customized service?</h2>
-                    
-                    <p class="text-pt">
-                        Entre em contacto conosco para solicitar uma visita técnica ou orçamento personalizado.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        Contact us to request a technical visit or customized quote.
-                    </p>
-                    
-                    <a href="contacto.html" class="btn-primary">Solicitar Orçamento</a>
-                </div>
-            </div>
-
         </div>
-    </section>
+    </div>
+
+    <!-- SERVIÇOS ESPECIALIZADOS (4 CARDS ADICIONAIS) -->
+    <div class="container">
+        <h2 class="section-title">
+            <span class="text-pt">Serviços Especializados</span>
+            <span class="text-en" style="display: none;">Specialized Services</span>
+        </h2>
+
+        <div class="services-grid-secondary">
+            <!-- Serviço 5: Capacitação e Formação (ESPECIAL) -->
+            <div class="service-card training-card">
+                <div class="service-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <h3>
+                    <span class="text-pt">Capacitação e Formação</span>
+                    <span class="text-en" style="display: none;">Training and Education</span>
+                </h3>
+                
+                <div class="training-options">
+                    <div class="training-option">
+                        <i class="fas fa-tools"></i>
+                        <div>
+                            <h4 class="text-pt">Formação Técnica</h4>
+                            <h4 class="text-en" style="display: none;">Technical Training</h4>
+                            <p class="text-pt">Uso correto de biodigestores, fogões e sistemas solares</p>
+                            <p class="text-en" style="display: none;">Correct use of biodigesters, stoves and solar systems</p>
+                        </div>
+                    </div>
+                    
+                    <div class="training-option">
+                        <i class="fas fa-users"></i>
+                        <div>
+                            <h4 class="text-pt">Capacitação Comunitária</h4>
+                            <h4 class="text-en" style="display: none;">Community Training</h4>
+                            <p class="text-pt">Aproveitamento de resíduos e economia circular</p>
+                            <p class="text-en" style="display: none;">Waste utilization and circular economy</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="contacto.html" class="service-link" style="color: var(--white);">
+                    <span class="text-pt">Contacta-nos</span>
+                    <span class="text-en" style="display: none;">Contact us</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Serviço 6: Consultoria Energética -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>
+                    <span class="text-pt">Consultoria Energética</span>
+                    <span class="text-en" style="display: none;">Energy Consulting</span>
+                </h3>
+                <p class="text-pt">
+                    Análise e orientação para ajudar famílias, produtores e PMEs a reduzir custos e melhorar 
+                    o uso de energia. Avaliamos o consumo atual e o potencial de aproveitamento de resíduos.
+                </p>
+                <p class="text-en" style="display: none;">
+                    Analysis and guidance to help families, producers and SMEs reduce costs and improve 
+                    energy use. We evaluate current consumption and waste utilization potential.
+                </p>
+                <a href="contacto.html" class="service-link">
+                    <span class="text-pt">Contacta-nos</span>
+                    <span class="text-en" style="display: none;">Contact us</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Serviço 7: Projetos Personalizados -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-project-diagram"></i>
+                </div>
+                <h3>
+                    <span class="text-pt">Projetos Personalizados</span>
+                    <span class="text-en" style="display: none;">Custom Projects</span>
+                </h3>
+                <p class="text-pt">
+                    Desenvolvemos projetos personalizados de energia sustentável, adaptados às necessidades 
+                    específicas de cada cliente. Analisamos o consumo energético e criamos soluções eficientes.
+                </p>
+                <p class="text-en" style="display: none;">
+                    We develop customized sustainable energy projects, adapted to the specific needs 
+                    of each client. We analyze energy consumption and create efficient solutions.
+                </p>
+                <a href="contacto.html" class="service-link">
+                    <span class="text-pt">Contacta-nos</span>
+                    <span class="text-en" style="display: none;">Contact us</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Serviço 8: Assistência Técnica Pós-Venda -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3>
+                    <span class="text-pt">Assistência Técnica Pós-Venda</span>
+                    <span class="text-en" style="display: none;">After-Sales Technical Support</span>
+                </h3>
+                <p class="text-pt">
+                    Acompanhamento contínuo para garantir eficiência do sistema. Suporte técnico especializado 
+                    sempre que necessário, com resposta rápida e eficiente.
+                </p>
+                <p class="text-en" style="display: none;">
+                    Continuous monitoring to ensure system efficiency. Specialized technical support 
+                    whenever needed, with quick and efficient response.
+                </p>
+                <a href="contacto.html" class="service-link">
+                    <span class="text-pt">Contacta-nos</span>
+                    <span class="text-en" style="display: none;">Contact us</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="container">
+        <div class="cta-section">
+            <h2 class="text-pt">Precisa de um serviço personalizado?</h2>
+            <h2 class="text-en" style="display: none;">Need a customized service?</h2>
+            
+            <p class="text-pt">
+                Entre em contacto conosco para solicitar uma visita técnica ou orçamento personalizado.
+                Nossa equipe está pronta para atender você.
+            </p>
+            <p class="text-en" style="display: none;">
+                Contact us to request a technical visit or customized quote.
+                Our team is ready to serve you.
+            </p>
+            
+            <a href="contacto.html" class="btn-primary"><h1 class="text-pt">Solicitar orçamento</h1><h1 class="text-en">Contact us</h1></a>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
-                    <div class="logo-container" style="margin-bottom: 1rem;">
-                        <img src="https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas" alt="Solar Gás Energy">
+                    <div class="logo-container">
+                        <img src="./img/Logo.png" alt="SolarGas Energy" onerror="this.src='https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas'">
                     </div>
                     <p class="text-pt">Energia limpa e sustentável</p>
                     <p class="text-en" style="display: none;">Clean and sustainable energy</p>
@@ -659,11 +974,11 @@
                     <h4 class="text-en" style="display: none;">Quick Links</h4>
                     <ul>
                         <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-                        <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
                         <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
                         <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                        <li><a href="projetos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                        <li><a href="projectos.html" data-pt="Projectos" data-en="Projects">Projectos</a></li>
+                        <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
                     </ul>
                 </div>
                 
@@ -758,6 +1073,18 @@
                     header.classList.remove('scrolled');
                 }
             });
+            // Dropdown para mobile
+const dropdowns = document.querySelectorAll('.dropdown');
+
+if (window.innerWidth <= 768) {
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.dropdown-toggle');
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+    });
+}
         });
     </script>
 </body>

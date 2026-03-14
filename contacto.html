@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>Contacto - Solar Gás Energy</title>
+    <title>Contacto - SolarGas Energy</title>
     
     <!-- Fonts e ícones -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,25 +15,81 @@
     <!-- CSS específico para contacto -->
     <style>
         /* ========== CONTACT PAGE STYLES ========== */
-        .page-header {
-            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
-            color: var(--white);
-            padding: 60px 0;
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .page-header h1 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            margin-bottom: 1rem;
-        }
-        
-        .page-header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+.page-header {
+    min-height: 70vh; /* Ajuste conforme necessário */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: none; /* Remove o gradiente verde */
+}
+
+/* Container da imagem de fundo */
+.page-header .hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.page-header .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Overlay escuro para legibilidade do texto */
+.page-header .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade (0.3 a 0.7) */
+    z-index: 2;
+}
+
+/* Conteúdo do hero */
+.page-header .container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.page-header p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+          .logo-container {
+        max-width: 60px;
+        height: auto;
+     }
+
+      .logo-container img{
+        width: 100%;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+      }
         
         /* Contact Intro */
         .contact-intro {
@@ -594,6 +650,124 @@
                 height: 300px;
             }
         }
+
+        /* ========== MENU DROPDOWN ========== */
+.nav-menu li {
+    position: relative;
+}
+
+/* Estilo do dropdown */
+.nav-menu .dropdown {
+    position: relative;
+}
+
+.nav-menu .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
+    padding: 0.8rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: 10px;
+}
+
+/* Seta do dropdown */
+.nav-menu .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--white);
+}
+
+/* Mostrar dropdown ao passar o mouse */
+.nav-menu .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+/* Itens do dropdown */
+.nav-menu .dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+
+.nav-menu .dropdown-menu a {
+    padding: 0.8rem 1.5rem;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: none;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.nav-menu .dropdown-menu a:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding-left: 2rem;
+}
+
+.nav-menu .dropdown-menu a::after {
+    display: none;
+}
+
+/* Indicador de dropdown (seta para baixo) */
+.nav-menu .dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.nav-menu .dropdown > a i {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.nav-menu .dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+/* Mobile - ajustes */
+@media (max-width: 768px) {
+    .nav-menu .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        min-width: 100%;
+        transform: none;
+        display: none;
+    }
+    
+    .nav-menu .dropdown-menu::before {
+        display: none;
+    }
+    
+    .nav-menu .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    
+    .nav-menu .dropdown > a i {
+        margin-left: auto;
+    }
+}
     </style>
 </head>
 <body>
@@ -617,18 +791,43 @@
         <nav class="navbar container">
             <div class="logo-container">
                 <a href="index.html">
-                    <img src="./img/Logo.png" alt="Solar Gás Energy">
+                    <img src="./img/Logo.png" alt="SolarGas Energy">
                 </a>
             </div>
             
             <ul class="nav-menu">
-                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-                <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
-                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
-                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                <li><a href="contacto.html" class="active" data-pt="Contato" data-en="Contact Us">Contato</a></li>
-            </ul>
+    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+    
+    <!-- DROPDOWN DE PROJECTOS -->
+    <li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle">
+            <span class="text-pt">Projectos</span>
+            <span class="text-en" style="display: none;">Projects</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="projectos.html">
+                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Nossos Projectos</span>
+                    <span class="text-en" style="display: none;">Our Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="galeria-projecto.html">
+                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Galeria Projectos</span>
+                    <span class="text-en" style="display: none;">Projects Gallery</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+</ul>
             
             <div class="hamburger">
                 <span class="bar"></span>
@@ -639,14 +838,24 @@
     </header>
 
     <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <h1 class="text-pt">Contacte-nos</h1>
-            <h1 class="text-en" style="display: none;">Contact Us</h1>
-            <p class="text-pt">Estamos prontos para levar energia limpa até si</p>
-            <p class="text-en" style="display: none;">We are ready to bring clean energy to you</p>
-        </div>
-    </section>
+    <!-- Page Header COM IMAGEM DE FUNDO -->
+<section class="page-header">
+    <!-- Imagem de fundo -->
+    <div class="hero-background">
+        <img src="./img/contacto.jpeg" alt="Sobre a SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Sobre+Nós'">
+    </div>
+    
+    <!-- Overlay escuro -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Conteúdo -->
+    <div class="container">
+        <h1 class="text-pt">Sobre Nós</h1>
+        <h1 class="text-en" style="display: none;">About Us</h1>
+        <p class="text-pt">Conheça a história e os valores da SolarGas Energy</p>
+        <p class="text-en" style="display: none;">Learn about the history and values of SolarGas Energy</p>
+    </div>
+</section>
 
     <!-- Contact Intro -->
     <section>
@@ -721,7 +930,6 @@
                             <span class="text-en" style="display: none;">Email</span>
                         </h3>
                         <p><a href="mailto:Info@solargas-e.com">Info@solargas-e.com</a></p>
-                        <p><a href="mailto:vendas@solargas-e.com">vendas@solargas-e.com</a></p>
                         <p style="margin-top: 1rem; font-size: 0.9rem;">
                             <i class="fas fa-clock"></i> 
                             <span class="text-pt">Respondemos em até 24h</span>
@@ -960,7 +1168,7 @@
                         <span class="text-en" style="display: none;">Do you serve throughout Mozambique?</span>
                     </div>
                     <div class="faq-answer text-pt">
-                        Sim, realizamos projetos e instalações em todo o território nacional.
+                        Sim, realizamos projectos e instalações em todo o território nacional.
                     </div>
                     <div class="faq-answer text-en" style="display: none;">
                         Yes, we carry out projects and installations throughout the national territory.
@@ -990,8 +1198,8 @@
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
                         <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
                         <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-                        <li><a href="projectos.html" data-pt="Projetos" data-en="Projects">Projetos</a></li>
-                        <li><a href="contacto.html" data-pt="Contato" data-en="Contact">Contato</a></li>
+                        <li><a href="projectos.html" data-pt="Projectos" data-en="Projects">Projectos</a></li>
+                        <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
                     </ul>
                 </div>
                 
@@ -1159,6 +1367,19 @@
                     }
                 });
             }
+
+            // Dropdown para mobile
+const dropdowns = document.querySelectorAll('.dropdown');
+
+if (window.innerWidth <= 768) {
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.dropdown-toggle');
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+    });
+}
         });
     </script>
 </body>

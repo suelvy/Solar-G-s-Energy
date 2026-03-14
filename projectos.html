@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Projetos - Solar Gás Energy</title>
+    
+    <!-- Fonts e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- CSS específico para projetos -->
+    <style>
+         
+       <!-- CSS Principal -- >
+    
+        /* ========== VARIÁVEIS ========== */
+        :root {
+            --text-justified: justify;
+            --text-justified-hyphens: auto;
+        }
+
+        .logo-container {
+        max-width: 60px;
+        height: auto;
+     }
+
+      .logo-container img{
+        width: 100%;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+      }
+
+        /* ========== HERO DA PÁGINA ========== */
+        .page-hero {
+            min-height: 50vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-hero .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .page-hero .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .page-hero .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2;
+        }
+
+        .page-hero .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* ========== INTRO SECTION ========== */
+        .projects-intro {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 3rem;
+            background: linear-gradient(135deg, #ffffff, var(--light-color));
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(46,125,50,0.1);
+        }
+
+        .projects-intro h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            text-align: center;
+        }
+
+        .projects-intro h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .projects-intro p {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            line-height: 1.8;
+            text-align: justify;
+            hyphens: auto;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ========== PROJECTO EM DESTAQUE ========== */
+        .featured-project {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin: 4rem 0;
+            position: relative;
+            border: 1px solid rgba(46,125,50,0.2);
+        }
+
+        .featured-project::before {
+            content: 'PROJETO EM DESTAQUE';
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 10;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow);
+        }
+
+        .featured-image {
+            height: 100%;
+            min-height: 500px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s;
+        }
+
+        .featured-project:hover .featured-image img {
+            transform: scale(1.1);
+        }
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-content h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .featured-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .featured-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            text-align: justify;
+            hyphens: auto;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--light-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        .project-meta-item i {
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .project-meta-item span {
+            font-weight: 500;
+        }
+
+        /* ========== SEÇÃO DE TÍTULOS ========== */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 4rem 0 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* ========== GRID DE PROJETOS ========== */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--primary-color);
+        }
+
+        .project-card-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-card-image img {
+            transform: scale(1.1);
+        }
+
+        .project-card-category {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            z-index: 2;
+        }
+
+        .project-card-content {
+            padding: 1.8rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card-content h3 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+
+        .project-card-content p {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            text-align: justify;
+            hyphens: auto;
+            flex-grow: 1;
+        }
+
+        .project-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-color);
+        }
+
+        .project-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .project-location i {
+            color: var(--secondary-color);
+        }
+
+        .project-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s;
+        }
+
+        .project-link:hover {
+            gap: 1rem;
+            color: var(--primary-dark);
+        }
+
+        /* ========== RESERVATÓRIOS DE ÁGUA ========== */
+        .water-tanks-section {
+            background: linear-gradient(135deg, #1B5E20, #2E7D32);
+            color: var(--white);
+            padding: 5rem 0;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border-radius: 30px;
+        }
+
+        .water-tanks-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .water-tanks-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .water-tanks-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .water-tanks-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .tanks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tank-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .tank-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.2);
+            border-color: var(--secondary-color);
+        }
+
+        .tank-image {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .tank-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .tank-card:hover .tank-image img {
+            transform: scale(1.1);
+        }
+
+        .tank-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .tank-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tank-info p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .tank-capacity {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* ========== PROGRAMAS DE IMPACTO ========== */
+        .impact-programs {
+            padding: 5rem 0;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .impact-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .impact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .impact-icon {
+            width: 90px;
+            height: 90px;
+            background: var(--primary-light);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .impact-card:hover .impact-icon {
+            background: var(--secondary-color);
+            transform: rotate(360deg);
+        }
+
+        .impact-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .impact-card p {
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            text-align: justify;
+        }
+
+        .impact-stats {
+            margin-top: 1.5rem;
+            padding: 1.2rem;
+            background: rgba(46,125,50,0.1);
+            border-radius: 12px;
+        }
+
+        .impact-stats .stat {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.2;
+        }
+
+        .impact-stats .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* ========== DEPOIMENTOS ========== */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: var(--light-color);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--primary-light);
+            opacity: 0.2;
+            font-family: serif;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            text-align: justify;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .author-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 5rem 0;
+            margin: 4rem 0;
+            text-align: center;
+            border-radius: 30px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+
+        .cta-section .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            padding: 1.2rem 3.5rem;
+            border: none;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            transform: translateY(-3px);
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .impact-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .tanks-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .featured-project {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-image {
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .tanks-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .project-meta-item {
+                width: 100%;
+            }
+            
+            .featured-content h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .water-tanks-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .featured-image {
+                min-height: 250px;
+            }
+            
+            .featured-content {
+                padding: 1.5rem;
+            }
+            
+            .project-card-image {
+                height: 200px;
+            }
+            
+            .tank-image {
+                height: 150px;
+            }
+            
+            .impact-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+            }
+            
+            .cta-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .cta-section p {
+                font-size: 1rem;
+            }
+        }
+
+        /* ========== MENU DROPDOWN ========== */
+.nav-menu li {
+    position: relative;
+}
+
+/* Estilo do dropdown */
+.nav-menu .dropdown {
+    position: relative;
+}
+
+.nav-menu .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    min-width: 220px;
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
+    padding: 0.8rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: 10px;
+}
+
+/* Seta do dropdown */
+.nav-menu .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--white);
+}
+
+/* Mostrar dropdown ao passar o mouse */
+.nav-menu .dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    margin-top: 0;
+}
+
+/* Itens do dropdown */
+.nav-menu .dropdown-menu li {
+    margin: 0;
+    width: 100%;
+}
+
+.nav-menu .dropdown-menu a {
+    padding: 0.8rem 1.5rem;
+    display: block;
+    text-align: left;
+    font-size: 0.9rem;
+    text-transform: none;
+    color: var(--text-color);
+    transition: var(--transition);
+}
+
+.nav-menu .dropdown-menu a:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+    padding-left: 2rem;
+}
+
+.nav-menu .dropdown-menu a::after {
+    display: none;
+}
+
+/* Indicador de dropdown (seta para baixo) */
+.nav-menu .dropdown > a {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.nav-menu .dropdown > a i {
+    font-size: 0.8rem;
+    transition: transform 0.3s;
+}
+
+.nav-menu .dropdown:hover > a i {
+    transform: rotate(180deg);
+}
+
+/* Mobile - ajustes */
+@media (max-width: 768px) {
+    .nav-menu .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        min-width: 100%;
+        transform: none;
+        display: none;
+    }
+    
+    .nav-menu .dropdown-menu::before {
+        display: none;
+    }
+    
+    .nav-menu .dropdown.active .dropdown-menu {
+        display: block;
+    }
+    
+    .nav-menu .dropdown > a i {
+        margin-left: auto;
+    }
+
+    .nav-menu .dropdown {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-menu .dropdown > a {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important; /* Centraliza o texto */
+        gap: 0.5rem;
+        width: 100%;
+        text-align: center;
+    }
+     .nav-menu .dropdown > a i {
+        margin-left: 0 !important; /* Remove o margin-left que puxava para esquerda */
+        position: relative;
+        top: 1px;
+    }
+
+    .nav-menu .dropdown-menu {
+        text-align: center;
+        padding: 0.5rem 0 !important;
+    }
+
+    .nav-menu .dropdown-menu a {
+        justify-content: center !important;
+        text-align: center !important;
+        padding: 0.8rem !important;
+    }
+
+    .nav-menu .dropdown-menu a i {
+        display: none; /* Esconde os ícones no mobile para não poluir */
+    }
+    .nav-menu a {
+        text-align: center !important;
+        justify-content: center !important;
+    }
+}
+    </style>
+</head>
+<body>
+    </style>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info-top">
+                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-btn" data-lang="en">ENG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./img/Logo.png" alt="Solar Gás Energy" onerror="this.src='https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas'">
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+    
+    <!-- DROPDOWN DE PROJECTOS -->
+    <li class="dropdown">
+        <a href="javascript:void(0);" class="dropdown-toggle">
+            <span class="text-pt">Projectos</span>
+            <span class="text-en" style="display: none;">Projects</span>
+            <i class="fas fa-chevron-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+            <li>
+                <a href="projectos.html">
+                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Nossos Projectos</span>
+                    <span class="text-en" style="display: none;">Our Projects</span>
+                </a>
+            </li>
+            <li>
+                <a href="galeria-projecto.html">
+                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
+                    <span class="text-pt">Galeria Projectos</span>
+                    <span class="text-en" style="display: none;">Projects Gallery</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+    
+    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+</ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO DA PÁGINA DE PROJETOS -->
+    <section class="page-hero">
+        <div class="hero-background">
+            <img src="./img/hero-produtos-2.jpeg" alt="Projetos Solar Gás Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Nossos+Projetos'">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="text-pt">Nossos Projetos</h1>
+            <h1 class="text-en" style="display: none;">Our Projects</h1>
+            <p class="text-pt">Soluções personalizadas que transformam realidades</p>
+            <p class="text-en" style="display: none;">Customized solutions that transform realities</p>
+        </div>
+    </section>
+
+    <!-- Após o Hero, antes do conteúdo -->
+<div class="gallery-nav">
+    <div class="container">
+        <div class="gallery-tabs">
+            <a href="projectos.html" class="gallery-tab active">
+                <i class="fas fa-clipboard-list"></i>
+                <span class="text-pt">Nossos Projectos</span>
+                <span class="text-en" style="display: none;">Our Projects</span>
+            </a>
+            <a href="galeria-projecto.html" class="gallery-tab">
+                <i class="fas fa-images"></i>
+                <span class="text-pt">Galeria Projectos</span>
+                <span class="text-en" style="display: none;">Projects Gallery</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+    <!-- INTRODUÇÃO - PROJETOS PERSONALIZADOS -->
+    <div class="container">
+        <div class="projects-intro">
+            <h2>
+                <span class="text-pt">Projetos Personalizados</span>
+                <span class="text-en" style="display: none;">Custom Projects</span>
+            </h2>
+            <p class="text-pt">
+                Desenvolvemos projetos personalizados de energia sustentável, adaptados às necessidades específicas 
+                de cada cliente. Analisamos detalhadamente o consumo energético, o potencial de aproveitamento de resíduos 
+                e as condições locais para criar soluções eficientes, económicas e perfeitamente alinhadas com a realidade 
+                de famílias, produtores rurais e pequenas e médias empresas.
+            </p>
+            <p class="text-en" style="display: none;">
+                We develop customized sustainable energy projects, adapted to the specific needs of each client. 
+                We analyze in detail the energy consumption, the potential for waste utilization and local conditions 
+                to create efficient, economical solutions perfectly aligned with the reality of families, rural producers 
+                and small and medium enterprises.
+            </p>
+        </div>
+    </div>
+
+    <!-- PROJETO EM DESTAQUE -->
+    <div class="container">
+        <div class="featured-project">
+            <div class="featured-image">
+                <img src="./img/projecto-destaque.jpeg" alt="Projeto Comunitário" onerror="this.src='https://via.placeholder.com/800x600/2E7D32/ffffff?text=Projeto+Comunitário'">
+            </div>
+            <div class="featured-content">
+                <h2>
+                    <span class="text-pt">Projeto Comunidade Rural de Maputo</span>
+                    <span class="text-en" style="display: none;">Maputo Rural Community Project</span>
+                </h2>
+                <p class="text-pt">
+                    Implementação de mais de 40 kits biodigestores BioPower em uma comunidades rurais nas províncias de Maputo e Inhambane, beneficiando mais de 
+                    400 pessoas com acesso a biogás para cozinhar, iluminação e biofertilizante para agricultura familiar. 
+                    O projeto resultou na redução de 45 toneladas de emissões de CO₂ por ano e na criação de uma horta 
+                    comunitária que abastece a merenda escolar local.
+                </p>
+                <p class="text-en" style="display: none;">
+                    Implementation of over 40 BioPower biodigester kits in rural communities in the provinces of Maputo and Inhambane, benefiting more than
+                    400 people with access to biogas for cooking, lighting, and biofertilizer for family farming.
+                    The project resulted in a reduction of 45 tons of CO₂ emissions per year and the creation of a community garden that supplies the local school lunch program.
+                </p>
+                
+                <div class="project-meta">
+                    <div class="project-meta-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Maputo, Inhambane, Moçambique</span>
+                    </div>
+                    <div class="project-meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>2025</span>
+                    </div>
+                    <div class="project-meta-item">
+                        <i class="fas fa-users"></i>
+                        <span class="text-pt">400 pessoas</span>
+                        <span class="text-en">400 people</span>
+                    </div>
+                </div>
+                
+                <a href="contacto.html" class="btn-primary" style="align-self: flex-start;">
+                    <span class="text-pt">Solicitar Projeto Similar</span>
+                    <span class="text-en" style="display: none;">Request Similar Project</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJETOS EM DESTAQUE (GRID) -->
+    <div class="container">
+        <h2 class="section-title">
+            <span class="text-pt">Projetos Realizados</span>
+            <span class="text-en" style="display: none;">Completed Projects</span>
+        </h2>
+        <p class="section-subtitle text-pt">
+            Conheça alguns dos nossos projetos que já estão fazendo a diferença em comunidades e propriedades rurais.
+        </p>
+        <p class="section-subtitle text-en" style="display: none;">
+            Learn about some of our projects that are already making a difference in communities and rural properties.
+        </p>
+        
+        <div class="projects-grid">
+            <!-- Projeto 1: Biodigestor em Escola -->
+            <div class="project-card">
+                <div class="project-card-image">
+                    <img src="./img/Biodigestor em zona rural.jpeg" alt="Biodigestor em Escola" onerror="this.src='https://via.placeholder.com/400x300/1B5E20/ffffff?text=Escola+Rural'">
+                    <span class="project-card-category">Educação</span>
+                </div>
+                <div class="project-card-content">
+                    <h3>
+                        <span class="text-pt">Biodigestor em Zona Rural</span>
+                        <span class="text-en" style="display: none;">Biodigester in a Rural area</span>
+                    </h3>
+                    <p class="text-pt">
+                        Instalação de Biodigestor BioPower  em zona rural para fornecer biogás para uma familia
+                        composta por 8 pessoas  e biofertilizante para a horta que a familia possui, reduzindo 
+                        custos com gás de cozinha e  carvão vegetal em 70%.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        Installation of a BioPower biodigester in a rural area to supply biogas to a family
+                         of 8 and biofertilizer to their vegetable garden, reducing costs on cooking gas and charcoal by 70%.
+                    </p>
+                    <div class="project-card-footer">
+                        <div class="project-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Inhambane</span>
+                        </div>
+                        <a href="contacto.html" class="project-link">
+                            <span class="text-pt">Detalhes</span>
+                            <span class="text-en" style="display: none;">Details</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 2: Granja Avícola -->
+            <div class="project-card">
+                <div class="project-card-image">
+                    <img src="./img/Sistema biogás granja.jpeg" alt="Granja Avícola" onerror="this.src='https://via.placeholder.com/400x300/FFB300/ffffff?text=Granja+Avícola'">
+                    <span class="project-card-category">Agroindústria</span>
+                </div>
+                <div class="project-card-content">
+                    <h3>
+                        <span class="text-pt">Sistema de Biogás para Granja</span>
+                        <span class="text-en" style="display: none;">Biogas System for Poultry Farm</span>
+                    </h3>
+                    <p class="text-pt">
+                        Projeto de aproveitamento de resíduos avícolas para geração de energia e produção de 
+                        biofertilizante em granja de médio porte com 5.000 aves, gerando economia de 40% nos 
+                        custos energéticos.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        Project for the use of poultry waste for energy generation and biofertilizer production 
+                        in a medium-sized farm with 5,000 birds, generating 40% savings in energy costs.
+                    </p>
+                    <div class="project-card-footer">
+                        <div class="project-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Maputo</span>
+                        </div>
+                        <a href="contacto.html" class="project-link">
+                            <span class="text-pt">Detalhes</span>
+                            <span class="text-en" style="display: none;">Details</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projeto 3: Estufa Agrícola -->
+            <div class="project-card">
+                <div class="project-card-image">
+                    <img src="./img/estufa.jpeg" alt="Estufa Agrícola" onerror="this.src='https://via.placeholder.com/400x300/4CAF50/ffffff?text=Estufa+Agrícola'">
+                    <span class="project-card-category">Agricultura</span>
+                </div>
+                <div class="project-card-content">
+                    <h3>
+                        <span class="text-pt">Estufa Agrícola com Biogás</span>
+                        <span class="text-en" style="display: none;">Agricultural Greenhouse with Biogas</span>
+                    </h3>
+                    <p class="text-pt">
+                        Implementação de sistema de aquecimento para estufa agrícola utilizando biogás, 
+                        permitindo produção durante todo o ano e aumentando a produtividade em 60% para 
+                        uma cooperativa de 25 famílias.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        Implementation of a heating system for an agricultural greenhouse using biogas, 
+                        allowing year-round production and increasing productivity by 60% for a cooperative 
+                        of 25 families.
+                    </p>
+                    <div class="project-card-footer">
+                        <div class="project-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Maputo</span>
+                        </div>
+                        <a href="contacto.html" class="project-link">
+                            <span class="text-pt">Detalhes</span>
+                            <span class="text-en" style="display: none;">Details</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESERVATÓRIOS DE ÁGUA -->
+    <section class="water-tanks-section">
+        <div class="container">
+            <div class="water-tanks-header">
+                <h2>
+                    <span class="text-pt">Reservatórios de Água</span>
+                    <span class="text-en" style="display: none;">Water Reservoirs</span>
+                </h2>
+                <p class="text-pt">
+                    Dimensionamento e construção de reservatórios de água para diversas aplicabilidades, 
+                    desde agricultura familiar até projetos de piscicultura e abastecimento comunitário.
+                </p>
+                <p class="text-en" style="display: none;">
+                    Sizing and construction of water reservoirs for various applications, from family farming 
+                    to fish farming projects and community supply.
+                </p>
+            </div>
+            
+            <div class="tanks-grid">
+                <div class="tank-card">
+                    <div class="tank-image">
+                        <img src="./img/reserva-1000l.jpeg" alt="Reservatório 1000L" onerror="this.src='https://via.placeholder.com/300x200/2196F3/ffffff?text=1000L'">
+                    </div>
+                    <div class="tank-info">
+                        <h4>Reservatório 1000L</h4>
+                        <p class="text-pt">
+                            Ideal para uso doméstico e pequenas hortas familiares, garantindo água durante 
+                            todo o ano para até 5 famílias.
+                        </p>
+                        <p class="text-en" style="display: none;">
+                            Ideal for domestic use and small family gardens, guaranteeing water throughout 
+                            the year for up to 5 families.
+                        </p>
+                        <span class="tank-capacity">1000 Litros</span>
+                    </div>
+                </div>
+                
+                <div class="tank-card">
+                    <div class="tank-image">
+                        <img src="./img/reserva-5000l.jpeg" alt="Reservatório 5000L" onerror="this.src='https://via.placeholder.com/300x200/1976D2/ffffff?text=5000L'">
+                    </div>
+                    <div class="tank-info">
+                        <h4>Reservatório 5000L</h4>
+                        <p class="text-pt">
+                            Para propriedades rurais e agricultura familiar, permitindo irrigação de até 
+                            2 hectares e criação de pequenos animais.
+                        </p>
+                        <p class="text-en" style="display: none;">
+                            For rural properties and family farming, allowing irrigation of up to 2 hectares 
+                            and raising small animals.
+                        </p>
+                        <span class="tank-capacity">5000 Litros</span>
+                    </div>
+                </div>
+                
+                <div class="tank-card">
+                    <div class="tank-image">
+                        <img src="./img/reserva-10000l.jpeg" alt="Reservatório 10000L" onerror="this.src='https://via.placeholder.com/300x200/0D47A1/ffffff?text=10000L'">
+                    </div>
+                    <div class="tank-info">
+                        <h4>Reservatório 10000L</h4>
+                        <p class="text-pt">
+                            Para agricultura comercial e piscicultura, suportando tanques de peixes e 
+                            irrigação de grandes áreas cultivadas.
+                        </p>
+                        <p class="text-en" style="display: none;">
+                            For commercial agriculture and fish farming, supporting fish tanks and irrigation 
+                            of large cultivated areas.
+                        </p>
+                        <span class="tank-capacity">10000 Litros</span>
+                    </div>
+                </div>
+                
+                <div class="tank-card">
+                    <div class="tank-image">
+                        <img src="./img/reserva-person.jpeg" alt="Reservatório Personalizado" onerror="this.src='https://via.placeholder.com/300x200/1565C0/ffffff?text=Sob+Medida'">
+                    </div>
+                    <div class="tank-info">
+                        <h4>
+                            <span class="text-pt">Sob Medida</span>
+                            <span class="text-en" style="display: none;">Custom Made</span>
+                        </h4>
+                        <p class="text-pt">
+                            Projetos personalizados para necessidades específicas, com dimensionamento 
+                            técnico e materiais de alta durabilidade.
+                        </p>
+                        <p class="text-en" style="display: none;">
+                            Custom projects for specific needs, with technical sizing and high durability materials.
+                        </p>
+                        <span class="tank-capacity">
+                            <span class="text-pt">Sob Consulta</span>
+                            <span class="text-en" style="display: none;">Upon Request</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="contacto.html" class="btn-primary" style="background: var(--white); color: var(--primary-color);">
+                    <span class="text-pt">Solicitar Orçamento</span>
+                    <span class="text-en" style="display: none;">Request Quote</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMAS DE IMPACTO -->
+    <section class="impact-programs">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="text-pt">Programas de Impacto</span>
+                <span class="text-en" style="display: none;">Impact Programs</span>
+            </h2>
+            <p class="section-subtitle text-pt">
+                Parcerias estratégicas que potencializam resultados e transformam comunidades.
+            </p>
+            <p class="section-subtitle text-en" style="display: none;">
+                Strategic partnerships that enhance results and transform communities.
+            </p>
+            
+            <div class="impact-grid">
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Parcerias Institucionais</span>
+                        <span class="text-en" style="display: none;">Institutional Partnerships</span>
+                    </h3>
+                    <p class="text-pt">
+                        A BioPower da SolarGas Energy promove um futuro de pecuária e agricultura regenerativa 
+                        através de parcerias com empresas, governos e instituições comprometidas com o 
+                        desenvolvimento sustentável e a economia circular.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        BioPower from SolarGas Energy promotes a future of regenerative livestock and agriculture 
+                        through partnerships with companies, governments and institutions committed to sustainable 
+                        development and the circular economy.
+                    </p>
+                    <div class="impact-stats">
+                        <div class="stat">+12</div>
+                        <div class="stat-label">
+                            <span class="text-pt">Parcerias Ativas</span>
+                            <span class="text-en" style="display: none;">Active Partnerships</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-globe-africa"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Combate às Alterações Climáticas</span>
+                        <span class="text-en" style="display: none;">Climate Change Combat</span>
+                    </h3>
+                    <p class="text-pt">
+                        Apoiamos o desenvolvimento do acesso a energia limpa através de projetos de investimento 
+                        na redução das emissões de carbono, contribuindo para as metas globais de descarbonização 
+                        e gerando créditos de carbono para nossos parceiros.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        We support the development of access to clean energy through investment projects to reduce 
+                        carbon emissions, contributing to global decarbonization goals and generating carbon credits 
+                        for our partners.
+                    </p>
+                    <div class="impact-stats">
+                        <div class="stat">-45%</div>
+                        <div class="stat-label">
+                            <span class="text-pt">Redução de Emissões</span>
+                            <span class="text-en" style="display: none;">Emission Reduction</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="impact-card">
+                    <div class="impact-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Agricultura Regenerativa</span>
+                        <span class="text-en" style="display: none;">Regenerative Agriculture</span>
+                    </h3>
+                    <p class="text-pt">
+                        Transformamos resíduos orgânicos em biofertilizante de alta qualidade, promovendo práticas 
+                        agrícolas sustentáveis e regenerativas que recuperam solos degradados e aumentam a 
+                        produtividade sem produtos químicos.
+                    </p>
+                    <p class="text-en" style="display: none;">
+                        We transform organic waste into high-quality biofertilizer, promoting sustainable and 
+                        regenerative agricultural practices that recover degraded soils and increase productivity 
+                        without chemicals.
+                    </p>
+                    <div class="impact-stats">
+                        <div class="stat">+500</div>
+                        <div class="stat-label">
+                            <span class="text-pt">Agricultores Beneficiados</span>
+                            <span class="text-en" style="display: none;">Farmers Benefited</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+           
+
+    <!-- CTA SECTION -->
+    <div class="container">
+        <div class="cta-section">
+            <h2 class="text-pt">Vamos Desenvolver Seu Projeto?</h2>
+            <h2 class="text-en" style="display: none;">Shall We Develop Your Project?</h2>
+            
+            <p class="text-pt">
+                Entre em contacto para discutirmos suas necessidades e criarmos uma solução personalizada 
+                que transforme a realidade da sua comunidade, propriedade ou negócio.
+            </p>
+            <p class="text-en" style="display: none;">
+                Contact us to discuss your needs and create a customized solution that transforms the reality 
+                of your community, property or business.
+            </p>
+            
+            <a href="contacto.html" class="btn-primary">
+                <span class="text-pt">Solicitar Projeto</span>
+                <span class="text-en" style="display: none;">Request Project</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container">
+                        <img src="./img/logotipo-melh.jpeg" alt="Solar Gás Energy" onerror="this.src='https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas'">
+                    </div>
+                    <p class="text-pt">Energia limpa e sustentável</p>
+                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-pt">Links Rápidos</h4>
+                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+                        <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                        <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                        <li><a href="projectos.html" data-pt="Projectos" data-en="Projects">Projectos</a></li>
+                        <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="text-pt">Redes Sociais</h4>
+                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</p>
+                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/258857530213" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // Menu Mobile
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                document.querySelectorAll('.nav-menu a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                    });
+                });
+            }
+
+            // Sistema de Tradução
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
+                });
+
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        link.textContent = link.dataset[lang];
+                    }
+                });
+
+                localStorage.setItem('preferred-language', lang);
+            }
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang) {
+                setLanguage(savedLang);
+            }
+
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Dropdown para mobile
+const dropdowns = document.querySelectorAll('.dropdown');
+
+if (window.innerWidth <= 768) {
+    dropdowns.forEach(dropdown => {
+        const link = dropdown.querySelector('.dropdown-toggle');
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdown.classList.toggle('active');
+        });
+    });
+}
+        });
+    </script>
+</body>
+</html>
