@@ -14,22 +14,22 @@
     
     <!-- CSS específico para sobre -->
     <style>
-
         /* ========== logo ==============*/
         .logo-container {
-        max-width: 60px;
-        height: auto;
-     }
+            max-width: 60px;
+            height: auto;
+        }
 
-      .logo-container img{
-        width: 100%;
-        height: auto;
-        max-height: 80px;
-        object-fit: contain;
-      }
-        /* ========== ABOUT PAGE STYLES ========== */
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
+        
+        /* ========== PAGE HEADER CORRIGIDO ========== */
         .page-header {
-            min-height: 150vh; /* Ajuste conforme necessário */
+            min-height: 60vh; /* Reduzido de 150vh para 60vh */
             position: relative;
             display: flex;
             align-items: center;
@@ -43,53 +43,51 @@
         }
         
         .page-header .hero-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
 
-.page-header .hero-background img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
+        .page-header .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
 
-/* Overlay escuro para legibilidade do texto */
-.page-header .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade (0.3 a 0.7) */
-    z-index: 2;
-}
+        .page-header .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Aumentado para 0.6 */
+            z-index: 2;
+        }
 
-/* Conteúdo do hero */
-.page-header .container {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-}
+        .page-header .container {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+        }
 
-.page-header h1 {
-    font-size: clamp(2rem, 4vw, 3rem);
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
+        .page-header h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-.page-header p {
-    font-size: 1.2rem;
-    opacity: 0.95;
-    max-width: 600px;
-    margin: 0 auto;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
         
         /* About Intro */
         .about-intro {
@@ -116,7 +114,7 @@
             width: 80px;
             height: 4px;
             background: var(--secondary-color);
-            border-radius: var(--radius-full);
+            border-radius: 50px;
         }
         
         .about-intro-content p {
@@ -124,10 +122,12 @@
             color: var(--text-color);
             margin-bottom: 1.5rem;
             line-height: 1.8;
+            text-align: justify;
+            hyphens: auto;
         }
         
         .about-intro-image {
-            border-radius: var(--radius-lg);
+            border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow-lg);
             height: 400px;
@@ -160,9 +160,9 @@
         .mvv-card {
             background: var(--white);
             padding: 3rem 2rem;
-            border-radius: var(--radius-lg);
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            transition: var(--transition-bounce);
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             z-index: 1;
@@ -179,32 +179,15 @@
             z-index: 2;
         }
         
-        .mvv-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(46,125,50,0.05), rgba(255,179,0,0.05));
-            z-index: -1;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        
         .mvv-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
         
-        .mvv-card:hover::after {
-            opacity: 1;
-        }
-        
         .mvv-icon {
             width: 80px;
             height: 80px;
-            background: var(--primary-light);
+            background: var(--primary-color);
             color: var(--white);
             border-radius: 50%;
             display: flex;
@@ -212,7 +195,7 @@
             justify-content: center;
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            transition: var(--transition);
+            transition: all 0.3s;
         }
         
         .mvv-card:hover .mvv-icon {
@@ -230,6 +213,8 @@
             color: var(--text-color);
             line-height: 1.8;
             font-size: 1.1rem;
+            text-align: justify;
+            hyphens: auto;
         }
         
         /* Valores Lista */
@@ -245,8 +230,8 @@
             margin-bottom: 1rem;
             padding: 0.8rem;
             background: rgba(46,125,50,0.05);
-            border-radius: var(--radius);
-            transition: var(--transition);
+            border-radius: 8px;
+            transition: all 0.3s;
         }
         
         .valores-list li:hover {
@@ -265,7 +250,7 @@
             color: var(--primary-color);
         }
         
-        /* Valores Detalhados */
+        /* Valores Detalhados - CORRIGIDO */
         .valores-detalhados {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -276,15 +261,15 @@
         .valor-item {
             background: var(--white);
             padding: 2rem;
-            border-radius: var(--radius);
+            border-radius: 8px;
             box-shadow: var(--shadow);
             border-left: 4px solid var(--primary-color);
-            transition: var(--transition);
+            transition: all 0.3s;
         }
         
         .valor-item:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: var(--shadow-lg);
             border-left-color: var(--secondary-color);
         }
         
@@ -300,168 +285,128 @@
         .valor-item p {
             color: var(--text-color);
             line-height: 1.6;
+            text-align: justify;
+            hyphens: auto;
         }
         
-        /* Timeline / História */
-        .historia-section {
+        /* CTA Section - CORRIGIDO */
+        .cta-section {
+            background: var(--light-color);
+            text-align: center;
             padding: 4rem 0;
         }
         
-        .historia-timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 3rem auto;
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
         }
         
-        .historia-timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 2px;
-            height: 100%;
-            background: var(--primary-color);
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3rem;
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 20px;
-            height: 20px;
-            background: var(--secondary-color);
-            border: 4px solid var(--white);
-            border-radius: 50%;
-            box-shadow: var(--shadow);
-            z-index: 1;
-        }
-        
-        .timeline-content {
-            position: relative;
-            width: calc(50% - 40px);
-            padding: 1.5rem;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content {
-            left: 0;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content {
-            left: calc(50% + 40px);
-        }
-        
-        .timeline-content h4 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-        
-        .timeline-date {
+        .btn-primary {
             display: inline-block;
-            padding: 0.3rem 1rem;
+            padding: 1rem 2.5rem;
             background: var(--secondary-color);
             color: var(--dark-color);
-            border-radius: var(--radius-full);
+            text-decoration: none;
+            border-radius: 50px;
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            font-size: 1rem; /* Tamanho normal, não h1 */
         }
         
-        /* Team Section */
-        .team-section {
-            background: var(--light-color);
-            padding: 5rem 0;
+        .btn-primary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,179,0,0.3);
         }
         
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .team-card {
-            background: var(--white);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-        
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-        
-        .team-image {
-            height: 300px;
-            overflow: hidden;
+        /* ========== MENU DROPDOWN ========== */
+        .nav-menu li {
             position: relative;
         }
-        
-        .team-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
+
+        .nav-menu .dropdown {
+            position: relative;
         }
-        
-        .team-card:hover .team-image img {
-            transform: scale(1.1);
-        }
-        
-        .team-social {
+
+        .nav-menu .dropdown-menu {
             position: absolute;
-            bottom: -50px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-            transition: bottom 0.3s;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            padding: 0.8rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 10px;
         }
-        
-        .team-card:hover .team-social {
-            bottom: 0;
+
+        .nav-menu .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--white);
         }
-        
-        .team-social a {
-            color: var(--white);
-            font-size: 1.2rem;
-            transition: var(--transition);
+
+        .nav-menu .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
         }
-        
-        .team-social a:hover {
-            color: var(--secondary-color);
-            transform: translateY(-3px);
+
+        .nav-menu .dropdown-menu li {
+            margin: 0;
+            width: 100%;
         }
-        
-        .team-info {
-            padding: 1.5rem;
-            text-align: center;
+
+        .nav-menu .dropdown-menu a {
+            padding: 0.8rem 1.5rem;
+            display: block;
+            text-align: left;
+            font-size: 0.9rem;
+            text-transform: none;
+            color: var(--text-color);
+            transition: all 0.3s;
         }
-        
-        .team-info h4 {
+
+        .nav-menu .dropdown-menu a:hover {
+            background: var(--light-color);
             color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 0.3rem;
+            padding-left: 2rem;
         }
-        
-        .team-info p {
-            color: var(--text-light);
-            font-size: 0.95rem;
+
+        .nav-menu .dropdown-menu a::after {
+            display: none;
         }
-        
+
+        .nav-menu .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-menu .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
         /* Responsividade */
         @media (max-width: 992px) {
             .about-intro {
@@ -482,17 +427,8 @@
                 grid-template-columns: 1fr;
             }
             
-            .historia-timeline::before {
-                left: 30px;
-            }
-            
-            .timeline-dot {
-                left: 30px;
-            }
-            
-            .timeline-content {
-                width: calc(100% - 80px);
-                left: 80px !important;
+            .page-header {
+                min-height: 50vh;
             }
         }
         
@@ -515,12 +451,32 @@
                 font-size: 1.8rem;
             }
             
-            .team-grid {
-                grid-template-columns: 1fr;
+            .page-header {
+                min-height: 40vh;
             }
             
-            .team-image {
-                height: 350px;
+            .nav-menu .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                min-width: 100%;
+                transform: none;
+                display: none;
+            }
+            
+            .nav-menu .dropdown-menu::before {
+                display: none;
+            }
+            
+            .nav-menu .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .nav-menu .dropdown > a i {
+                margin-left: auto;
             }
         }
         
@@ -541,128 +497,14 @@
                 padding: 0.6rem;
             }
             
-            .timeline-content {
-                padding: 1rem;
+            .page-header {
+                min-height: 35vh;
+            }
+            
+            .page-header h1 {
+                font-size: 1.8rem;
             }
         }
-
-        /* ========== MENU DROPDOWN ========== */
-.nav-menu li {
-    position: relative;
-}
-
-/* Estilo do dropdown */
-.nav-menu .dropdown {
-    position: relative;
-}
-
-.nav-menu .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--white);
-    min-width: 220px;
-    box-shadow: var(--shadow-lg);
-    border-radius: 12px;
-    padding: 0.8rem 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    border: 1px solid rgba(0,0,0,0.05);
-    margin-top: 10px;
-}
-
-/* Seta do dropdown */
-.nav-menu .dropdown-menu::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--white);
-}
-
-/* Mostrar dropdown ao passar o mouse */
-.nav-menu .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    margin-top: 0;
-}
-
-/* Itens do dropdown */
-.nav-menu .dropdown-menu li {
-    margin: 0;
-    width: 100%;
-}
-
-.nav-menu .dropdown-menu a {
-    padding: 0.8rem 1.5rem;
-    display: block;
-    text-align: left;
-    font-size: 0.9rem;
-    text-transform: none;
-    color: var(--text-color);
-    transition: var(--transition);
-}
-
-.nav-menu .dropdown-menu a:hover {
-    background: var(--light-color);
-    color: var(--primary-color);
-    padding-left: 2rem;
-}
-
-.nav-menu .dropdown-menu a::after {
-    display: none;
-}
-
-/* Indicador de dropdown (seta para baixo) */
-.nav-menu .dropdown > a {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.nav-menu .dropdown > a i {
-    font-size: 0.8rem;
-    transition: transform 0.3s;
-}
-
-.nav-menu .dropdown:hover > a i {
-    transform: rotate(180deg);
-}
-
-/* Mobile - ajustes */
-@media (max-width: 768px) {
-    .nav-menu .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-        min-width: 100%;
-        transform: none;
-        display: none;
-    }
-    
-    .nav-menu .dropdown-menu::before {
-        display: none;
-    }
-    
-    .nav-menu .dropdown.active .dropdown-menu {
-        display: block;
-    }
-    
-    .nav-menu .dropdown > a i {
-        margin-left: auto;
-    }
-}
     </style>
 </head>
 <body>
@@ -671,7 +513,9 @@
         <div class="container">
             <div class="top-bar-content">
                 <div class="contact-info-top">
-                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                    <i class="fas fa-clock"></i>
+                    <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span>
+                    <span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span>
                 </div>
                 <div class="language-selector">
                     <a href="#" class="lang-btn active" data-lang="pt">PT</a>
@@ -691,38 +535,38 @@
             </div>
             
             <ul class="nav-menu">
-    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
-    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
-    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-    
-    <!-- DROPDOWN DE PROJECTOS -->
-    <li class="dropdown">
-        <a href="javascript:void(0);" class="dropdown-toggle">
-            <span class="text-pt">Projectos</span>
-            <span class="text-en" style="display: none;">Projects</span>
-            <i class="fas fa-chevron-down"></i>
-        </a>
-        <ul class="dropdown-menu">
-            <li>
-                <a href="projectos.html">
-                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
-                    <span class="text-pt">Nossos Projectos</span>
-                    <span class="text-en" style="display: none;">Our Projects</span>
-                </a>
-            </li>
-            <li>
-                <a href="galeria-projecto.html">
-                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
-                    <span class="text-pt">Galeria Projectos</span>
-                    <span class="text-en" style="display: none;">Projects Gallery</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-    
-    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
-</ul>
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" class="active" data-pt="Sobre" data-en="About">Sobre</a></li>
+                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                
+                <!-- DROPDOWN DE PROJECTOS -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <span class="text-pt">Projectos</span>
+                        <span class="text-en" style="display: none;">Projects</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="projectos.html">
+                                <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
+                                <span class="text-pt">Nossos Projectos</span>
+                                <span class="text-en" style="display: none;">Our Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="galeria-projecto.html">
+                                <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
+                                <span class="text-pt">Galeria Projectos</span>
+                                <span class="text-en" style="display: none;">Projects Gallery</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
             
             <div class="hamburger">
                 <span class="bar"></span>
@@ -732,29 +576,26 @@
         </nav>
     </header>
 
-    
+    <!-- Page Header - CORRIGIDO (altura normal) -->
+    <section class="page-header">
+        <div class="hero-background">
+            <img src="./img/sobre-nos.jpeg" alt="Sobre a SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Sobre+Nós'">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1>
+                <span class="text-pt">Sobre Nós</span>
+                <span class="text-en" style="display: none;">About Us</span>
+            </h1>
+            <p>
+                <span class="text-pt">Conheça a história e os valores da SolarGas Energy</span>
+                <span class="text-en" style="display: none;">Learn about the history and values of SolarGas Energy</span>
+            </p>
+        </div>
+    </section>
 
-    <!-- Page Header -->
-    <!-- Page Header COM IMAGEM DE FUNDO -->
-<section class="page-header">
-    <!-- Imagem de fundo -->
-    <div class="hero-background">
-        <img src="./img/sobre-nos.jpeg" alt="Sobre a SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Sobre+Nós'">
-    </div>
-    
-    <!-- Overlay escuro -->
-    <div class="hero-overlay"></div>
-    
-    <!-- Conteúdo -->
-    <div class="container">
-        <h1 class="text-pt">Sobre Nós</h1>
-        <h1 class="text-en" style="display: none;">About Us</h1>
-        <p class="text-pt">Conheça a história e os valores da SolarGas Energy</p>
-        <p class="text-en" style="display: none;">Learn about the history and values of SolarGas Energy</p>
-    </div>
-</section>
     <!-- About Intro -->
-    <section>
+    <section class="about-section">
         <div class="container">
             <div class="about-intro">
                 <div class="about-intro-content">
@@ -762,31 +603,22 @@
                         <span class="text-pt">Quem Somos?</span>
                         <span class="text-en" style="display: none;">Who We Are?</span>
                     </h2>
-                    <p class="text-pt">
-                        A SolarGas Energy é uma empresa moçambicana especializada em soluções de energia limpa e sustentável. 
-                        Atuamos no desenvolvimento e implementação de tecnologias de biogás, energia solar e fogões melhorados, 
-                        levando autonomia energética para famílias, produtores rurais e pequenas empresas.
+                    <p>
+                        <span class="text-pt">A SolarGas Energy é uma empresa moçambicana especializada em soluções de energia limpa e sustentável. Atuamos no desenvolvimento e implementação de tecnologias de biogás, energia solar e fogões melhorados, levando autonomia energética para famílias, produtores rurais e pequenas empresas.</span>
+                        <span class="text-en" style="display: none;">SolarGas Energy is a Mozambican company specialized in clean and sustainable energy solutions. We operate in the development and implementation of biogas technologies, solar energy and improved stoves, bringing energy autonomy to families, rural producers and small businesses.</span>
                     </p>
-                    <p class="text-pt">
-                        Através da nossa marca BioPower, transformamos resíduos orgânicos em energia limpa e biofertilizante, 
-                        promovendo a economia circular e o desenvolvimento sustentável nas comunidades onde atuamos.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        SolarGas Energy is a Mozambican company specialized in clean and sustainable energy solutions. 
-                        We operate in the development and implementation of biogas technologies, solar energy and improved stoves, 
-                        bringing energy autonomy to families, rural producers and small businesses.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        Through our BioPower brand, we transform organic waste into clean energy and biofertilizer, 
-                        promoting the circular economy and sustainable development in the communities where we operate.
+                    <p>
+                        <span class="text-pt">Através da nossa marca BioPower, transformamos resíduos orgânicos em energia limpa e biofertilizante, promovendo a economia circular e o desenvolvimento sustentável nas comunidades onde atuamos.</span>
+                        <span class="text-en" style="display: none;">Through our BioPower brand, we transform organic waste into clean energy and biofertilizer, promoting the circular economy and sustainable development in the communities where we operate.</span>
                     </p>
                 </div>
                 <div class="about-intro-image">
-                    <img src="./img/quemsomos.jpeg" alt="Solar Gás Energy">
+                    <img src="./img/quemsomos.jpeg" alt="Solar Gás Energy" onerror="this.src='https://via.placeholder.com/600x400/2E7D32/ffffff?text=SolarGas+Energy'">
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Missão, Visão e Valores -->
     <section class="mvv-section">
         <div class="container">
@@ -805,13 +637,9 @@
                         <span class="text-pt">Missão</span>
                         <span class="text-en" style="display: none;">Mission</span>
                     </h3>
-                    <p class="text-pt">
-                        Democratizar o acesso à energia limpa nas zonas rurais e periurbanas. Transformamos resíduos orgânicos 
-                        em biogás e biofertilizante, gerando autonomia energética e oportunidades económicas no campo.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        Democratize access to clean energy in rural and peri-urban areas. We transform organic waste into biogas 
-                        and biofertilizer, generating energy autonomy and economic opportunities in the countryside.
+                    <p>
+                        <span class="text-pt">Democratizar o acesso à energia limpa nas zonas rurais e periurbanas. Transformamos resíduos orgânicos em biogás e biofertilizante, gerando autonomia energética e oportunidades económicas no campo.</span>
+                        <span class="text-en" style="display: none;">Democratize access to clean energy in rural and peri-urban areas. We transform organic waste into biogas and biofertilizer, generating energy autonomy and economic opportunities in the countryside.</span>
                     </p>
                 </div>
                 
@@ -824,13 +652,9 @@
                         <span class="text-pt">Visão</span>
                         <span class="text-en" style="display: none;">Vision</span>
                     </h3>
-                    <p class="text-pt">
-                        Ser referência em soluções integradas de bioenergia sustentável. Queremos comunidades rurais mais produtivas, 
-                        independentes e ambientalmente resilientes.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        To be a reference in integrated sustainable bioenergy solutions. We want more productive, independent, 
-                        and environmentally resilient rural communities.
+                    <p>
+                        <span class="text-pt">Ser referência em soluções integradas de bioenergia sustentável. Queremos comunidades rurais mais produtivas, independentes e ambientalmente resilientes.</span>
+                        <span class="text-en" style="display: none;">To be a reference in integrated sustainable bioenergy solutions. We want more productive, independent, and environmentally resilient rural communities.</span>
                     </p>
                 </div>
                 
@@ -844,17 +668,33 @@
                         <span class="text-en" style="display: none;">Values</span>
                     </h3>
                     <ul class="valores-list">
-                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Sustentabilidade</span><span class="text-en" style="display: none;">Sustainability</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Impacto Social</span><span class="text-en" style="display: none;">Social Impact</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Inovação Acessível</span><span class="text-en" style="display: none;">Accessible</span></li>
-                        <li><i class="fas fa-check-circle"></i> <span class="text-pt">Autonomia</span><span class="text-en" style="display: none;">Autonomy</span></li>
+                        <li>
+                            <i class="fas fa-check-circle"></i> 
+                            <span class="text-pt">Sustentabilidade</span>
+                            <span class="text-en" style="display: none;">Sustainability</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i> 
+                            <span class="text-pt">Impacto Social</span>
+                            <span class="text-en" style="display: none;">Social Impact</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i> 
+                            <span class="text-pt">Inovação Acessível</span>
+                            <span class="text-en" style="display: none;">Accessible Innovation</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i> 
+                            <span class="text-pt">Autonomia</span>
+                            <span class="text-en" style="display: none;">Autonomy</span>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Valores Detalhados -->
+    <!-- Valores Detalhados - CORRIGIDO com traduções -->
     <section>
         <div class="container">
             <h2 class="section-title">
@@ -864,49 +704,41 @@
             
             <div class="valores-detalhados">
                 <div class="valor-item">
-                    <h4><i class="fas fa-leaf"></i> Sustentabilidade</h4>
-                    <p class="text-pt">
-                        Valorizamos resíduos e promovemos soluções que protegem o meio ambiente e reduzem emissões.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        We value waste and promote solutions that protect the environment and reduce emissions.
+                    <h4><i class="fas fa-leaf"></i> <span class="text-pt">Sustentabilidade</span><span class="text-en" style="display: none;">Sustainability</span></h4>
+                    <p>
+                        <span class="text-pt">Valorizamos resíduos e promovemos soluções que protegem o meio ambiente e reduzem emissões.</span>
+                        <span class="text-en" style="display: none;">We value waste and promote solutions that protect the environment and reduce emissions.</span>
                     </p>
                 </div>
                 
                 <div class="valor-item">
-                    <h4><i class="fas fa-users"></i> Impacto Social</h4>
-                    <p class="text-pt">
-                        Trabalhamos para melhorar a qualidade de vida das famílias e produtores rurais.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        We work to improve the quality of life of families and rural producers.
+                    <h4><i class="fas fa-users"></i> <span class="text-pt">Impacto Social</span><span class="text-en" style="display: none;">Social Impact</span></h4>
+                    <p>
+                        <span class="text-pt">Trabalhamos para melhorar a qualidade de vida das famílias e produtores rurais.</span>
+                        <span class="text-en" style="display: none;">We work to improve the quality of life of families and rural producers.</span>
                     </p>
                 </div>
                 
                 <div class="valor-item">
-                    <h4><i class="fas fa-lightbulb"></i> Inovação Acessível</h4>
-                    <p class="text-pt">
-                        Desenvolvemos soluções simples, adaptadas à realidade local e economicamente viáveis.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        We develop simple solutions, adapted to local reality and economically viable.
+                    <h4><i class="fas fa-lightbulb"></i> <span class="text-pt">Inovação Acessível</span><span class="text-en" style="display: none;">Accessible Innovation</span></h4>
+                    <p>
+                        <span class="text-pt">Desenvolvemos soluções simples, adaptadas à realidade local e economicamente viáveis.</span>
+                        <span class="text-en" style="display: none;">We develop simple solutions, adapted to local reality and economically viable.</span>
                     </p>
                 </div>
                 
                 <div class="valor-item">
-                    <h4><i class="fas fa-rocket"></i> Autonomia</h4>
-                    <p class="text-pt">
-                        Acreditamos que energia própria significa desenvolvimento e independência.
-                    </p>
-                    <p class="text-en" style="display: none;">
-                        We believe that own energy means development and independence.
+                    <h4><i class="fas fa-rocket"></i> <span class="text-pt">Autonomia</span><span class="text-en" style="display: none;">Autonomy</span></h4>
+                    <p>
+                        <span class="text-pt">Acreditamos que energia própria significa desenvolvimento e independência.</span>
+                        <span class="text-en" style="display: none;">We believe that own energy means development and independence.</span>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Estatísticas (reaproveitando da home) -->
+    <!-- Estatísticas -->
     <section class="estatisticas">
         <div class="container">
             <h2 class="section-title">
@@ -917,55 +749,70 @@
             <div class="stats-grid">
                 <div class="stat-card">
                     <div class="stat-number">+80 mil</div>
-                    <div class="stat-label text-pt">m³ de biogás produzido/ano</div>
-                    <div class="stat-label text-en" style="display: none;">m³ of biogas produced/year</div>
+                    <div class="stat-label">
+                        <span class="text-pt">m³ de biogás produzido/ano</span>
+                        <span class="text-en" style="display: none;">m³ of biogas produced/year</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">+550</div>
-                    <div class="stat-label text-pt">Pessoas produzindo e usando biogás</div>
-                    <div class="stat-label text-en" style="display: none;">People producing and using biogas</div>
+                    <div class="stat-label">
+                        <span class="text-pt">Pessoas produzindo e usando biogás</span>
+                        <span class="text-en" style="display: none;">People producing and using biogas</span>
+                    </div>
                 </div>
                 
                 <div class="stat-card">
                     <div class="stat-number">+70 mil</div>
-                    <div class="stat-label text-pt">m³ de biofertilizante produzido/ano</div>
-                    <div class="stat-label text-en" style="display: none;">m³ of biofertilizer produced/year</div>
+                    <div class="stat-label">
+                        <span class="text-pt">m³ de biofertilizante produzido/ano</span>
+                        <span class="text-en" style="display: none;">m³ of biofertilizer produced/year</span>
+                    </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-number">+50</div>
-                    <div class="stat-label text-pt">kits biodigestores BioPower instalados</div>
-                    <div class="stat-label text-en" style="display: none;">BioPower biodigester kits installed</div>
+                    <div class="stat-label">
+                        <span class="text-pt">kits biodigestores BioPower instalados</span>
+                        <span class="text-en" style="display: none;">BioPower biodigester kits installed</span>
+                    </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-number">+732</div>
-                    <div class="stat-label text-pt">Toneladas de lixo orgânico tratado/ano</div>
-                    <div class="stat-label text-en" style="display: none;">Tons of organic waste treated/year</div>
+                    <div class="stat-label">
+                        <span class="text-pt">Toneladas de lixo orgânico tratado/ano</span>
+                        <span class="text-en" style="display: none;">Tons of organic waste treated/year</span>
+                    </div>
                 </div>
 
                 <div class="stat-card">
                     <div class="stat-number">+1000</div>
-                    <div class="stat-label text-pt">Fogões melhorados de baixo consumo vendidos</div>
-                    <div class="stat-label text-en" style="display: none;">Improved low-consumption stoves sold</div>
+                    <div class="stat-label">
+                        <span class="text-pt">Fogões melhorados de baixo consumo vendidos</span>
+                        <span class="text-en" style="display: none;">Improved low-consumption stoves sold</span>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section style="background: var(--light-color); text-align: center; padding: 4rem 0;">
+    <!-- CTA Section - CORRIGIDO (sem h1 dentro do link) -->
+    <section class="cta-section">
         <div class="container">
             <h2 class="section-title">
                 <span class="text-pt">Faça parte desta transformação</span>
                 <span class="text-en" style="display: none;">Be part of this transformation</span>
             </h2>
-            <p style="max-width: 600px; margin: 0 auto 2rem;">
+            <p>
                 <span class="text-pt">Junte-se a nós na missão de levar energia limpa e sustentável para todos.</span>
                 <span class="text-en" style="display: none;">Join us in the mission to bring clean and sustainable energy to everyone.</span>
             </p>
-            <a href="contacto.html" class="btn-primary"><h1 class="text-pt">Contacte-nos</h1><h1 class="text-en">Contact us</h1></a>
+            <a href="contacto.html" class="btn-primary">
+                <span class="text-pt">Contacte-nos</span>
+                <span class="text-en" style="display: none;">Contact us</span>
+            </a>
         </div>
     </section>
 
@@ -977,13 +824,17 @@
                     <div class="logo-container" style="margin-bottom: 1rem;">
                         <img src="./img/Logo.png" alt="Solar Gás Energy">
                     </div>
-                    <p class="text-pt">Energia limpa e sustentável</p>
-                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                    <p>
+                        <span class="text-pt">Energia limpa e sustentável</span>
+                        <span class="text-en" style="display: none;">Clean and sustainable energy</span>
+                    </p>
                 </div>
                 
                 <div class="footer-links">
-                    <h4 class="text-pt">Links Rápidos</h4>
-                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <h4>
+                        <span class="text-pt">Links Rápidos</span>
+                        <span class="text-en" style="display: none;">Quick Links</span>
+                    </h4>
                     <ul>
                         <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
@@ -995,8 +846,10 @@
                 </div>
                 
                 <div class="footer-social">
-                    <h4 class="text-pt">Redes Sociais</h4>
-                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <h4>
+                        <span class="text-pt">Redes Sociais</span>
+                        <span class="text-en" style="display: none;">Social Media</span>
+                    </h4>
                     <div class="social-icons">
                         <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1006,8 +859,10 @@
             </div>
             
             <div class="footer-bottom">
-                <p class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</p>
-                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+                <p>
+                    <span class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</span>
+                    <span class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</span>
+                </p>
             </div>
         </div>
     </footer>
@@ -1018,52 +873,137 @@
     </a>
 
     <!-- Script -->
+       <!-- Script - CORRIGIDO E COMPLETO -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Menu Mobile
+            // ==================== MENU MOBILE ====================
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             const body = document.body;
+            const dropdowns = document.querySelectorAll('.dropdown');
 
             if (hamburger && navMenu) {
+                // Toggle menu
                 hamburger.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    
                     this.classList.toggle('active');
                     navMenu.classList.toggle('active');
                     body.classList.toggle('menu-open');
                 });
 
-                document.querySelectorAll('.nav-menu a').forEach(link => {
+                // Fechar menu ao clicar em links (exceto dropdown toggle)
+                document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)').forEach(link => {
                     link.addEventListener('click', function() {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
                         body.classList.remove('menu-open');
+                        
+                        // Fechar todos os dropdowns
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
                     });
                 });
-            }
 
-            // Sistema de Tradução
-            const langButtons = document.querySelectorAll('.lang-btn');
-            
-            function setLanguage(lang) {
-                langButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.lang === lang);
-                });
-
-                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
-                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
-                });
-
-                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
-                    if (link.dataset && link.dataset[lang]) {
-                        link.textContent = link.dataset[lang];
+                // Fechar menu ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(e.target) && 
+                        !hamburger.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        
+                        // Fechar todos os dropdowns
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
                     }
                 });
 
-                localStorage.setItem('preferred-language', lang);
+                // Fechar menu ao redimensionar para desktop
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        
+                        // Fechar todos os dropdowns
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
+                    }
+                });
+
+                // Dropdown para mobile
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const link = dropdown.querySelector('.dropdown-toggle');
+                        if (link) {
+                            link.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                
+                                // Fechar outros dropdowns
+                                dropdowns.forEach(d => {
+                                    if (d !== dropdown) d.classList.remove('active');
+                                });
+                                
+                                dropdown.classList.toggle('active');
+                            });
+                        }
+                    });
+                }
             }
 
+            // ==================== SISTEMA DE TRADUÇÃO ====================
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                // Atualizar botões ativos
+                langButtons.forEach(btn => {
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Mostrar/esconder elementos de texto
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    if (el.classList.contains(`text-${lang}`)) {
+                        el.style.display = '';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+
+                // Atualizar links do menu e footer (que usam data attributes)
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        // Verificar se é um dropdown toggle
+                        if (link.classList.contains('dropdown-toggle')) {
+                            // Para dropdown, atualizar o span interno
+                            const span = link.querySelector(`.text-${lang}`);
+                            if (span) {
+                                span.style.display = '';
+                            }
+                            const otherSpan = link.querySelector(`.text-${lang === 'pt' ? 'en' : 'pt'}`);
+                            if (otherSpan) {
+                                otherSpan.style.display = 'none';
+                            }
+                        } else {
+                            // Para links normais, atualizar o texto
+                            link.textContent = link.dataset[lang];
+                        }
+                    }
+                });
+
+                // Salvar preferência
+                localStorage.setItem('preferred-language', lang);
+                
+                // Atualizar atributo lang do HTML
+                document.documentElement.lang = lang;
+            }
+
+            // Adicionar eventos aos botões de idioma
             langButtons.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1071,34 +1011,119 @@
                 });
             });
 
+            // Carregar idioma salvo
             const savedLang = localStorage.getItem('preferred-language');
-            if (savedLang) {
+            if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
                 setLanguage(savedLang);
+            } else {
+                // Idioma padrão (português)
+                setLanguage('pt');
             }
 
-            // Header scroll effect
+            // ==================== HEADER SCROLL EFFECT ====================
             const header = document.querySelector('.header');
+            
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
+                    header.style.background = 'rgba(255,255,255,0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
                 } else {
-                    header.classList.remove('scrolled');
+                    header.style.background = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                    header.style.boxShadow = 'var(--shadow)';
                 }
             });
 
-            // Dropdown para mobile
-const dropdowns = document.querySelectorAll('.dropdown');
+            // ==================== ACTIVE MENU ITEM ====================
+            const currentPage = window.location.pathname.split('/').pop();
+            const menuItems = document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)');
+            
+            menuItems.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href === currentPage || 
+                    (currentPage === '' && href === 'index.html') ||
+                    (currentPage === 'sobre.html' && href === 'sobre.html')) {
+                    item.classList.add('active');
+                }
+            });
 
-if (window.innerWidth <= 768) {
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('.dropdown-toggle');
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
-        });
-    });
-}
-        });
+            // ==================== SMOOTH SCROLL PARA ÂNCORAS ====================
+            document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+
+            // ==================== REINICIAR DROPDOWNS NO RESIZE ====================
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    dropdowns.forEach(drop => drop.classList.remove('active'));
+                } else {
+                    // Reconfigurar eventos de dropdown para mobile se necessário
+                    dropdowns.forEach(dropdown => {
+                        const link = dropdown.querySelector('.dropdown-toggle');
+                        if (link) {
+                            // Remover eventos antigos para evitar duplicação
+                            link.replaceWith(link.cloneNode(true));
+                            // Adicionar novo evento
+                            const newLink = dropdown.querySelector('.dropdown-toggle');
+                            newLink.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                
+                                dropdowns.forEach(d => {
+                                    if (d !== dropdown) d.classList.remove('active');
+                                });
+                                
+                                dropdown.classList.toggle('active');
+                            });
+                        }
+                    });
+                }
+            });
+
+            // ==================== LAZY LOADING PARA IMAGENS (opcional) ====================
+            if ('loading' in HTMLImageElement.prototype) {
+                const images = document.querySelectorAll('img[loading="lazy"]');
+                images.forEach(img => {
+                    img.loading = 'lazy';
+                });
+            }
+
+            // ==================== ANIMAÇÃO DE ENTRADA (opcional) ====================
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.mvv-card, .valor-item, .stat-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+        }); // Fim do DOMContentLoaded
     </script>
 </body>
 </html>

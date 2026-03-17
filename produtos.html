@@ -14,39 +14,41 @@
     
     <!-- CSS específico para produtos -->
     <style>
+        /* ========== HEADER E LOGO ========== */
+        .header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .logo-container {
+            max-width: 60px;
+            height: auto;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
+        
         /* ========== HERO DA PÁGINA DE PRODUTOS ========== */
-     .header {
-        background: var(--white);
-        box-shadow: var(--shadow);
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        width: 100%;
-}
-
-     .logo-container {
-        max-width: 60px;
-        height: auto;
-     }
-
-      .logo-container img{
-        width: 100%;
-        height: auto;
-        max-height: 80px;
-        object-fit: contain;
-      }
         .page-hero {
-    min-height: 60vh; /* Ajuste conforme necessidade */
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: var(--white);
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+            min-height: 60vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         .page-hero .hero-background {
@@ -72,17 +74,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade conforme necessário */
+            background: rgba(0, 0, 0, 0.5);
             z-index: 2;
         }
 
         .page-hero .hero-content {
-             position: relative;
-             z-index: 3;
-             max-width: 800px;
-             margin: 0 auto;
-             padding: 0 20px;
-             width: 100%;
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
         }
 
         .page-hero h1 {
@@ -97,13 +99,13 @@
         }
 
         body {
-    margin: 0;
-    padding: 0;
-}
+            margin: 0;
+            padding: 0;
+        }
 
-.header + .page-hero {
-    margin-top: 0; /* Remove qualquer margem entre header e hero */
-}
+        .header + .page-hero {
+            margin-top: 0;
+        }
 
         /* ========== FILTROS ========== */
         .product-filters {
@@ -150,7 +152,7 @@
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: var(--shadow-lg);
             border-color: var(--primary-color);
         }
 
@@ -263,7 +265,7 @@
             transform: scale(1.05);
         }
 
-        /* ========== SEÇÃO DE FOGÕES - CORES DO LOGOTIPO ========== */
+        /* ========== SEÇÃO DE FOGÕES ========== */
         .stoves-section {
             background: linear-gradient(135deg, #f5f5f5, #ffffff);
             padding: 3rem;
@@ -289,7 +291,7 @@
 
         .stove-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: var(--shadow-lg);
             border-color: var(--primary-color);
         }
 
@@ -315,10 +317,9 @@
             margin-bottom: 0.5rem;
         }
 
-        /* BADGE "Uma boca" e "Duas bocas" - VERDE DO LOGO */
         .stove-burners {
             display: inline-block;
-            background: var(--primary-light);
+            background: var(--primary-color);
             color: var(--white);
             padding: 0.3rem 1rem;
             border-radius: 50px;
@@ -340,29 +341,129 @@
             text-align: center;
         }
 
-        /* Botão "Saiba mais" em verde */
-        .stove-card .btn-product {
-            background: var(--primary-color);
-            color: var(--white);
+        /* ========== CTA SECTION CORRIGIDA ========== */
+        .cta-section {
+            background: linear-gradient(135deg, #f5f5f5, #ffffff);
+            text-align: center;
+            padding: 4rem 0;
         }
 
-        .stove-card .btn-product:hover {
-            background: var(--primary-dark);
-        }
-
-        /* ========== AJUSTES TEXTUAIS ========== */
-        .text-justify-improved {
-            text-align: left;
-            line-height: 1.7;
-        }
-
-        .section-subtitle {
+        .cta-section h2 {
             color: var(--primary-color);
-            font-size: 1.2rem;
-            font-weight: 600;
+            font-size: 2rem;
             margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        }
+
+        .cta-section p {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: var(--text-color);
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255,179,0,0.3);
+        }
+
+        /* ========== MENU DROPDOWN ========== */
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu .dropdown {
+            position: relative;
+        }
+
+        .nav-menu .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            padding: 0.8rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 10px;
+        }
+
+        .nav-menu .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--white);
+        }
+
+        .nav-menu .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+
+        .nav-menu .dropdown-menu li {
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav-menu .dropdown-menu a {
+            padding: 0.8rem 1.5rem;
+            display: block;
+            text-align: left;
+            font-size: 0.9rem;
+            text-transform: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu .dropdown-menu a:hover {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding-left: 2rem;
+        }
+
+        .nav-menu .dropdown-menu a::after {
+            display: none;
+        }
+
+        .nav-menu .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-menu .dropdown:hover > a i {
+            transform: rotate(180deg);
         }
 
         /* ========== RESPONSIVIDADE ========== */
@@ -389,6 +490,30 @@
             .filter-btn {
                 text-align: center;
             }
+            
+            .nav-menu .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                min-width: 100%;
+                transform: none;
+                display: none;
+            }
+            
+            .nav-menu .dropdown-menu::before {
+                display: none;
+            }
+            
+            .nav-menu .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .nav-menu .dropdown > a i {
+                margin-left: auto;
+            }
         }
         
         @media (max-width: 480px) {
@@ -399,125 +524,15 @@
             .stove-image {
                 height: 180px;
             }
+            
+            .page-hero {
+                min-height: 40vh;
+            }
+            
+            .page-hero h1 {
+                font-size: 2rem;
+            }
         }
-
-        /* ========== MENU DROPDOWN ========== */
-.nav-menu li {
-    position: relative;
-}
-
-/* Estilo do dropdown */
-.nav-menu .dropdown {
-    position: relative;
-}
-
-.nav-menu .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--white);
-    min-width: 220px;
-    box-shadow: var(--shadow-lg);
-    border-radius: 12px;
-    padding: 0.8rem 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    border: 1px solid rgba(0,0,0,0.05);
-    margin-top: 10px;
-}
-
-/* Seta do dropdown */
-.nav-menu .dropdown-menu::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--white);
-}
-
-/* Mostrar dropdown ao passar o mouse */
-.nav-menu .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    margin-top: 0;
-}
-
-/* Itens do dropdown */
-.nav-menu .dropdown-menu li {
-    margin: 0;
-    width: 100%;
-}
-
-.nav-menu .dropdown-menu a {
-    padding: 0.8rem 1.5rem;
-    display: block;
-    text-align: left;
-    font-size: 0.9rem;
-    text-transform: none;
-    color: var(--text-color);
-    transition: var(--transition);
-}
-
-.nav-menu .dropdown-menu a:hover {
-    background: var(--light-color);
-    color: var(--primary-color);
-    padding-left: 2rem;
-}
-
-.nav-menu .dropdown-menu a::after {
-    display: none;
-}
-
-/* Indicador de dropdown (seta para baixo) */
-.nav-menu .dropdown > a {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.nav-menu .dropdown > a i {
-    font-size: 0.8rem;
-    transition: transform 0.3s;
-}
-
-.nav-menu .dropdown:hover > a i {
-    transform: rotate(180deg);
-}
-
-/* Mobile - ajustes */
-@media (max-width: 768px) {
-    .nav-menu .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-        min-width: 100%;
-        transform: none;
-        display: none;
-    }
-    
-    .nav-menu .dropdown-menu::before {
-        display: none;
-    }
-    
-    .nav-menu .dropdown.active .dropdown-menu {
-        display: block;
-    }
-    
-    .nav-menu .dropdown > a i {
-        margin-left: auto;
-    }
-}
     </style>
 </head>
 <body>
@@ -526,7 +541,9 @@
         <div class="container">
             <div class="top-bar-content">
                 <div class="contact-info-top">
-                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                    <i class="fas fa-clock"></i>
+                    <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span>
+                    <span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span>
                 </div>
                 <div class="language-selector">
                     <a href="#" class="lang-btn active" data-lang="pt">PT</a>
@@ -546,38 +563,38 @@
             </div>
             
             <ul class="nav-menu">
-    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
-    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
-    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-    
-    <!-- DROPDOWN DE PROJECTOS -->
-    <li class="dropdown">
-        <a href="javascript:void(0);" class="dropdown-toggle">
-            <span class="text-pt">Projectos</span>
-            <span class="text-en" style="display: none;">Projects</span>
-            <i class="fas fa-chevron-down"></i>
-        </a>
-        <ul class="dropdown-menu">
-            <li>
-                <a href="projectos.html">
-                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
-                    <span class="text-pt">Nossos Projectos</span>
-                    <span class="text-en" style="display: none;">Our Projects</span>
-                </a>
-            </li>
-            <li>
-                <a href="galeria-projecto.html">
-                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
-                    <span class="text-pt">Galeria Projectos</span>
-                    <span class="text-en" style="display: none;">Projects Gallery</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-    
-    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
-</ul>
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+                <li><a href="produtos.html" class="active" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                
+                <!-- DROPDOWN DE PROJECTOS -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <span class="text-pt">Projectos</span>
+                        <span class="text-en" style="display: none;">Projects</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="projectos.html">
+                                <i class="fas fa-clipboard-list"></i>
+                                <span class="text-pt">Nossos Projectos</span>
+                                <span class="text-en" style="display: none;">Our Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="galeria-projecto.html">
+                                <i class="fas fa-images"></i>
+                                <span class="text-pt">Galeria Projectos</span>
+                                <span class="text-en" style="display: none;">Projects Gallery</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -587,19 +604,22 @@
     </header>
 
     <!-- HERO DA PÁGINA DE PRODUTOS -->
-    <!-- HERO DA PÁGINA DE PRODUTOS - AGORA COLADO NO HEADER -->
-<section class="page-hero">
-    <div class="hero-background">
-        <img src="./img/hero-produto11.jpeg" alt="Produtos SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Produtos+Sustainable'">
-    </div>
-    <div class="hero-overlay" style="background: rgba(0, 0, 0, 0.5);"></div> <!-- Overlay ajustável -->
-    <div class="hero-content">
-        <h1 class="text-pt">Nossos Produtos</h1>
-        <h1 class="text-en" style="display: none;">Our Products</h1>
-        <p class="text-pt">Soluções completas em energia limpa para sua casa e negócio</p>
-        <p class="text-en" style="display: none;">Complete clean energy solutions for your home and business</p>
-    </div>
-</section>
+    <section class="page-hero">
+        <div class="hero-background">
+            <img src="./img/hero-produto11.jpeg" alt="Produtos SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Produtos+Sustainable'">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>
+                <span class="text-pt">Nossos Produtos</span>
+                <span class="text-en" style="display: none;">Our Products</span>
+            </h1>
+            <p>
+                <span class="text-pt">Soluções completas em energia limpa para sua casa e negócio</span>
+                <span class="text-en" style="display: none;">Complete clean energy solutions for your home and business</span>
+            </p>
+        </div>
+    </section>
 
     <!-- FILTROS -->
     <div class="container">
@@ -609,16 +629,16 @@
                 <span class="text-en" style="display: none;">All</span>
             </button>
             <button class="filter-btn" data-filter="kits">
-                <span class="text-pt">Kits Biodigestor BioPower</span>
-                <span class="text-en" style="display: none;">BioPower biodigester Kits</span>
+                <span class="text-pt">Kits Biodigestor</span>
+                <span class="text-en" style="display: none;">Biodigester Kits</span>
             </button>
             <button class="filter-btn" data-filter="fogoes">
-                <span class="text-pt">Fogões</span>
-                <span class="text-en" style="display: none;">Stoves</span>
+                <span class="text-pt">Fogões Melhorados</span>
+                <span class="text-en" style="display: none;">Improved Stoves</span>
             </button>
             <button class="filter-btn" data-filter="solares">
-                <span class="text-pt">Sistemas Solares</span>
-                <span class="text-en" style="display: none;">Solar Systems</span>
+                <span class="text-pt">Sistemas Solares Domésticos</span>
+                <span class="text-en" style="display: none;">Home Solar Systems</span>
             </button>
         </div>
     </div>
@@ -627,11 +647,13 @@
     <section class="product-category" data-category="kits">
         <div class="container">
             <h2 class="section-title">
-                <span class="text-pt">Kits biodigestores BioPower</span>
-                <span class="text-en" style="display: none;">BioPower biodigester Kits</span>
+                <span class="text-pt">Kits Biodigestores BioPower</span>
+                <span class="text-en" style="display: none;">BioPower Biodigester Kits</span>
             </h2>
-            <p class="section-subtitle text-pt">Transforme resíduos em energia limpa</p>
-            <p class="section-subtitle text-en" style="display: none;">Transform waste into clean energy</p>
+            <p class="section-subtitle">
+                <span class="text-pt">Transforme resíduos em energia limpa</span>
+                <span class="text-en" style="display: none;">Transform waste into clean energy</span>
+            </p>
             
             <div class="products-grid">
                 <!-- Kit Doméstico -->
@@ -646,23 +668,35 @@
                     <div class="product-info">
                         <h3>
                             <span class="text-pt">Kit Biodigestor BioPower Doméstico</span>
-                            <span class="text-en" style="display: none;">Domestic BioPower Biodigester kit</span>
+                            <span class="text-en" style="display: none;">Domestic BioPower Biodigester Kit</span>
                         </h3>
-                        <p class="product-description text-pt">
-                            Ideal para famílias em áreas periurbanas e rurais. Transforma resíduos orgânicos em biogás para cozinhar, aquecer e iluminar.
-                        </p>
-                        <p class="product-description text-en" style="display: none;">
-                            Ideal for families in peri-urban and rural areas. Transforms organic waste into biogas for cooking, heating and lighting.
+                        <p class="product-description">
+                            <span class="text-pt">Ideal para famílias em áreas periurbanas e rurais. Transforma resíduos orgânicos em biogás para cozinhar, aquecer e iluminar.</span>
+                            <span class="text-en" style="display: none;">Ideal for families in peri-urban and rural areas. Transforms organic waste into biogas for cooking, heating and lighting.</span>
                         </p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> <span class="text-pt">Fogão a biogás</span><span class="text-en" style="display: none;">Biogas stove</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span class="text-pt">Lâmpada a biogás</span><span class="text-en" style="display: none;">Biogas lamp</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span class="text-pt">Purificador e conexões</span><span class="text-en" style="display: none;">Purifier and connections</span></li>
+                            <li>
+                                <i class="fas fa-check-circle"></i> 
+                                <span class="text-pt">Fogão a biogás</span>
+                                <span class="text-en" style="display: none;">Biogas stove</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i> 
+                                <span class="text-pt">Lâmpada a biogás</span>
+                                <span class="text-en" style="display: none;">Biogas lamp</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i> 
+                                <span class="text-pt">Purificador e conexões</span>
+                                <span class="text-en" style="display: none;">Purifier and connections</span>
+                            </li>
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">
-                                <small class="text-pt">sob consulta</small>
-                                <small class="text-en" style="display: none;">upon request</small>
+                                <small>
+                                    <span class="text-pt">sob consulta</span>
+                                    <span class="text-en" style="display: none;">upon request</span>
+                                </small>
                             </div>
                             <a href="contacto.html" class="btn-product">
                                 <span class="text-pt">Solicitar</span>
@@ -680,23 +714,35 @@
                     <div class="product-info">
                         <h3>
                             <span class="text-pt">Kit Biodigestor BioPower Comercial</span>
-                            <span class="text-en" style="display: none;">Commercial Biopower Biodigester Kit</span>
+                            <span class="text-en" style="display: none;">Commercial BioPower Biodigester Kit</span>
                         </h3>
-                        <p class="product-description text-pt">
-                            Personalizado para produtores e agricultores. Gera biogás para cozinhar, aquecer e produzir eletricidade.
-                        </p>
-                        <p class="product-description text-en" style="display: none;">
-                            Customized for producers and farmers. Generates biogas for cooking, heating and electricity production.
+                        <p class="product-description">
+                            <span class="text-pt">Personalizado para produtores e agricultores. Gera biogás para cozinhar, aquecer e produzir eletricidade.</span>
+                            <span class="text-en" style="display: none;">Customized for producers and farmers. Generates biogas for cooking, heating and electricity production.</span>
                         </p>
                         <ul class="product-features">
-                            <li><i class="fas fa-check-circle"></i> <span class="text-pt">Gasómetro</span><span class="text-en" style="display: none;">Gasometer</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span class="text-pt">Fogão industrial</span><span class="text-en" style="display: none;">Industrial stove</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span class="text-pt">Personalizável</span><span class="text-en" style="display: none;">Customizable</span></li>
+                            <li>
+                                <i class="fas fa-check-circle"></i> 
+                                <span class="text-pt">Gasómetro</span>
+                                <span class="text-en" style="display: none;">Gasometer</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i> 
+                                <span class="text-pt">Fogão industrial</span>
+                                <span class="text-en" style="display: none;">Industrial stove</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i> 
+                                <span class="text-pt">Personalizável</span>
+                                <span class="text-en" style="display: none;">Customizable</span>
+                            </li>
                         </ul>
                         <div class="product-footer">
                             <div class="product-price">
-                                <small class="text-pt">sob consulta</small>
-                                <small class="text-en" style="display: none;">upon request</small>
+                                <small>
+                                    <span class="text-pt">sob consulta</span>
+                                    <span class="text-en" style="display: none;">upon request</span>
+                                </small>
                             </div>
                             <a href="contacto.html" class="btn-product">
                                 <span class="text-pt">Solicitar</span>
@@ -716,8 +762,10 @@
                 <span class="text-pt">Fogões Melhorados</span>
                 <span class="text-en" style="display: none;">Improved Stoves</span>
             </h2>
-            <p class="section-subtitle text-pt">Eficiência e economia para sua cozinha</p>
-            <p class="section-subtitle text-en" style="display: none;">Efficiency and savings for your kitchen</p>
+            <p class="section-subtitle">
+                <span class="text-pt">Eficiência e economia para sua cozinha</span>
+                <span class="text-en" style="display: none;">Efficiency and savings for your kitchen</span>
+            </p>
             
             <div class="stoves-grid">
                 <!-- Fogão Kupheka - uma boca -->
@@ -730,17 +778,14 @@
                             <span class="text-pt">Fogão Kupheka</span>
                             <span class="text-en" style="display: none;">Kupheka Stove</span>
                         </h4>
-                        <!-- BADGE EM VERDE (cor do logo) -->
                         <div class="stove-burners">
                             <i class="fas fa-fire"></i>
                             <span class="text-pt">Uma boca</span>
                             <span class="text-en" style="display: none;">One burner</span>
                         </div>
-                        <p class="stove-description text-pt">
-                            Fogão de baixo consumo, material inovador. Poupa mais de 40% de carvão.
-                        </p>
-                        <p class="stove-description text-en" style="display: none;">
-                            Low consumption stove, innovative material. Saves over 40% of charcoal.
+                        <p class="stove-description">
+                            <span class="text-pt">Fogão de baixo consumo, material inovador. Poupa mais de 40% de carvão.</span>
+                            <span class="text-en" style="display: none;">Low consumption stove, innovative material. Saves over 40% of charcoal.</span>
                         </p>
                         <a href="contacto.html" class="btn-product">
                             <span class="text-pt">Saiba mais</span>
@@ -759,17 +804,14 @@
                             <span class="text-pt">Fogão Nguvu</span>
                             <span class="text-en" style="display: none;">Nguvu Stove</span>
                         </h4>
-                        <!-- BADGE EM VERDE (cor do logo) -->
                         <div class="stove-burners">
                             <i class="fas fa-fire"></i><i class="fas fa-fire"></i>
                             <span class="text-pt">Duas bocas</span>
                             <span class="text-en" style="display: none;">Two burners</span>
                         </div>
-                        <p class="stove-description text-pt">
-                            Ideal para empreendedores e famílias. Poupa mais de 40% de carvão.
-                        </p>
-                        <p class="stove-description text-en" style="display: none;">
-                            Ideal for entrepreneurs and families. Saves over 40% of charcoal.
+                        <p class="stove-description">
+                            <span class="text-pt">Ideal para empreendedores e famílias. Poupa mais de 40% de carvão.</span>
+                            <span class="text-en" style="display: none;">Ideal for entrepreneurs and families. Saves over 40% of charcoal.</span>
                         </p>
                         <a href="contacto.html" class="btn-product">
                             <span class="text-pt">Saiba mais</span>
@@ -788,17 +830,14 @@
                             <span class="text-pt">Fogão Nguvu</span>
                             <span class="text-en" style="display: none;">Nguvu Stove</span>
                         </h4>
-                        <!-- BADGE EM VERDE (cor do logo) -->
                         <div class="stove-burners">
                             <i class="fas fa-fire"></i>
                             <span class="text-pt">Uma boca</span>
                             <span class="text-en" style="display: none;">One burner</span>
                         </div>
-                        <p class="stove-description text-pt">
-                            Feito de material local. Poupa mais de 35% de carvão.
-                        </p>
-                        <p class="stove-description text-en" style="display: none;">
-                            Made of local material. Saves over 35% of charcoal.
+                        <p class="stove-description">
+                            <span class="text-pt">Feito de material local. Poupa mais de 35% de carvão.</span>
+                            <span class="text-en" style="display: none;">Made of local material. Saves over 35% of charcoal.</span>
                         </p>
                         <a href="contacto.html" class="btn-product">
                             <span class="text-pt">Saiba mais</span>
@@ -817,8 +856,10 @@
                 <span class="text-pt">Sistemas Solares</span>
                 <span class="text-en" style="display: none;">Solar Systems</span>
             </h2>
-            <p class="section-subtitle text-pt">Energia limpa do sol para sua casa</p>
-            <p class="section-subtitle text-en" style="display: none;">Clean energy from the sun for your home</p>
+            <p class="section-subtitle">
+                <span class="text-pt">Energia limpa do sol para sua casa</span>
+                <span class="text-en" style="display: none;">Clean energy from the sun for your home</span>
+            </p>
             
             <div class="products-grid">
                 <div class="product-card">
@@ -830,16 +871,16 @@
                             <span class="text-pt">Sistema Solar</span>
                             <span class="text-en" style="display: none;">Solar System</span>
                         </h3>
-                        <p class="product-description text-pt">
-                            Gere sua própria eletricidade com sistemas solares práticos, econômicos e sustentáveis.
-                        </p>
-                        <p class="product-description text-en" style="display: none;">
-                            Generate your own electricity with practical, economical and sustainable solar systems.
+                        <p class="product-description">
+                            <span class="text-pt">Gere sua própria eletricidade com sistemas solares práticos, econômicos e sustentáveis.</span>
+                            <span class="text-en" style="display: none;">Generate your own electricity with practical, economical and sustainable solar systems.</span>
                         </p>
                         <div class="product-footer">
                             <div class="product-price">
-                                <small class="text-pt">sob consulta</small>
-                                <small class="text-en" style="display: none;">upon request</small>
+                                <small>
+                                    <span class="text-pt">sob consulta</span>
+                                    <span class="text-en" style="display: none;">upon request</span>
+                                </small>
                             </div>
                             <a href="contacto.html" class="btn-product">
                                 <span class="text-pt">Solicitar</span>
@@ -858,16 +899,16 @@
                             <span class="text-pt">Bomba Solar</span>
                             <span class="text-en" style="display: none;">Solar Pump</span>
                         </h3>
-                        <p class="product-description text-pt">
-                            Bombas eficientes para abastecimento de água. Autonomia e sustentabilidade.
-                        </p>
-                        <p class="product-description text-en" style="display: none;">
-                            Efficient pumps for water supply. Autonomy and sustainability.
+                        <p class="product-description">
+                            <span class="text-pt">Bombas eficientes para abastecimento de água. Autonomia e sustentabilidade.</span>
+                            <span class="text-en" style="display: none;">Efficient pumps for water supply. Autonomy and sustainability.</span>
                         </p>
                         <div class="product-footer">
                             <div class="product-price">
-                                <small class="text-pt">sob consulta</small>
-                                <small class="text-en" style="display: none;">upon request</small>
+                                <small>
+                                    <span class="text-pt">sob consulta</span>
+                                    <span class="text-en" style="display: none;">upon request</span>
+                                </small>
                             </div>
                             <a href="contacto.html" class="btn-product">
                                 <span class="text-pt">Solicitar</span>
@@ -880,20 +921,21 @@
         </div>
     </section>
 
-    <!-- CHAMADA PARA AÇÃO -->
-    <section style="background: linear-gradient(135deg, #f5f5f5, #ffffff); text-align: center; padding: 4rem 0;">
+    <!-- CHAMADA PARA AÇÃO - CORRIGIDA -->
+    <section class="cta-section">
         <div class="container">
-            <h2 class="text-pt" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;">
-                Precisa de ajuda para escolher?
+            <h2>
+                <span class="text-pt">Precisa de ajuda para escolher?</span>
+                <span class="text-en" style="display: none;">Need help choosing?</span>
             </h2>
-            <h2 class="text-en" style="display: none; color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;">
-                Need help choosing?
-            </h2>
-            <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-color);">
+            <p>
                 <span class="text-pt">Nossa equipe está pronta para orientar você na melhor solução.</span>
                 <span class="text-en" style="display: none;">Our team is ready to guide you to the best solution.</span>
             </p>
-            <a href="contacto.html" class="btn-primary"><h1 class="text-pt">Contactar Especialista</h1><h1 class="text-en">Contact Specialist</h1></a>
+            <a href="contacto.html" class="btn-primary">
+                <span class="text-pt">Contactar Especialista</span>
+                <span class="text-en" style="display: none;">Contact Specialist</span>
+            </a>
         </div>
     </section>
 
@@ -905,13 +947,17 @@
                     <div class="logo-container">
                         <img src="./img/Logo.png" alt="Solar Gás Energy" onerror="this.src='https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas'">
                     </div>
-                    <p class="text-pt">Energia limpa e sustentável</p>
-                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                    <p>
+                        <span class="text-pt">Energia limpa e sustentável</span>
+                        <span class="text-en" style="display: none;">Clean and sustainable energy</span>
+                    </p>
                 </div>
                 
                 <div class="footer-links">
-                    <h4 class="text-pt">Links Rápidos</h4>
-                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <h4>
+                        <span class="text-pt">Links Rápidos</span>
+                        <span class="text-en" style="display: none;">Quick Links</span>
+                    </h4>
                     <ul>
                         <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
@@ -923,8 +969,10 @@
                 </div>
                 
                 <div class="footer-social">
-                    <h4 class="text-pt">Redes Sociais</h4>
-                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <h4>
+                        <span class="text-pt">Redes Sociais</span>
+                        <span class="text-en" style="display: none;">Social Media</span>
+                    </h4>
                     <div class="social-icons">
                         <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -934,8 +982,10 @@
             </div>
             
             <div class="footer-bottom">
-                <p class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</p>
-                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+                <p>
+                    <span class="text-pt">&copy; 2026 Solar Gás Energy. Todos os direitos reservados.</span>
+                    <span class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</span>
+                </p>
             </div>
         </div>
     </footer>
@@ -953,6 +1003,7 @@
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             const body = document.body;
+            const dropdowns = document.querySelectorAll('.dropdown');
 
             if (hamburger && navMenu) {
                 hamburger.addEventListener('click', function(e) {
@@ -962,13 +1013,25 @@
                     body.classList.toggle('menu-open');
                 });
 
-                document.querySelectorAll('.nav-menu a').forEach(link => {
+                document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)').forEach(link => {
                     link.addEventListener('click', function() {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
                         body.classList.remove('menu-open');
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
                     });
                 });
+
+                // Mobile dropdown
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const link = dropdown.querySelector('.dropdown-toggle');
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            dropdown.classList.toggle('active');
+                        });
+                    });
+                }
             }
 
             // Sistema de Tradução
@@ -985,7 +1048,14 @@
 
                 document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
                     if (link.dataset && link.dataset[lang]) {
-                        link.textContent = link.dataset[lang];
+                        if (link.classList.contains('dropdown-toggle')) {
+                            const span = link.querySelector(`.text-${lang}`);
+                            if (span) span.style.display = '';
+                            const otherSpan = link.querySelector(`.text-${lang === 'pt' ? 'en' : 'pt'}`);
+                            if (otherSpan) otherSpan.style.display = 'none';
+                        } else {
+                            link.textContent = link.dataset[lang];
+                        }
                     }
                 });
 
@@ -1004,7 +1074,7 @@
                 setLanguage(savedLang);
             }
 
-            // Product Filters
+            // Product Filters - CORRIGIDO
             const filterButtons = document.querySelectorAll('.filter-btn');
             const productCategories = document.querySelectorAll('.product-category, .stoves-section');
 
@@ -1031,24 +1101,15 @@
             const header = document.querySelector('.header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
+                    header.style.background = 'rgba(255,255,255,0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
                 } else {
-                    header.classList.remove('scrolled');
+                    header.style.background = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                    header.style.boxShadow = 'var(--shadow)';
                 }
             });
-
-            // Dropdown para mobile
-const dropdowns = document.querySelectorAll('.dropdown');
-
-if (window.innerWidth <= 768) {
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('.dropdown-toggle');
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
-        });
-    });
-}
         });
     </script>
 </body>

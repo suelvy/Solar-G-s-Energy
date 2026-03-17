@@ -22,16 +22,16 @@
         }
 
         .logo-container {
-    max-width: 60px;
-    height: auto;
-}
+            max-width: 60px;
+            height: auto;
+        }
 
-        .logo-container img{
-          width: 100%;
-          height: auto;
-          max-height: 80px;
-          object-fit: contain;
-     }
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
 
         /* ========== HERO DA GALERIA ========== */
         .gallery-hero {
@@ -122,11 +122,12 @@
             gap: 0.5rem;
             padding: 1rem 2rem;
             background: transparent;
-            border: none;
+            border: 2px solid var(--primary-color);
             border-radius: 12px;
             cursor: pointer;
             transition: var(--transition);
             color: var(--text-color);
+            text-decoration: none;
         }
 
         .gallery-tab i {
@@ -271,6 +272,8 @@
             transform: translateY(20px);
             transition: transform 0.5s 0.2s;
             opacity: 0.9;
+            text-align: justify;
+            hyphens: auto;
         }
 
         .gallery-overlay .location {
@@ -497,163 +500,21 @@
             .lightbox-next {
                 display: none;
             }
+            
+            .gallery-hero {
+                min-height: 40vh;
+            }
         }
 
-        /* ========== MENU DROPDOWN ========== */
-.nav-menu li {
-    position: relative;
-}
-
-/* Estilo do dropdown */
-.nav-menu .dropdown {
-    position: relative;
-}
-
-.nav-menu .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--white);
-    min-width: 220px;
-    box-shadow: var(--shadow-lg);
-    border-radius: 12px;
-    padding: 0.8rem 0;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-    border: 1px solid rgba(0,0,0,0.05);
-    margin-top: 10px;
-}
-
-/* Seta do dropdown */
-.nav-menu .dropdown-menu::before {
-    content: '';
-    position: absolute;
-    top: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border-left: 8px solid transparent;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid var(--white);
-}
-
-/* Mostrar dropdown ao passar o mouse */
-.nav-menu .dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    margin-top: 0;
-}
-
-/* Itens do dropdown */
-.nav-menu .dropdown-menu li {
-    margin: 0;
-    width: 100%;
-}
-
-.nav-menu .dropdown-menu a {
-    padding: 0.8rem 1.5rem;
-    display: block;
-    text-align: left;
-    font-size: 0.9rem;
-    text-transform: none;
-    color: var(--text-color);
-    transition: var(--transition);
-}
-
-.nav-menu .dropdown-menu a:hover {
-    background: var(--light-color);
-    color: var(--primary-color);
-    padding-left: 2rem;
-}
-
-.nav-menu .dropdown-menu a::after {
-    display: none;
-}
-
-/* Indicador de dropdown (seta para baixo) */
-.nav-menu .dropdown > a {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-}
-
-.nav-menu .dropdown > a i {
-    font-size: 0.8rem;
-    transition: transform 0.3s;
-}
-
-.nav-menu .dropdown:hover > a i {
-    transform: rotate(180deg);
-}
-
-/* Mobile - ajustes */
-@media (max-width: 768px) {
-    .nav-menu .dropdown-menu {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        box-shadow: none;
-        padding: 0;
-        margin: 0;
-        min-width: 100%;
-        transform: none;
-        display: none;
-    }
-    
-    .nav-menu .dropdown-menu::before {
-        display: none;
-    }
-    
-    .nav-menu .dropdown.active .dropdown-menu {
-        display: block;
-    }
-    
-    .nav-menu .dropdown > a i {
-        margin-left: auto;
-    }
-
-    .nav-menu .dropdown {
-        width: 100%;
-        text-align: center;
-    }
-
-    .nav-menu .dropdown > a {
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important; /* Centraliza o texto */
-        gap: 0.5rem;
-        width: 100%;
-        text-align: center;
-    }
-     .nav-menu .dropdown > a i {
-        margin-left: 0 !important; /* Remove o margin-left que puxava para esquerda */
-        position: relative;
-        top: 1px;
-    }
-
-    .nav-menu .dropdown-menu {
-        text-align: center;
-        padding: 0.5rem 0 !important;
-    }
-
-    .nav-menu .dropdown-menu a {
-        justify-content: center !important;
-        text-align: center !important;
-        padding: 0.8rem !important;
-    }
-
-    .nav-menu .dropdown-menu a i {
-        display: none; /* Esconde os ícones no mobile para não poluir */
-    }
-    .nav-menu a {
-        text-align: center !important;
-        justify-content: center !important;
-    }
-}
+        @media (max-width: 480px) {
+            .gallery-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .gallery-hero p {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -662,7 +523,9 @@
         <div class="container">
             <div class="top-bar-content">
                 <div class="contact-info-top">
-                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                    <i class="fas fa-clock"></i>
+                    <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span>
+                    <span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span>
                 </div>
                 <div class="language-selector">
                     <a href="#" class="lang-btn active" data-lang="pt">PT</a>
@@ -682,38 +545,38 @@
             </div>
             
             <ul class="nav-menu">
-    <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
-    <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
-    <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
-    <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
-    
-    <!-- DROPDOWN DE PROJECTOS -->
-    <li class="dropdown">
-        <a href="javascript:void(0);" class="dropdown-toggle">
-            <span class="text-pt">Projectos</span>
-            <span class="text-en" style="display: none;">Projects</span>
-            <i class="fas fa-chevron-down"></i>
-        </a>
-        <ul class="dropdown-menu">
-            <li>
-                <a href="projectos.html">
-                    <i class="fas fa-clipboard-list" style="margin-right: 0.5rem;"></i>
-                    <span class="text-pt">Nossos Projectos</span>
-                    <span class="text-en" style="display: none;">Our Projects</span>
-                </a>
-            </li>
-            <li>
-                <a href="galeria-projecto.html">
-                    <i class="fas fa-images" style="margin-right: 0.5rem;"></i>
-                    <span class="text-pt">Galeria Projectos</span>
-                    <span class="text-en" style="display: none;">Projects Gallery</span>
-                </a>
-            </li>
-        </ul>
-    </li>
-    
-    <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
-</ul>
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+                <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
+                <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                
+                <!-- DROPDOWN DE PROJECTOS -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <span class="text-pt">Projectos</span>
+                        <span class="text-en" style="display: none;">Projects</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="projectos.html">
+                                <i class="fas fa-clipboard-list"></i>
+                                <span class="text-pt">Nossos Projectos</span>
+                                <span class="text-en" style="display: none;">Our Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="galeria-projecto.html" class="active">
+                                <i class="fas fa-images"></i>
+                                <span class="text-pt">Galeria Projectos</span>
+                                <span class="text-en" style="display: none;">Projects Gallery</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
             <div class="hamburger">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -725,14 +588,18 @@
     <!-- Hero da Galeria -->
     <section class="gallery-hero">
         <div class="hero-background">
-            <img src="./img/galeria-hero.jpeg" alt="Galeria de Projetos" onerror="this.src='https://via.placeholder.com/1600x900/2E7D32/ffffff?text=Galeria+de+Projetos'">
+            <img src="./img/hero-galeria.jpeg" alt="Galeria de Projetos" onerror="this.src='https://via.placeholder.com/1600x900/2E7D32/ffffff?text=Galeria+de+Projetos'">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="text-pt">Galeria de Projetos</h1>
-            <h1 class="text-en" style="display: none;">Projects Gallery</h1>
-            <p class="text-pt">Cada imagem conta uma história de transformação e esperança</p>
-            <p class="text-en" style="display: none;">Each image tells a story of transformation and hope</p>
+            <h1>
+                <span class="text-pt">Galeria de Projetos</span>
+                <span class="text-en" style="display: none;">Projects Gallery</span>
+            </h1>
+            <p>
+                <span class="text-pt">Cada imagem conta uma história de transformação e esperança</span>
+                <span class="text-en" style="display: none;">Each image tells a story of transformation and hope</span>
+            </p>
         </div>
     </section>
 
@@ -766,12 +633,12 @@
                 <span class="text-en" style="display: none;">Biogas</span>
             </button>
             <button class="filter-btn" data-filter="solar">
-                <span class="text-pt">Solar</span>
-                <span class="text-en" style="display: none;">Solar</span>
+                <span class="text-pt">Sistemas Solares Melhorados</span>
+                <span class="text-en" style="display: none;">Improved Solar System</span>
             </button>
             <button class="filter-btn" data-filter="stoves">
-                <span class="text-pt">Fogões</span>
-                <span class="text-en" style="display: none;">Stoves</span>
+                <span class="text-pt">Fogões Melhorados</span>
+                <span class="text-en" style="display: none;">Improved Stoves</span>
             </button>
             <button class="filter-btn" data-filter="water">
                 <span class="text-pt">Reservatórios</span>
@@ -792,12 +659,19 @@
                 <!-- Item 1 - Destaque (Grande) -->
                 <div class="gallery-item large" data-category="biogas community">
                     <img src="./img/galer-biogas01.jpeg" alt="Projeto Comunitário" class="gallery-image" onerror="this.src='https://via.placeholder.com/800x600/2E7D32/ffffff?text=Projeto+Comunitário'">
-                    <div class="gallery-badge">Destaque</div>
+                    <div class="gallery-badge">
+                        <span class="text-pt">Destaque</span>
+                        <span class="text-en" style="display: none;">Featured</span>
+                    </div>
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Energia que Transforma</h3>
-                        <h3 class="text-en" style="display: none;">Energy that Transforms</h3>
-                        <p class="text-pt">120 familias na província de Maputo agora cozinham com biogás, substituindo a lenha e preservando mais de 500 árvores por ano.</p>
-                        <p class="text-en" style="display: none;">120 families in Maputo province now cook with biogas, replacing firewood and preserving over 500 trees per year.</p>
+                        <h3>
+                            <span class="text-pt">Energia que Transforma</span>
+                            <span class="text-en" style="display: none;">Energy that Transforms</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">120 famílias na província de Maputo agora cozinham com biogás, substituindo a lenha e preservando mais de 500 árvores por ano.</span>
+                            <span class="text-en" style="display: none;">120 families in Maputo province now cook with biogas, replacing firewood and preserving over 500 trees per year.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Maputo, Inhambane, Moçambique</div>
                     </div>
                 </div>
@@ -806,10 +680,14 @@
                 <div class="gallery-item" data-category="solar">
                     <img src="./img/galer-sistm-solar-01.jpeg" alt="Sistema Solar" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/FFB300/ffffff?text=Sistema+Solar'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Luz no Campo</h3>
-                        <h3 class="text-en" style="display: none;">Light in the Countryside</h3>
-                        <p class="text-pt">Escola rural agora tem eletricidade 24h, permitindo aulas noturnas para 200 adultos que trabalham durante o dia.</p>
-                        <p class="text-en" style="display: none;">Rural school now has 24h electricity, allowing night classes for 200 adults who work during the day.</p>
+                        <h3>
+                            <span class="text-pt">Luz no Campo</span>
+                            <span class="text-en" style="display: none;">Light in the Countryside</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Escola rural agora tem eletricidade 24h, permitindo aulas noturnas para 200 adultos que trabalham durante o dia.</span>
+                            <span class="text-en" style="display: none;">Rural school now has 24h electricity, allowing night classes for 200 adults who work during the day.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Inhambane, Moçambique</div>
                     </div>
                 </div>
@@ -818,10 +696,14 @@
                 <div class="gallery-item" data-category="biogas">
                     <img src="./img/gale-bio-diges-01.jpeg" alt="Biodigestor" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/1B5E20/ffffff?text=Biodigestor'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Do Resíduo ao Recurso</h3>
-                        <h3 class="text-en" style="display: none;">From Waste to Resource</h3>
-                        <p class="text-pt">Transformamos uque é considerado lixo descartável em energia limpa e sustentável.</p>
-                        <p class="text-en" style="display: none;">We transform what is considered disposable waste into clean and sustainable energy.</p>
+                        <h3>
+                            <span class="text-pt">Do Resíduo ao Recurso</span>
+                            <span class="text-en" style="display: none;">From Waste to Resource</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Transformamos o que é considerado lixo descartável em energia limpa e sustentável.</span>
+                            <span class="text-en" style="display: none;">We transform what is considered disposable waste into clean and sustainable energy.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Inhambane, Moçambique</div>
                     </div>
                 </div>
@@ -830,10 +712,14 @@
                 <div class="gallery-item wide" data-category="water">
                     <img src="./img/gale-reser-01.jpeg" alt="Reservatório" class="gallery-image" onerror="this.src='https://via.placeholder.com/800x400/2196F3/ffffff?text=Reservatório'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Água para a Vida</h3>
-                        <h3 class="text-en" style="display: none;">Water for Life</h3>
-                        <p class="text-pt">Reservatório de 50.000 litros abastece horta comunitária que alimenta 150 famílias durante a época seca.</p>
-                        <p class="text-en" style="display: none;">50,000 liter reservoir supplies community garden that feeds 150 families during the dry season.</p>
+                        <h3>
+                            <span class="text-pt">Água para a Vida</span>
+                            <span class="text-en" style="display: none;">Water for Life</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Reservatório de 50.000 litros abastece horta comunitária que alimenta 150 famílias durante a época seca.</span>
+                            <span class="text-en" style="display: none;">50,000 liter reservoir supplies community garden that feeds 150 families during the dry season.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Maputo, Moçambique</div>
                     </div>
                 </div>
@@ -842,10 +728,14 @@
                 <div class="gallery-item" data-category="stoves">
                     <img src="./img/gale-fogao.jpeg" alt="Fogão Melhorado" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/FF8F00/ffffff?text=Fogão'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Cozinha Saudável</h3>
-                        <h3 class="text-en" style="display: none;">Healthy Kitchen</h3>
-                        <p class="text-pt">Fogões melhorados reduzem a fumaça em 80% e o consumo de carvão em 40%, melhorando a saúde das famílias.</p>
-                        <p class="text-en" style="display: none;">Improved stoves reduce smoke by 80% and charcoal consumption by 40%, improving family health.</p>
+                        <h3>
+                            <span class="text-pt">Cozinha Saudável</span>
+                            <span class="text-en" style="display: none;">Healthy Kitchen</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Fogões melhorados reduzem a fumaça em 80% e o consumo de carvão em 40%, melhorando a saúde das famílias.</span>
+                            <span class="text-en" style="display: none;">Improved stoves reduce smoke by 80% and charcoal consumption by 40%, improving family health.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Maputo, Inhambane, Moçambique</div>
                     </div>
                 </div>
@@ -854,10 +744,14 @@
                 <div class="gallery-item tall" data-category="community">
                     <img src="./img/gale-biogas-02.jpeg" alt="Capacitação" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x700/4CAF50/ffffff?text=Capacitação'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Saber que Empodera!</h3>
-                        <h3 class="text-en" style="display: none;">Knowledge that Empowers!</h3>
-                        <p class="text-pt">Mulheres agricultoras aprendem a produzir e usar biofertilizante, aumentando a produtividade em 60%.</p>
-                        <p class="text-en" style="display: none;">Women farmers learn to produce and use biofertilizer, increasing productivity by 60%.</p>
+                        <h3>
+                            <span class="text-pt">Saber que Empodera!</span>
+                            <span class="text-en" style="display: none;">Knowledge that Empowers!</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Mulheres agricultoras aprendem a produzir e usar biofertilizante, aumentando a produtividade em 60%.</span>
+                            <span class="text-en" style="display: none;">Women farmers learn to produce and use biofertilizer, increasing productivity by 60%.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Inhambane, Moçambique</div>
                     </div>
                 </div>
@@ -866,11 +760,15 @@
                 <div class="gallery-item" data-category="biogas">
                     <img src="./img/gale-biogas-03.jpeg" alt="Biogás Doméstico" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/2E7D32/ffffff?text=Biogás+Doméstico'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Autonomia Energética</h3>
-                        <h3 class="text-en" style="display: none;">Energy Autonomy</h3>
-                        <p class="text-pt">Família economiza 500 MT por mês em gás e ainda produz fertilizante para a horta.</p>
-                        <p class="text-en" style="display: none;">Family saves 500 MT per month on gas and still produces fertilizer for the garden.</p>
-                        <div class="location"><i class="fas fa-map-marker-alt"></i> Sofala, Moçambique</div>
+                        <h3>
+                            <span class="text-pt">Autonomia Energética</span>
+                            <span class="text-en" style="display: none;">Energy Autonomy</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Família economiza 500 MT por mês em gás e ainda produz fertilizante para a horta.</span>
+                            <span class="text-en" style="display: none;">Family saves 500 MT per month on gas and still produces fertilizer for the garden.</span>
+                        </p>
+                        <div class="location"><i class="fas fa-map-marker-alt"></i> Maputo, Moçambique</div>
                     </div>
                 </div>
 
@@ -878,10 +776,14 @@
                 <div class="gallery-item" data-category="solar">
                     <img src="./img/gale-boso-02.jpeg" alt="Bomba Solar" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/2196F3/ffffff?text=Bomba+Solar'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Água do Sol</h3>
-                        <h3 class="text-en" style="display: none;">Water from the Sun</h3>
-                        <p class="text-pt">Bomba solar irriga 5 hectares de arroz, dobrando a produção da cooperativa local.</p>
-                        <p class="text-en" style="display: none;">Solar pump irrigates 5 hectares of rice, doubling the local cooperative's production.</p>
+                        <h3>
+                            <span class="text-pt">Água do Sol</span>
+                            <span class="text-en" style="display: none;">Water from the Sun</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Bomba solar irriga 5 hectares de arroz, dobrando a produção da cooperativa local.</span>
+                            <span class="text-en" style="display: none;">Solar pump irrigates 5 hectares of rice, doubling the local cooperative's production.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Maputo, Moçambique</div>
                     </div>
                 </div>
@@ -890,10 +792,14 @@
                 <div class="gallery-item wide" data-category="community">
                     <img src="./img/gale-comuni-01.jpeg" alt="Impacto Comunitário" class="gallery-image" onerror="this.src='https://via.placeholder.com/800x400/FFB300/ffffff?text=Impacto+Comunitário'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">União que Fortalece</h3>
-                        <h3 class="text-en" style="display: none;">Unity that Strengthens</h3>
-                        <p class="text-pt">Associação de 50 agricultores compartilha um biodigestor comunitário e comercializa o biofertilizante excedente.</p>
-                        <p class="text-en" style="display: none;">Association of 50 farmers shares a community biodigester and markets the surplus biofertilizer.</p>
+                        <h3>
+                            <span class="text-pt">União que Fortalece</span>
+                            <span class="text-en" style="display: none;">Unity that Strengthens</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Associação de 50 agricultores compartilha um biodigestor comunitário e comercializa o biofertilizante excedente.</span>
+                            <span class="text-en" style="display: none;">Association of 50 farmers shares a community biodigester and markets the surplus biofertilizer.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Inhambane, Moçambique</div>
                     </div>
                 </div>
@@ -902,10 +808,14 @@
                 <div class="gallery-item" data-category="stoves">
                     <img src="./img/gale-empre-01.jpeg" alt="Empreendedorismo" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/FF6F00/ffffff?text=Empreendedorismo'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Oportunidade que Gera Renda</h3>
-                        <h3 class="text-en" style="display: none;">Opportunity that Generates Income</h3>
-                        <p class="text-pt">Mulher empreendedora vende refeição usando fogão a biogás e reduz em até 100% os gastos com carvão vegetal.</p>
-                        <p class="text-en" style="display: none;">A female entrepreneur sells meals using a biogas stove and reduces her charcoal expenses by up to 100%.</p>
+                        <h3>
+                            <span class="text-pt">Oportunidade que Gera Renda</span>
+                            <span class="text-en" style="display: none;">Opportunity that Generates Income</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Mulher empreendedora vende refeição usando fogão a biogás e reduz em até 100% os gastos com carvão vegetal.</span>
+                            <span class="text-en" style="display: none;">A female entrepreneur sells meals using a biogas stove and reduces her charcoal expenses by up to 100%.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Maputo, Moçambique</div>
                     </div>
                 </div>
@@ -914,10 +824,14 @@
                 <div class="gallery-item" data-category="water">
                     <img src="./img/gale-psi-01.jpeg" alt="Piscicultura" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/0277BD/ffffff?text=Piscicultura'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">Peixes e Sustentabilidade</h3>
-                        <h3 class="text-en" style="display: none;">Fish and Sustainability</h3>
-                        <p class="text-pt">Reservatório de 100.000 litros permite criação de tilápia em região semiárida.</p>
-                        <p class="text-en" style="display: none;">100,000 liter reservoir allows tilapia farming in semi-arid region.</p>
+                        <h3>
+                            <span class="text-pt">Peixes e Sustentabilidade</span>
+                            <span class="text-en" style="display: none;">Fish and Sustainability</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Reservatório de 100.000 litros permite criação de tilápia em região semiárida.</span>
+                            <span class="text-en" style="display: none;">100,000 liter reservoir allows tilapia farming in semi-arid region.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Inhambane, Moçambique</div>
                     </div>
                 </div>
@@ -926,10 +840,14 @@
                 <div class="gallery-item" data-category="biogas">
                     <img src="./img/gale-bio-domes.jpeg" alt="Biogás Doméstico" class="gallery-image" onerror="this.src='https://via.placeholder.com/400x400/2E7D32/ffffff?text=Escola+Sustentável'">
                     <div class="gallery-overlay">
-                        <h3 class="text-pt">soluções Inovadoras</h3>
-                        <h3 class="text-en" style="display: none;">Innovative Solutions</h3>
-                        <p class="text-pt">Famílias que antes viam distante a possibilidade de abandonar o carvão vegetal, hoje respiram aliviados pós a nossa inovação não apresenta fumaça tóxica.</p>
-                        <p class="text-en" style="display: none;">Families who previously considered abandoning charcoal a distant possibility are now breathing a sigh of relief, as our innovation produces no toxic smoke.</p>
+                        <h3>
+                            <span class="text-pt">Soluções Inovadoras</span>
+                            <span class="text-en" style="display: none;">Innovative Solutions</span>
+                        </h3>
+                        <p>
+                            <span class="text-pt">Famílias que antes viam distante a possibilidade de abandonar o carvão vegetal, hoje respiram aliviados pós a nossa inovação não apresenta fumaça tóxica.</span>
+                            <span class="text-en" style="display: none;">Families who previously considered abandoning charcoal a distant possibility are now breathing a sigh of relief, as our innovation produces no toxic smoke.</span>
+                        </p>
                         <div class="location"><i class="fas fa-map-marker-alt"></i> Maputo, Moçambique</div>
                     </div>
                 </div>
@@ -939,33 +857,39 @@
             <div class="gallery-stats">
                 <div class="stat-item">
                     <div class="stat-number">+15.000</div>
-                    <div class="stat-label text-pt">Pessoas Beneficiadas</div>
-                    <div class="stat-label text-en" style="display: none;">People Benefited</div>
+                    <div class="stat-label">
+                        <span class="text-pt">Pessoas Beneficiadas</span>
+                        <span class="text-en" style="display: none;">People Benefited</span>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">+50</div>
-                    <div class="stat-label text-pt">Comunidades Alcançadas</div>
-                    <div class="stat-label text-en" style="display: none;">Communities Reached</div>
+                    <div class="stat-label">
+                        <span class="text-pt">Comunidades Alcançadas</span>
+                        <span class="text-en" style="display: none;">Communities Reached</span>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">+80 mil</div>
-                    <div class="stat-label text-pt">m³ de Biogás/ano</div>
-                    <div class="stat-label text-en" style="display: none;">m³ of Biogas/year</div>
+                    <div class="stat-label">
+                        <span class="text-pt">m³ de Biogás/ano</span>
+                        <span class="text-en" style="display: none;">m³ of Biogas/year</span>
+                    </div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-number">-45%</div>
-                    <div class="stat-label text-pt">Redução de CO₂</div>
-                    <div class="stat-label text-en" style="display: none;">CO₂ Reduction</div>
+                    <div class="stat-label">
+                        <span class="text-pt">Redução de CO₂</span>
+                        <span class="text-en" style="display: none;">CO₂ Reduction</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Chamada para Ação -->
             <div style="text-align: center; margin: 4rem 0;">
-                <h2 class="text-pt" style="color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;">
-                    Quer fazer parte desta transformação?
-                </h2>
-                <h2 class="text-en" style="display: none; color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;">
-                    Want to be part of this transformation?
+                <h2 style="color: var(--primary-color); font-size: 2rem; margin-bottom: 1rem;">
+                    <span class="text-pt">Quer fazer parte desta transformação?</span>
+                    <span class="text-en" style="display: none;">Want to be part of this transformation?</span>
                 </h2>
                 <p style="max-width: 600px; margin: 0 auto 2rem; color: var(--text-color);">
                     <span class="text-pt">Seu projeto também pode estar aqui. Vamos juntos criar um futuro mais sustentável.</span>
@@ -998,13 +922,17 @@
                     <div class="logo-container">
                         <img src="./img/Logo.png" alt="SolarGas Energy">
                     </div>
-                    <p class="text-pt">Energia limpa e sustentável</p>
-                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                    <p>
+                        <span class="text-pt">Energia limpa e sustentável</span>
+                        <span class="text-en" style="display: none;">Clean and sustainable energy</span>
+                    </p>
                 </div>
                 
                 <div class="footer-links">
-                    <h4 class="text-pt">Links Rápidos</h4>
-                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <h4>
+                        <span class="text-pt">Links Rápidos</span>
+                        <span class="text-en" style="display: none;">Quick Links</span>
+                    </h4>
                     <ul>
                         <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
@@ -1016,8 +944,10 @@
                 </div>
                 
                 <div class="footer-social">
-                    <h4 class="text-pt">Redes Sociais</h4>
-                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <h4>
+                        <span class="text-pt">Redes Sociais</span>
+                        <span class="text-en" style="display: none;">Social Media</span>
+                    </h4>
                     <div class="social-icons">
                         <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
                         <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -1027,8 +957,10 @@
             </div>
             
             <div class="footer-bottom">
-                <p class="text-pt">&copy; 2026 SolarGas Energy. Todos os direitos reservados.</p>
-                <p class="text-en" style="display: none;">&copy; 2026 SolarGas Energy. All rights reserved.</p>
+                <p>
+                    <span class="text-pt">&copy; 2026 SolarGas Energy. Todos os direitos reservados.</span>
+                    <span class="text-en" style="display: none;">&copy; 2026 SolarGas Energy. All rights reserved.</span>
+                </p>
             </div>
         </div>
     </footer>
@@ -1038,53 +970,130 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Script -->
+    <!-- Script COMPLETO -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             
-            // Menu Mobile
+            // ==================== MENU MOBILE ====================
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             const body = document.body;
+            const dropdowns = document.querySelectorAll('.dropdown');
 
             if (hamburger && navMenu) {
+                // Toggle menu
                 hamburger.addEventListener('click', function(e) {
                     e.preventDefault();
+                    e.stopPropagation();
+                    
                     this.classList.toggle('active');
                     navMenu.classList.toggle('active');
                     body.classList.toggle('menu-open');
                 });
 
-                document.querySelectorAll('.nav-menu a').forEach(link => {
+                // Fechar menu ao clicar em links (exceto dropdown toggle)
+                document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)').forEach(link => {
                     link.addEventListener('click', function() {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
                         body.classList.remove('menu-open');
+                        
+                        // Fechar todos os dropdowns
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
                     });
                 });
-            }
 
-            // Sistema de Tradução
-            const langButtons = document.querySelectorAll('.lang-btn');
-            
-            function setLanguage(lang) {
-                langButtons.forEach(btn => {
-                    btn.classList.toggle('active', btn.dataset.lang === lang);
-                });
-
-                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
-                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
-                });
-
-                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
-                    if (link.dataset && link.dataset[lang]) {
-                        link.textContent = link.dataset[lang];
+                // Fechar menu ao clicar fora
+                document.addEventListener('click', function(e) {
+                    if (navMenu.classList.contains('active') && 
+                        !navMenu.contains(e.target) && 
+                        !hamburger.contains(e.target)) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        
+                        // Fechar todos os dropdowns
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
                     }
                 });
 
-                localStorage.setItem('preferred-language', lang);
+                // Fechar menu ao redimensionar para desktop
+                window.addEventListener('resize', function() {
+                    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        
+                        // Fechar todos os dropdowns
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
+                    }
+                });
+
+                // Dropdown para mobile
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const link = dropdown.querySelector('.dropdown-toggle');
+                        if (link) {
+                            link.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                
+                                // Fechar outros dropdowns
+                                dropdowns.forEach(d => {
+                                    if (d !== dropdown) d.classList.remove('active');
+                                });
+                                
+                                dropdown.classList.toggle('active');
+                            });
+                        }
+                    });
+                }
             }
 
+            // ==================== SISTEMA DE TRADUÇÃO ====================
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                // Atualizar botões ativos
+                langButtons.forEach(btn => {
+                    if (btn.dataset.lang === lang) {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                // Mostrar/esconder elementos de texto
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    if (el.classList.contains(`text-${lang}`)) {
+                        el.style.display = '';
+                    } else {
+                        el.style.display = 'none';
+                    }
+                });
+
+                // Atualizar links do menu e footer
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        if (link.classList.contains('dropdown-toggle')) {
+                            const span = link.querySelector(`.text-${lang}`);
+                            if (span) span.style.display = '';
+                            const otherSpan = link.querySelector(`.text-${lang === 'pt' ? 'en' : 'pt'}`);
+                            if (otherSpan) otherSpan.style.display = 'none';
+                        } else {
+                            link.textContent = link.dataset[lang];
+                        }
+                    }
+                });
+
+                // Salvar preferência
+                localStorage.setItem('preferred-language', lang);
+                
+                // Atualizar atributo lang do HTML
+                document.documentElement.lang = lang;
+            }
+
+            // Adicionar eventos aos botões de idioma
             langButtons.forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -1092,43 +1101,66 @@
                 });
             });
 
+            // Carregar idioma salvo
             const savedLang = localStorage.getItem('preferred-language');
-            if (savedLang) {
+            if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
                 setLanguage(savedLang);
+            } else {
+                setLanguage('pt');
             }
 
-            // Header scroll effect
+            // ==================== HEADER SCROLL EFFECT ====================
             const header = document.querySelector('.header');
+            
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
+                    header.style.background = 'rgba(255,255,255,0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
                 } else {
-                    header.classList.remove('scrolled');
+                    header.style.background = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                    header.style.boxShadow = 'var(--shadow)';
                 }
             });
 
-            // Filtros da Galeria
+            // ==================== ACTIVE MENU ITEM ====================
+            const currentPage = window.location.pathname.split('/').pop();
+            const menuItems = document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)');
+            
+            menuItems.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href === currentPage || 
+                    (currentPage === '' && href === 'index.html') ||
+                    (currentPage === 'galeria-projecto.html' && href === 'galeria-projecto.html')) {
+                    item.classList.add('active');
+                }
+            });
+
+            // ==================== FILTROS DA GALERIA ====================
             const filterBtns = document.querySelectorAll('.filter-btn');
             const galleryItems = document.querySelectorAll('.gallery-item');
 
-            filterBtns.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
+            if (filterBtns.length) {
+                filterBtns.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        filterBtns.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
 
-                    const filterValue = this.dataset.filter;
+                        const filterValue = this.dataset.filter;
 
-                    galleryItems.forEach(item => {
-                        if (filterValue === 'all' || item.dataset.category.includes(filterValue)) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
+                        galleryItems.forEach(item => {
+                            if (filterValue === 'all' || item.dataset.category.includes(filterValue)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        });
                     });
                 });
-            });
+            }
 
-            // Lightbox
+            // ==================== LIGHTBOX ====================
             window.currentImageIndex = 0;
             window.galleryImages = [];
 
@@ -1151,9 +1183,32 @@
                     openLightbox(img.src, title + ' - ' + description);
                 });
             });
-        });
 
-        // Funções do Lightbox
+            // ==================== ANIMAÇÃO DE ENTRADA ====================
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.gallery-item, .stat-item').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+
+        }); // Fim do DOMContentLoaded
+
+        // ==================== FUNÇÕES GLOBAIS DO LIGHTBOX ====================
         function openLightbox(src, caption) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -1198,19 +1253,6 @@
             } else if (e.key === 'ArrowRight') {
                 changeImage(1);
             }
-
-            // Dropdown para mobile
-const dropdowns = document.querySelectorAll('.dropdown');
-
-if (window.innerWidth <= 768) {
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('.dropdown-toggle');
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
-        });
-    });
-}
         });
     </script>
 </body>
