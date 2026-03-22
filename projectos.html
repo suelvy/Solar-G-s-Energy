@@ -21,7 +21,7 @@
         }
 
         .logo-container {
-            max-width: 60px;
+            max-width: 600px;
             height: auto;
         }
 
@@ -34,7 +34,7 @@
 
         /* ========== HERO DA PÁGINA ========== */
         .page-hero {
-            min-height: 60vh;
+            min-height: 100vh;
             position: relative;
             display: flex;
             align-items: center;
@@ -426,6 +426,7 @@
             max-width: 700px;
             margin: 0 auto;
             line-height: 1.8;
+            text-align: center;
         }
 
         .tanks-grid {
@@ -474,7 +475,9 @@
 
         .tank-info h4 {
             font-size: 1.3rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.8rem;
+            word-spacing: normal;
+            letter-spacing: normal;
         }
 
         .tank-info p {
@@ -483,6 +486,10 @@
             margin-bottom: 1rem;
             line-height: 1.6;
             text-align: justify;
+            word-spacing: normal;
+            letter-spacing: normal;
+            word-break: break-word;
+            overflow-wrap: break-word;
         }
 
         .tank-capacity {
@@ -493,6 +500,9 @@
             border-radius: 50px;
             font-weight: 600;
             font-size: 0.9rem;
+            text-align: center;
+            word-spacing: normal;
+            letter-spacing: normal;
         }
 
         /* ========== PROGRAMAS DE IMPACTO ========== */
@@ -673,6 +683,7 @@
             margin-left: auto;
             margin-right: auto;
             line-height: 1.8;
+            text-align: center;
         }
 
         .cta-section .btn-primary {
@@ -773,6 +784,98 @@
 
         .nav-menu .dropdown:hover > a i {
             transform: rotate(180deg);
+        }
+
+        /* ========== CORREÇÕES DE ESPAÇAMENTO E JUSTIFICAÇÃO ========== */
+        
+        /* Garantir justificação em todos os textos principais */
+        p, .project-card-content p, .featured-content p, .projects-intro p,
+        .impact-card p, .testimonial-text, .section-subtitle {
+            text-align: justify !important;
+            hyphens: auto !important;
+            word-spacing: normal !important;
+            letter-spacing: normal !important;
+        }
+        
+        /* Corrigir espaçamento excessivo entre palavras */
+        body, p, h1, h2, h3, h4, h5, h6, span, div, li, a {
+            word-spacing: normal !important;
+            letter-spacing: normal !important;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Ajustar line-height para melhor legibilidade */
+        p, .project-card-content p, .featured-content p,
+        .projects-intro p, .impact-card p {
+            line-height: 1.7 !important;
+            margin-bottom: 1rem;
+        }
+        
+        /* Corrigir espaçamento específico em cards de projetos */
+        .project-card-content p {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+        
+        /* Garantir que títulos mantenham espaçamento adequado */
+        h1, h2, h3, h4, .section-title, .featured-content h2 {
+            word-spacing: normal !important;
+            letter-spacing: -0.3px !important;
+        }
+        
+        /* Ajuste para o texto do hero */
+        .hero-content p, .page-hero p {
+            text-align: center !important;
+        }
+        
+        /* Manter títulos centralizados */
+        .section-title, .projects-intro h2, .water-tanks-header h2,
+        .impact-programs .section-title {
+            text-align: center !important;
+        }
+        
+        /* Ajuste para textos que devem ficar centralizados */
+        .cta-section p, .section-subtitle, .water-tanks-header p {
+            text-align: center !important;
+        }
+        
+        /* Corrigir espaçamento em listas */
+        ul, ol {
+            word-spacing: normal !important;
+        }
+        
+        li {
+            text-align: left !important;
+        }
+        
+        /* Corrigir espaçamento específico dos reservatórios */
+        .tank-info p {
+            text-align: justify !important;
+            word-spacing: normal !important;
+            letter-spacing: normal !important;
+            line-height: 1.6 !important;
+            margin-bottom: 1rem !important;
+            word-break: break-word !important;
+            overflow-wrap: break-word !important;
+        }
+        
+        .tank-info h4 {
+            word-spacing: normal !important;
+            letter-spacing: normal !important;
+            margin-bottom: 0.8rem !important;
+        }
+        
+        .tank-capacity {
+            word-spacing: normal !important;
+            letter-spacing: normal !important;
+            display: inline-block;
+            text-align: center !important;
+        }
+        
+        .water-tanks-section p,
+        .water-tanks-section span {
+            word-spacing: normal !important;
+            letter-spacing: normal !important;
         }
 
         /* ========== RESPONSIVIDADE ========== */
@@ -958,10 +1061,10 @@
             <ul class="nav-menu">
                 <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
                 <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
-                <li><a href="productos.html" data-pt="Productos" data-en="Products">Productos</a></li>
+                <li><a href="produtos.html" data-pt="Productos" data-en="Products">Productos</a></li>
                 <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
                 
-                <!-- DROPDOWN DE PROJECTOS (ÚNICO LUGAR ONDE APARECEM AS OPÇÕES) -->
+                <!-- DROPDOWN DE PROJECTOS -->
                 <li class="dropdown">
                     <a href="javascript:void(0);" class="dropdown-toggle">
                         <span class="text-pt">Projectos</span>
@@ -1000,7 +1103,7 @@
     <!-- HERO DA PÁGINA DE PROJETOS -->
     <section class="page-hero">
         <div class="hero-background">
-            <img src="./img/hero-produtos-2.jpeg" alt="Projetos Solar Gás Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Nossos+Projetos'">
+            <img src="./img/hero-projectos.jpeg" alt="Projetos Solar Gás Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Nossos+Projetos'">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -1112,7 +1215,7 @@
                 </div>
             </div>
 
-            <!-- Projeto 2: Sistema de Biogás para Granja -->
+            <!-- Projeto 2: Sistema de Biogás para criação de galinhas -->
             <div class="project-card">
                 <div class="project-card-image">
                     <img src="./img/Sistema biogás granja.jpeg" alt="Granja Avícola" onerror="this.src='https://via.placeholder.com/400x300/FFB300/ffffff?text=Granja+Avícola'">
@@ -1123,8 +1226,8 @@
                 </div>
                 <div class="project-card-content">
                     <h3>
-                        <span class="text-pt">Sistema de Biogás para Granja</span>
-                        <span class="text-en" style="display: none;">Biogas System for Poultry Farm</span>
+                        <span class="text-pt">Aproveitamento e reutilização do esterco de galinha em sistemas biogás</span>
+                        <span class="text-en" style="display: none;">Utilization and reuse of chicken manure in biogas systems</span>
                     </h3>
                     <p>
                         <span class="text-pt">Projeto de aproveitamento de resíduos avícolas para geração de energia e produção de biofertilizante em granja de médio porte com 5.000 aves, gerando economia de 40% nos custos energéticos.</span>
@@ -1193,7 +1296,7 @@
             <div class="tanks-grid">
                 <div class="tank-card">
                     <div class="tank-image">
-                        <img src="./img/reserva-1000l.jpeg" alt="Reservatório 1000L" onerror="this.src='https://via.placeholder.com/300x200/2196F3/ffffff?text=1000L'">
+                        <img src="./img/reserva-01.jpeg" alt="Reservatório 1000L" onerror="this.src='https://via.placeholder.com/300x200/2196F3/ffffff?text=1000L'">
                     </div>
                     <div class="tank-info">
                         <h4>Reservatório 1000L</h4>
@@ -1207,7 +1310,7 @@
                 
                 <div class="tank-card">
                     <div class="tank-image">
-                        <img src="./img/gale-psi-01.jpeg" alt="Reservatório 5000L" onerror="this.src='https://via.placeholder.com/300x200/1976D2/ffffff?text=5000L'">
+                        <img src="./img/reserva-02.jpeg" alt="Reservatório 5000L" onerror="this.src='https://via.placeholder.com/300x200/1976D2/ffffff?text=5000L'">
                     </div>
                     <div class="tank-info">
                         <h4>Reservatório 5000L</h4>
@@ -1235,7 +1338,7 @@
                 
                 <div class="tank-card">
                     <div class="tank-image">
-                        <img src="./img/" alt="Reservatório Personalizado" onerror="this.src='https://via.placeholder.com/300x200/1565C0/ffffff?text=Sob+Medida'">
+                        <img src="./img/reseva-04.jpeg" alt="Reservatório Personalizado" onerror="this.src='https://via.placeholder.com/300x200/1565C0/ffffff?text=Sob+Medida'">
                     </div>
                     <div class="tank-info">
                         <h4>
@@ -1368,7 +1471,7 @@
             <div class="footer-content">
                 <div class="footer-info">
                     <div class="logo-container">
-                        <img src="./img/logotipo-melh.jpeg" alt="Solar Gás Energy" onerror="this.src='https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas'">
+                        <img src="./img/Logo.png" alt="Solar Gás Energy" onerror="this.src='https://via.placeholder.com/150x60/2E7D32/ffffff?text=Solar+Gas'">
                     </div>
                     <p>
                         <span class="text-pt">Energia limpa e sustentável</span>
@@ -1382,7 +1485,7 @@
                         <span class="text-en" style="display: none;">Quick Links</span>
                     </h4>
                     <ul>
-                         <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
                         <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
                         <li><a href="produtos.html" data-pt="Produtos" data-en="Products">Produtos</a></li>
                         <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>

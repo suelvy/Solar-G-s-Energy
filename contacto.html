@@ -16,7 +16,7 @@
     <style>
         /* ========== CONTACT PAGE STYLES ========== */
 .page-header {
-    min-height: 70vh; /* Ajuste conforme necessário */
+    min-height: 70vh;
     position: relative;
     display: flex;
     align-items: center;
@@ -26,7 +26,7 @@
     overflow: hidden;
     margin: 0;
     padding: 0;
-    background: none; /* Remove o gradiente verde */
+    background: none;
 }
 
 /* Container da imagem de fundo */
@@ -54,7 +54,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); /* Ajuste a opacidade (0.3 a 0.7) */
+    background: rgba(0, 0, 0, 0.5);
     z-index: 2;
 }
 
@@ -768,6 +768,21 @@
         margin-left: auto;
     }
 }
+
+/* Loading spinner */
+.btn-submit.loading {
+    opacity: 0.7;
+    cursor: wait;
+}
+
+.btn-submit.loading i {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
     </style>
 </head>
 <body>
@@ -838,11 +853,10 @@
     </header>
 
     <!-- Page Header -->
-    <!-- Page Header COM IMAGEM DE FUNDO -->
 <section class="page-header">
     <!-- Imagem de fundo -->
     <div class="hero-background">
-        <img src="./img/contacto.jpeg" alt="Sobre a SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Sobre+Nós'">
+        <img src="./img/contacto.jpeg" alt="Contacte a SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Sobre+Nós'">
     </div>
     
     <!-- Overlay escuro -->
@@ -850,10 +864,10 @@
     
     <!-- Conteúdo -->
     <div class="container">
-        <h1 class="text-pt">Sobre Nós</h1>
-        <h1 class="text-en" style="display: none;">About Us</h1>
-        <p class="text-pt">Conheça a história e os valores da SolarGas Energy</p>
-        <p class="text-en" style="display: none;">Learn about the history and values of SolarGas Energy</p>
+        <h1 class="text-pt">Contacte-nos</h1>
+        <h1 class="text-en" style="display: none;">Contact Us</h1>
+        <p class="text-pt">Entre em contacto com a SolarGas Energy através dos meios disponibilizados</p>
+        <p class="text-en" style="display: none;">Contact SolarGas Energy through the provided channels</p>
     </div>
 </section>
 
@@ -967,7 +981,7 @@
                     </div>
                 </div>
                 
-                <!-- Contact Form -->
+                <!-- Contact Form - COM ENVIO DE EMAIL -->
                 <div class="contact-form-container">
                     <h2>
                         <span class="text-pt">Envie uma mensagem</span>
@@ -976,7 +990,14 @@
                     
                     <div id="form-feedback" class="form-feedback"></div>
                     
-                    <form id="contactForm" action="#" method="POST">
+                    <!-- IMPORTANTE: Substitua o email abaixo pelo email da empresa -->
+                    <form id="contactForm" action="https://formsubmit.co/Info@solargas-e.com" method="POST">
+                        <!-- Campos ocultos para configuração do FormSubmit -->
+                        <input type="hidden" name="_subject" value="Nova mensagem do site SolarGas Energy">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next" value="https://solargas-e.com/obrigado.html">
+                        
                         <div class="form-row">
                             <div class="form-group">
                                 <label class="form-label" for="nome">
@@ -1016,16 +1037,16 @@
                                 <select class="form-control" id="assunto" name="assunto" required>
                                     <option value="" disabled selected class="text-pt">Selecione um assunto</option>
                                     <option value="" disabled selected class="text-en" style="display: none;">Select a subject</option>
-                                    <option value="informacoes" class="text-pt">Informações sobre produtos</option>
-                                    <option value="informacoes" class="text-en" style="display: none;">Product information</option>
-                                    <option value="orcamento" class="text-pt">Solicitar orçamento</option>
-                                    <option value="orcamento" class="text-en" style="display: none;">Request quote</option>
-                                    <option value="visita" class="text-pt">Visita técnica</option>
-                                    <option value="visita" class="text-en" style="display: none;">Technical visit</option>
-                                    <option value="suporte" class="text-pt">Suporte técnico</option>
-                                    <option value="suporte" class="text-en" style="display: none;">Technical support</option>
-                                    <option value="outro" class="text-pt">Outro</option>
-                                    <option value="outro" class="text-en" style="display: none;">Other</option>
+                                    <option value="Informações sobre produtos" class="text-pt">Informações sobre produtos</option>
+                                    <option value="Product information" class="text-en" style="display: none;">Product information</option>
+                                    <option value="Solicitar orçamento" class="text-pt">Solicitar orçamento</option>
+                                    <option value="Request quote" class="text-en" style="display: none;">Request quote</option>
+                                    <option value="Visita técnica" class="text-pt">Visita técnica</option>
+                                    <option value="Technical visit" class="text-en" style="display: none;">Technical visit</option>
+                                    <option value="Suporte técnico" class="text-pt">Suporte técnico</option>
+                                    <option value="Technical support" class="text-en" style="display: none;">Technical support</option>
+                                    <option value="Outro" class="text-pt">Outro</option>
+                                    <option value="Other" class="text-en" style="display: none;">Other</option>
                                 </select>
                             </div>
                         </div>
@@ -1040,14 +1061,14 @@
                         </div>
                         
                         <div class="form-check">
-                            <input type="checkbox" id="consentimento" name="consentimento" required>
+                            <input type="checkbox" id="consentimento" name="consentimento" value="Aceito" required>
                             <label for="consentimento">
                                 <span class="text-pt">Concordo com a política de privacidade e autorizo o contato</span>
                                 <span class="text-en" style="display: none;">I agree to the privacy policy and authorize contact</span>
                             </label>
                         </div>
                         
-                        <button type="submit" class="btn-submit">
+                        <button type="submit" class="btn-submit" id="submitBtn">
                             <span class="text-pt">Enviar mensagem</span>
                             <span class="text-en" style="display: none;">Send message</span>
                             <i class="fas fa-paper-plane"></i>
@@ -1234,6 +1255,7 @@
             const hamburger = document.querySelector('.hamburger');
             const navMenu = document.querySelector('.nav-menu');
             const body = document.body;
+            const dropdowns = document.querySelectorAll('.dropdown');
 
             if (hamburger && navMenu) {
                 hamburger.addEventListener('click', function(e) {
@@ -1243,13 +1265,27 @@
                     body.classList.toggle('menu-open');
                 });
 
-                document.querySelectorAll('.nav-menu a').forEach(link => {
+                document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)').forEach(link => {
                     link.addEventListener('click', function() {
                         hamburger.classList.remove('active');
                         navMenu.classList.remove('active');
                         body.classList.remove('menu-open');
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
                     });
                 });
+
+                // Dropdown para mobile
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const link = dropdown.querySelector('.dropdown-toggle');
+                        if (link) {
+                            link.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                dropdown.classList.toggle('active');
+                            });
+                        }
+                    });
+                }
             }
 
             // Sistema de Tradução
@@ -1302,21 +1338,24 @@
             const header = document.querySelector('.header');
             window.addEventListener('scroll', function() {
                 if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
+                    header.style.background = 'rgba(255,255,255,0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
+                    header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
                 } else {
-                    header.classList.remove('scrolled');
+                    header.style.background = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                    header.style.boxShadow = 'var(--shadow)';
                 }
             });
 
-            // Form Validation
+            // Form Validation e feedback
             const contactForm = document.getElementById('contactForm');
             const formFeedback = document.getElementById('form-feedback');
+            const submitBtn = document.getElementById('submitBtn');
 
             if (contactForm) {
+                // Remover validação padrão para evitar conflito com o FormSubmit
                 contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    // Simple validation
                     const nome = document.getElementById('nome').value;
                     const email = document.getElementById('email').value;
                     const assunto = document.getElementById('assunto').value;
@@ -1324,6 +1363,7 @@
                     const consentimento = document.getElementById('consentimento').checked;
 
                     if (!nome || !email || !assunto || !mensagem || !consentimento) {
+                        e.preventDefault();
                         formFeedback.className = 'form-feedback error';
                         
                         const currentLang = document.querySelector('.lang-btn.active').dataset.lang;
@@ -1333,7 +1373,6 @@
                             formFeedback.innerHTML = 'Please fill in all required fields.';
                         }
                         
-                        // Highlight empty fields
                         document.querySelectorAll('[required]').forEach(field => {
                             if (!field.value || (field.type === 'checkbox' && !field.checked)) {
                                 field.classList.add('error');
@@ -1341,45 +1380,19 @@
                                 field.classList.remove('error');
                             }
                         });
+                        
+                        // Scroll para o feedback
+                        formFeedback.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     } else {
-                        // Success - In a real scenario, you'd send this to a server
-                        formFeedback.className = 'form-feedback success';
+                        // Mostrar loading no botão
+                        submitBtn.classList.add('loading');
+                        submitBtn.innerHTML = '<span class="text-pt">Enviando...</span><span class="text-en" style="display: none;">Sending...</span><i class="fas fa-spinner"></i>';
                         
-                        const currentLang = document.querySelector('.lang-btn.active').dataset.lang;
-                        if (currentLang === 'pt') {
-                            formFeedback.innerHTML = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
-                        } else {
-                            formFeedback.innerHTML = 'Message sent successfully! We will contact you soon.';
-                        }
-                        
-                        contactForm.reset();
-                        
-                        // Remove error class
-                        document.querySelectorAll('.error').forEach(field => {
-                            field.classList.remove('error');
-                        });
-                        
-                        // Hide success message after 5 seconds
-                        setTimeout(() => {
-                            formFeedback.style.display = 'none';
-                            formFeedback.className = 'form-feedback';
-                        }, 5000);
+                        // O formulário será enviado normalmente para o FormSubmit
+                        // O FormSubmit redirecionará para a página de obrigado
                     }
                 });
             }
-
-            // Dropdown para mobile
-const dropdowns = document.querySelectorAll('.dropdown');
-
-if (window.innerWidth <= 768) {
-    dropdowns.forEach(dropdown => {
-        const link = dropdown.querySelector('.dropdown-toggle');
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            dropdown.classList.toggle('active');
-        });
-    });
-}
         });
     </script>
 </body>

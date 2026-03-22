@@ -107,6 +107,36 @@
             margin-top: 0;
         }
 
+        /* ========== ESTILO DESTACADO PARA SUBTÍTULOS ========== */
+        .section-subtitle {
+            text-align: left;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: rgb(255, 196, 0);
+            margin-bottom: 2.5rem;
+            position: relative;
+            display: block;
+            width: 100%;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+            letter-spacing: -0.3px;
+        }
+        
+        .section-subtitle::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 0.8rem 0 0;
+            border-radius: 2px;
+        }
+        
+        /* Efeito de destaque sutil ao passar o mouse */
+        .section-subtitle:hover {
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
         /* ========== FILTROS ========== */
         .product-filters {
             display: flex;
@@ -514,6 +544,10 @@
             .nav-menu .dropdown > a i {
                 margin-left: auto;
             }
+            
+            .section-subtitle {
+                font-size: 1.2rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -531,6 +565,10 @@
             
             .page-hero h1 {
                 font-size: 2rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1.1rem;
             }
         }
     </style>
@@ -567,6 +605,7 @@
                 <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
                 <li><a href="productos.html" class="active" data-pt="Productos" data-en="Products">Productos</a></li>
                 <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                
                 
                 <!-- DROPDOWN DE PROJECTOS -->
                 <li class="dropdown">
@@ -606,7 +645,7 @@
     <!-- HERO DA PÁGINA DE PRODUTOS -->
     <section class="page-hero">
         <div class="hero-background">
-            <img src="./img/hero-produto11.jpeg" alt="Produtos SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Produtos+Sustainable'">
+            <img src="./img/hero-produtos01.jpeg" alt="Produtos SolarGas Energy" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Produtos+Sustainable'">
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -629,12 +668,12 @@
                 <span class="text-en" style="display: none;">All</span>
             </button>
             <button class="filter-btn" data-filter="kits">
-                <span class="text-pt">Kits Biodigestor</span>
+                <span class="text-pt">Kits Biodigestores</span>
                 <span class="text-en" style="display: none;">Biodigester Kits</span>
             </button>
             <button class="filter-btn" data-filter="fogoes">
-                <span class="text-pt">Fogões Melhorados</span>
-                <span class="text-en" style="display: none;">Improved Stoves</span>
+                <span class="text-pt">Fogões Melhorados De Baixo Consumo</span>
+                <span class="text-en" style="display: none;">Improved Low-consumption Stoves</span>
             </button>
             <button class="filter-btn" data-filter="solares">
                 <span class="text-pt">Sistemas Solares Domésticos</span>
