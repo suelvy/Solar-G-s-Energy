@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Serviços Extras - SolarGas Energy</title>
+    
+    <!-- Fonts e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* ========== ESTILOS GERAIS ========== */
+        .page-hero {
+            min-height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .page-hero .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .page-hero .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .page-hero .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .page-hero .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .logo-container {
+            max-width: 60px;
+            height: auto;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 3rem 0 1.5rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        /* ========== RESERVATÓRIOS SECTION ========== */
+        .reservoirs-section {
+            margin: 2rem 0 4rem;
+        }
+
+        .reservoirs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .reservoir-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .reservoir-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .reservoir-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .reservoir-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .reservoir-card:hover .reservoir-image img {
+            transform: scale(1.05);
+        }
+
+        .reservoir-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .reservoir-info h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .reservoir-info p {
+            color: var(--text-color);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .reservoir-capacity {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        /* ========== DIMENSIONAMENTO SECTION ========== */
+        .sizing-section {
+            background: linear-gradient(135deg, var(--light-color), var(--white));
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .sizing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .sizing-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .sizing-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .sizing-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .sizing-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .sizing-card p {
+            color: var(--text-color);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+
+        .sizing-features {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .sizing-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            text-align: justify;
+        }
+
+        .sizing-features i {
+            color: var(--secondary-color);
+        }
+
+        .btn-sizing {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-sizing:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* ========== BACK BUTTON ========== */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--light-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateX(-5px);
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-section .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 1024px) {
+            .reservoirs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .sizing-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reservoirs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .sizing-section {
+                padding: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ========== MENU DROPDOWN ========== */
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu .dropdown {
+            position: relative;
+        }
+
+        .nav-menu .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            padding: 0.8rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 10px;
+        }
+
+        .nav-menu .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--white);
+        }
+
+        .nav-menu .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+
+        .nav-menu .dropdown-menu li {
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav-menu .dropdown-menu a {
+            padding: 0.8rem 1.5rem;
+            display: block;
+            text-align: left;
+            font-size: 0.9rem;
+            text-transform: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu .dropdown-menu a:hover {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding-left: 2rem;
+        }
+
+        .nav-menu .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-menu .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                min-width: 100%;
+                transform: none;
+                display: none;
+            }
+            
+            .nav-menu .dropdown-menu::before {
+                display: none;
+            }
+            
+            .nav-menu .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .nav-menu .dropdown > a i {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info-top">
+                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-btn" data-lang="en">ENG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./img/Logo.png" alt="SolarGas Energy">
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+                <li><a href="produtos.html" data-pt="Productos" data-en="Products">Productos</a></li>
+                
+                <!-- DROPDOWN DE SERVIÇOS -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <span class="text-pt">Serviços</span>
+                        <span class="text-en" style="display: none;">Services</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="servicos.html">
+                                <i class="fas fa-cogs"></i>
+                                <span class="text-pt">Serviços Principais</span>
+                                <span class="text-en" style="display: none;">Main Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="energia-renovaveis.html">
+                                <i class="fas fa-solar-panel"></i>
+                                <span class="text-pt">Serviços de Energias Renováveis</span>
+                                <span class="text-en" style="display: none;">Renewable Energy Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="serviços-extra.html">
+                                <i class="fas fa-water"></i>
+                                <span class="text-pt">Serviços Extras</span>
+                                <span class="text-en" style="display: none;">Extra Services</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- DROPDOWN DE PROJECTOS -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <span class="text-pt">Projectos</span>
+                        <span class="text-en" style="display: none;">Projects</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="projectos.html">
+                                <i class="fas fa-clipboard-list"></i>
+                                <span class="text-pt">Nossos Projectos</span>
+                                <span class="text-en" style="display: none;">Our Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="galeria-projecto.html">
+                                <i class="fas fa-images"></i>
+                                <span class="text-pt">Galeria Projectos</span>
+                                <span class="text-en" style="display: none;">Projects Gallery</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO DA PÁGINA -->
+    <section class="page-hero">
+        <div class="hero-background">
+            <img src="./img/servicos-extras-hero.jpg" alt="Serviços Extras" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Serviços+Extras'">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>
+                <span class="text-pt">Serviços Extras</span>
+                <span class="text-en" style="display: none;">Extra Services</span>
+            </h1>
+            <p>
+                <span class="text-pt">Soluções completas para gestão de água e dimensionamento de sistemas</span>
+                <span class="text-en" style="display: none;">Complete solutions for water management and system sizing</span>
+            </p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Botão voltar -->
+        <a href="servicos.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span class="text-pt">Voltar para Serviços</span>
+            <span class="text-en" style="display: none;">Back to Services</span>
+        </a>
+
+        <!-- PARTE 1: RESERVATÓRIOS DE ÁGUA -->
+        <div class="reservoirs-section">
+            <h2 class="section-title">
+                <span class="text-pt">Dimensionamento De Reservatórios de Água</span>
+                <span class="text-en" style="display: none;">Sizing Of Water Reservoirs</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="text-pt">Soluções para armazenamento de água em diferentes capacidades, ideais para agricultura, piscicultura e abastecimento comunitário</span>
+                <span class="text-en" style="display: none;">Storage solutions for water in different capacities, ideal for agriculture, fish farming and community supply</span>
+            </p>
+
+            <div class="reservoirs-grid">
+                <div class="reservoir-card">
+                    <div class="reservoir-image">
+                        <img src="./img/reserva-01.jpeg" alt="Reservatório 1000L" onerror="this.src='https://via.placeholder.com/300x200/2196F3/ffffff?text=1000L'">
+                    </div>
+                    <div class="reservoir-info">
+                        <h3>Reservatório 1000L</h3>
+                        <p class="text-pt">Ideal para uso doméstico e pequenas hortas familiares, garantindo água durante todo o ano para até 5 famílias.</p>
+                        <p class="text-en" style="display: none;">Ideal for domestic use and small family gardens, guaranteeing water throughout the year for up to 5 families.</p>
+                        <span class="reservoir-capacity">1000 Litros</span>
+                    </div>
+                </div>
+
+                <div class="reservoir-card">
+                    <div class="reservoir-image">
+                        <img src="./img/reserva-02.jpeg" alt="Reservatório 5000L" onerror="this.src='https://via.placeholder.com/300x200/1976D2/ffffff?text=5000L'">
+                    </div>
+                    <div class="reservoir-info">
+                        <h3>Reservatório 5000L</h3>
+                        <p class="text-pt">Para propriedades rurais e agricultura familiar, permitindo irrigação de até 2 hectares e criação de pequenos animais.</p>
+                        <p class="text-en" style="display: none;">For rural properties and family farming, allowing irrigation of up to 2 hectares and raising small animals.</p>
+                        <span class="reservoir-capacity">5000 Litros</span>
+                    </div>
+                </div>
+
+                <div class="reservoir-card">
+                    <div class="reservoir-image">
+                        <img src="./img/reserva-3.jpeg" alt="Reservatório 10000L" onerror="this.src='https://via.placeholder.com/300x200/0D47A1/ffffff?text=10000L'">
+                    </div>
+                    <div class="reservoir-info">
+                        <h3>Reservatório 10000L</h3>
+                        <p class="text-pt">Para agricultura comercial e piscicultura, suportando tanques de peixes e irrigação de grandes áreas cultivadas.</p>
+                        <p class="text-en" style="display: none;">For commercial agriculture and fish farming, supporting fish tanks and irrigation of large cultivated areas.</p>
+                        <span class="reservoir-capacity">10000 Litros</span>
+                    </div>
+                </div>
+
+                <div class="reservoir-card">
+                    <div class="reservoir-image">
+                        <img src="./img/reseva-04.jpeg" alt="Reservatório Sob Medida" onerror="this.src='https://via.placeholder.com/300x200/1565C0/ffffff?text=Sob+Medida'">
+                    </div>
+                    <div class="reservoir-info">
+                        <h3>
+                            <span class="text-pt">Sob Medida</span>
+                            <span class="text-en" style="display: none;">Custom Made</span>
+                        </h3>
+                        <p class="text-pt">Projetos personalizados para necessidades específicas, com dimensionamento técnico e materiais de alta durabilidade.</p>
+                        <p class="text-en" style="display: none;">Custom projects for specific needs, with technical sizing and high durability materials.</p>
+                        <span class="reservoir-capacity">
+                            <span class="text-pt">Sob Consulta</span>
+                            <span class="text-en" style="display: none;">Upon Request</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PARTE 2: DIMENSIONAMENTO DE TANQUES DE ÁGUA E BIODIGESTOR DE GRANDE DIMENSÃO -->
+        <div class="sizing-section">
+            <h2 class="section-title">
+                <span class="text-pt">Dimensionamento Especializado</span>
+                <span class="text-en" style="display: none;">Specialized Sizing</span>
+            </h2>
+            <p class="section-subtitle">
+                <span class="text-pt">Projectos personalizados para necessidades específicas de armazenamento de água e sistemas de biogás de grande porte</span>
+                <span class="text-en" style="display: none;">Customized projects for specific water storage needs and large-scale biogas systems</span>
+            </p>
+
+            <div class="sizing-grid">
+                <!-- Dimensionamento de Tanques de Água -->
+                <div class="sizing-card">
+                    <div class="sizing-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Dimensionamento de Tanques de Água</span>
+                        <span class="text-en" style="display: none;">Water Tank Sizing</span>
+                    </h3>
+                    <p class="text-pt">
+                        Realizamos o dimensionamento técnico de tanques de água de acordo com as necessidades específicas de cada cliente, considerando:
+                    </p>
+                    <ul class="sizing-features text-pt">
+                        <li><i class="fas fa-check-circle"></i> Consumo diário e demanda de água</li>
+                        <li><i class="fas fa-check-circle"></i> Área disponível para instalação</li>
+                        <li><i class="fas fa-check-circle"></i> Tipo de uso (doméstico, agrícola, comercial)</li>
+                        <li><i class="fas fa-check-circle"></i> Períodos de seca e chuvas na região</li>
+                        <li><i class="fas fa-check-circle"></i> Materiais mais adequados (polietileno, fibra, alvenaria)</li>
+                    </ul>
+                    <p class="text-en" style="display: none;">
+                        We carry out technical sizing of water tanks according to each client's specific needs, considering:
+                    </p>
+                    <ul class="sizing-features text-en" style="display: none;">
+                        <li><i class="fas fa-check-circle"></i> Daily consumption and water demand</li>
+                        <li><i class="fas fa-check-circle"></i> Available installation area</li>
+                        <li><i class="fas fa-check-circle"></i> Type of use (domestic, agricultural, commercial)</li>
+                        <li><i class="fas fa-check-circle"></i> Dry and rainy seasons in the region</li>
+                        <li><i class="fas fa-check-circle"></i> Most suitable materials (polyethylene, fiber, masonry)</li>
+                    </ul>
+                    <a href="contacto.html" class="btn-sizing">
+                        <span class="text-pt">Solicitar Dimensionamento</span>
+                        <span class="text-en" style="display: none;">Request Sizing</span>
+                    </a>
+                </div>
+
+                <!-- Dimensionamento de Biodigestor de Grande Dimensão (Personalizado) -->
+                <div class="sizing-card">
+                    <div class="sizing-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3>
+                        <span class="text-pt">Biodigestor de Grande Dimensão (Personalizado)</span>
+                        <span class="text-en" style="display: none;">Large-Scale Biodigester (Customized)</span>
+                    </h3>
+                    <p class="text-pt">
+                        Desenvolvemos projetos de biodigestores de grande porte para produtores rurais, cooperativas e agroindústrias, com dimensionamento baseado em:
+                    </p>
+                    <ul class="sizing-features text-pt">
+                        <li><i class="fas fa-check-circle"></i> Volume diário de resíduos orgânicos disponíveis</li>
+                        <li><i class="fas fa-check-circle"></i> Demanda energética (cozinha, aquecimento, eletricidade)</li>
+                        <li><i class="fas fa-check-circle"></i> Necessidade de biofertilizante para produção agrícola</li>
+                        <li><i class="fas fa-check-circle"></i> Espaço disponível para instalação</li>
+                        <li><i class="fas fa-check-circle"></i> Capacidade de expansão futura</li>
+                    </ul>
+                    <p class="text-en" style="display: none;">
+                        We develop large-scale biodigester projects for rural producers, cooperatives and agribusinesses, with sizing based on:
+                    </p>
+                    <ul class="sizing-features text-en" style="display: none;">
+                        <li><i class="fas fa-check-circle"></i> Daily volume of organic waste available</li>
+                        <li><i class="fas fa-check-circle"></i> Energy demand (cooking, heating, electricity)</li>
+                        <li><i class="fas fa-check-circle"></i> Biofertilizer needs for agricultural production</li>
+                        <li><i class="fas fa-check-circle"></i> Available installation space</li>
+                        <li><i class="fas fa-check-circle"></i> Future expansion capacity</li>
+                    </ul>
+                    <a href="contacto.html" class="btn-sizing">
+                        <span class="text-pt">Solicitar Projecto</span>
+                        <span class="text-en" style="display: none;">Request Project</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>
+                <span class="text-pt">Precisa de um projecto personalizado?</span>
+                <span class="text-en" style="display: none;">Need a customized project?</span>
+            </h2>
+            <p>
+                <span class="text-pt">Entre em contacto para discutirmos suas necessidades e criarmos a melhor solução para você.</span>
+                <span class="text-en" style="display: none;">Contact us to discuss your needs and create the best solution for you.</span>
+            </p>
+            <a href="contacto.html" class="btn-primary">
+                <span class="text-pt">Solicitar Orçamento</span>
+                <span class="text-en" style="display: none;">Request Quote</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container">
+                        <img src="./img/Logo.png" alt="SolarGas Energy">
+                    </div>
+                    <p class="text-pt">Energia limpa e sustentável</p>
+                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-pt">Links Rápidos</h4>
+                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                        <li><a href="produtos.html" data-pt="Productos" data-en="Products">Productos</a></li>
+                        <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                        <li><a href="projectos.html" data-pt="Projectos" data-en="Projects">Projectos</a></li>
+                        <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="text-pt">Redes Sociais</h4>
+                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="text-pt">&copy; 2026 SolarGas Energy. Todos os direitos reservados.</p>
+                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/258857530213" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
+                    });
+                });
+
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const link = dropdown.querySelector('.dropdown-toggle');
+                        if (link) {
+                            link.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                dropdown.classList.toggle('active');
+                            });
+                        }
+                    });
+                }
+            }
+
+            // Sistema de Tradução
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
+                });
+
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        if (link.classList.contains('dropdown-toggle')) {
+                            const span = link.querySelector(`.text-${lang}`);
+                            if (span) span.style.display = '';
+                            const otherSpan = link.querySelector(`.text-${lang === 'pt' ? 'en' : 'pt'}`);
+                            if (otherSpan) otherSpan.style.display = 'none';
+                        } else {
+                            link.textContent = link.dataset[lang];
+                        }
+                    }
+                });
+
+                localStorage.setItem('preferred-language', lang);
+                document.documentElement.lang = lang;
+            }
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
+                setLanguage(savedLang);
+            } else {
+                setLanguage('pt');
+            }
+
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255,255,255,0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.background = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

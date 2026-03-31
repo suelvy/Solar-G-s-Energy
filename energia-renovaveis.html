@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Serviços de Energias Renováveis - SolarGas Energy</title>
+    
+    <!-- Fonts e ícones -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* ========== ESTILOS GERAIS ========== */
+        .page-hero {
+            min-height: 60vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .page-hero .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .page-hero .hero-background img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .page-hero .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+
+        .page-hero .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .logo-container {
+            max-width: 60px;
+            height: auto;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+            max-height: 80px;
+            object-fit: contain;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin: 3rem 0 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--secondary-color);
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        /* ========== CONTEÚDO PRINCIPAL ========== */
+        .content-section {
+            padding: 2rem 0;
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .info-card h3 i {
+            color: var(--secondary-color);
+        }
+
+        .info-card p {
+            color: var(--text-color);
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .info-card ul {
+            margin-top: 1rem;
+            padding-left: 1.5rem;
+        }
+
+        .info-card li {
+            text-align: justify;
+            line-height: 1.8;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ========== BENEFÍCIOS GRID ========== */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-color);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .benefit-card h4 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-color);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        /* ========== GALERIA DE IMAGENS ========== */
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .gallery-item {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* ========== BACK BUTTON ========== */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--light-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 2rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--primary-color);
+            color: var(--white);
+            transform: translateX(-5px);
+        }
+
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            padding: 3rem;
+            text-align: center;
+            border-radius: 20px;
+            margin: 3rem 0;
+        }
+
+        .cta-section .btn-primary {
+            background: var(--white);
+            color: var(--primary-color);
+            margin-top: 1rem;
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-section .btn-primary:hover {
+            background: var(--secondary-color);
+            color: var(--dark-color);
+        }
+
+        /* ========== RESPONSIVIDADE ========== */
+        @media (max-width: 768px) {
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .image-gallery {
+                grid-template-columns: 1fr;
+            }
+            
+            .info-card h3 {
+                font-size: 1.3rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* ========== MENU DROPDOWN ========== */
+        .nav-menu li {
+            position: relative;
+        }
+
+        .nav-menu .dropdown {
+            position: relative;
+        }
+
+        .nav-menu .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: var(--shadow-lg);
+            border-radius: 12px;
+            padding: 0.8rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: 1px solid rgba(0,0,0,0.05);
+            margin-top: 10px;
+        }
+
+        .nav-menu .dropdown-menu::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            border-bottom: 8px solid var(--white);
+        }
+
+        .nav-menu .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+
+        .nav-menu .dropdown-menu li {
+            margin: 0;
+            width: 100%;
+        }
+
+        .nav-menu .dropdown-menu a {
+            padding: 0.8rem 1.5rem;
+            display: block;
+            text-align: left;
+            font-size: 0.9rem;
+            text-transform: none;
+            color: var(--text-color);
+            transition: var(--transition);
+        }
+
+        .nav-menu .dropdown-menu a:hover {
+            background: var(--light-color);
+            color: var(--primary-color);
+            padding-left: 2rem;
+        }
+
+        .nav-menu .dropdown > a {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .nav-menu .dropdown > a i {
+            font-size: 0.8rem;
+            transition: transform 0.3s;
+        }
+
+        .nav-menu .dropdown:hover > a i {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                min-width: 100%;
+                transform: none;
+                display: none;
+            }
+            
+            .nav-menu .dropdown-menu::before {
+                display: none;
+            }
+            
+            .nav-menu .dropdown.active .dropdown-menu {
+                display: block;
+            }
+            
+            .nav-menu .dropdown > a i {
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <div class="contact-info-top">
+                    <span><i class="fas fa-clock"></i> <span class="text-pt">Seg-Sex: 08:00-17:00 | Sáb/Dom/Feriados: Fechado</span><span class="text-en" style="display: none;">Mon-Fri: 08:00-17:00 | Sat/Sun/Holidays: Closed</span></span>
+                </div>
+                <div class="language-selector">
+                    <a href="#" class="lang-btn active" data-lang="pt">PT</a>
+                    <a href="#" class="lang-btn" data-lang="en">ENG</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img src="./img/Logo.png" alt="SolarGas Energy">
+                </a>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                <li><a href="sobre.html" data-pt="Sobre" data-en="About">Sobre</a></li>
+                <li><a href="produtos.html" data-pt="Productos" data-en="Products">Productos</a></li>
+                
+                <!-- DROPDOWN DE SERVIÇOS -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <span class="text-pt">Serviços</span>
+                        <span class="text-en" style="display: none;">Services</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="servicos.html">
+                                <i class="fas fa-cogs"></i>
+                                <span class="text-pt">Serviços Principais</span>
+                                <span class="text-en" style="display: none;">Main Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="energia-renovaveis.html">
+                                <i class="fas fa-solar-panel"></i>
+                                <span class="text-pt">Serviços de Energias Renováveis</span>
+                                <span class="text-en" style="display: none;">Renewable Energy Services</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="serviços-extra.html">
+                                <i class="fas fa-water"></i>
+                                <span class="text-pt">Serviços Extras</span>
+                                <span class="text-en" style="display: none;">Extra Services</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <!-- DROPDOWN DE PROJECTOS -->
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <span class="text-pt">Projectos</span>
+                        <span class="text-en" style="display: none;">Projects</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="projectos.html">
+                                <i class="fas fa-clipboard-list"></i>
+                                <span class="text-pt">Nossos Projectos</span>
+                                <span class="text-en" style="display: none;">Our Projects</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="galeria-projecto.html">
+                                <i class="fas fa-images"></i>
+                                <span class="text-pt">Galeria Projectos</span>
+                                <span class="text-en" style="display: none;">Projects Gallery</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+            </ul>
+            
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO DA PÁGINA -->
+    <section class="page-hero">
+        <div class="hero-background">
+            <img src="./img/energias-renovaveis-hero.jpg" alt="Energias Renováveis" onerror="this.src='https://via.placeholder.com/1600x600/2E7D32/ffffff?text=Energias+Renováveis'">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>
+                <span class="text-pt">Serviços de Energias Renováveis</span>
+                <span class="text-en" style="display: none;">Renewable Energy Services</span>
+            </h1>
+            <p>
+                <span class="text-pt">Energia limpa, sustentável e acessível para todos</span>
+                <span class="text-en" style="display: none;">Clean, sustainable and accessible energy for all</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="container">
+        <!-- Botão voltar -->
+        <a href="servicos.html" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+            <span class="text-pt">Voltar para Serviços</span>
+            <span class="text-en" style="display: none;">Back to Services</span>
+        </a>
+
+        <!-- O que são energias renováveis -->
+        <div class="info-card">
+            <h3>
+                <i class="fas fa-question-circle"></i>
+                <span class="text-pt">O que são Energias Renováveis?</span>
+                <span class="text-en" style="display: none;">What are Renewable Energies?</span>
+            </h3>
+            <p class="text-pt">
+                Energias renováveis são fontes de energia que se regeneram naturalmente e são praticamente inesgotáveis, 
+                ao contrário dos combustíveis fósseis que têm reservas limitadas. Elas são obtidas a partir de recursos 
+                naturais como o sol, vento, água, biomassa e calor da terra. Estas fontes de energia não emitem gases 
+                de efeito estufa durante sua geração, contribuindo significativamente para a redução do aquecimento global 
+                e para um futuro mais sustentável.
+            </p>
+            <p class="text-en" style="display: none;">
+                Renewable energies are energy sources that regenerate naturally and are practically inexhaustible, 
+                unlike fossil fuels which have limited reserves. They are obtained from natural resources such as 
+                the sun, wind, water, biomass and heat from the earth. These energy sources do not emit greenhouse 
+                gases during generation, significantly contributing to the reduction of global warming and a more 
+                sustainable future.
+            </p>
+        </div>
+
+        <!-- Para que servem -->
+        <div class="info-card">
+            <h3>
+                <i class="fas fa-bullseye"></i>
+                <span class="text-pt">Para que servem as Energias Renováveis?</span>
+                <span class="text-en" style="display: none;">What are Renewable Energies for?</span>
+            </h3>
+            <p class="text-pt">
+                As energias renováveis servem para suprir as necessidades energéticas da sociedade de forma limpa e sustentável. 
+                Elas podem ser utilizadas para:
+            </p>
+            <ul class="text-pt">
+                <li><strong>Geração de eletricidade</strong> - através de painéis solares, turbinas eólicas e usinas hidrelétricas</li>
+                <li><strong>Aquecimento e refrigeração</strong> - utilizando energia solar térmica e bombas de calor</li>
+                <li><strong>Combustíveis para transporte</strong> - como biocombustíveis produzidos a partir de biomassa</li>
+                <li><strong>Cozinhar e iluminar</strong> - através de biogás e sistemas solares domésticos</li>
+                <li><strong>Produção de fertilizantes orgânicos</strong> - através da digestão anaeróbica de resíduos</li>
+            </ul>
+            <p class="text-en" style="display: none;">
+                Renewable energies serve to meet society's energy needs in a clean and sustainable way. 
+                They can be used for:
+            </p>
+            <ul class="text-en" style="display: none;">
+                <li><strong>Electricity generation</strong> - through solar panels, wind turbines and hydroelectric plants</li>
+                <li><strong>Heating and cooling</strong> - using solar thermal energy and heat pumps</li>
+                <li><strong>Transport fuels</strong> - such as biofuels produced from biomass</li>
+                <li><strong>Cooking and lighting</strong> - through biogas and domestic solar systems</li>
+                <li><strong>Organic fertilizer production</strong> - through anaerobic digestion of waste</li>
+            </ul>
+        </div>
+
+        <!-- Benefícios Grid -->
+        <h2 class="section-title">
+            <span class="text-pt">Benefícios das Energias Renováveis</span>
+            <span class="text-en" style="display: none;">Benefits of Renewable Energies</span>
+        </h2>
+
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-globe-africa"></i>
+                </div>
+                <h4>
+                    <span class="text-pt">Para Moçambique</span>
+                    <span class="text-en" style="display: none;">For Mozambique</span>
+                </h4>
+                <p class="text-pt">
+                    Moçambique possui um enorme potencial para energias renováveis, especialmente solar e biomassa. 
+                    Com mais de 300 dias de sol por ano, a energia solar pode levar eletricidade a comunidades rurais 
+                    ainda não atendidas pela rede elétrica. O biogás transforma resíduos agrícolas e pecuários em energia, 
+                    reduzindo a dependência de lenha e carvão vegetal, que contribuem para o desmatamento. Além disso, 
+                    as energias renováveis criam empregos locais, fortalecem a economia e promovem a independência 
+                    energética do país.
+                </p>
+                <p class="text-en" style="display: none;">
+                    Mozambique has enormous potential for renewable energies, especially solar and biomass. 
+                    With more than 300 days of sunshine per year, solar energy can bring electricity to rural communities 
+                    not yet served by the electricity grid. Biogas transforms agricultural and livestock waste into energy, 
+                    reducing dependence on firewood and charcoal, which contribute to deforestation. In addition, 
+                    renewable energies create local jobs, strengthen the economy and promote the country's energy independence.
+                </p>
+            </div>
+
+            <div class="benefit-card">
+                <div class="benefit-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h4>
+                    <span class="text-pt">Para o Mundo</span>
+                    <span class="text-en" style="display: none;">For the World</span>
+                </h4>
+                <p class="text-pt">
+                    As energias renováveis são fundamentais para combater as alterações climáticas, reduzindo as emissões 
+                    de gases de efeito estufa que causam o aquecimento global. Elas promovem a segurança energética, 
+                    diminuindo a dependência de combustíveis fósseis importados. Além disso, contribuem para a criação 
+                    de milhões de empregos verdes, impulsionam a inovação tecnológica e garantem que as gerações futuras 
+                    tenham acesso a energia limpa e a um planeta saudável. A transição energética é uma das principais 
+                    metas dos Objetivos de Desenvolvimento Sustentável (ODS) da ONU.
+                </p>
+                <p class="text-en" style="display: none;">
+                    Renewable energies are essential to combat climate change, reducing greenhouse gas emissions 
+                    that cause global warming. They promote energy security by reducing dependence on imported fossil fuels. 
+                    In addition, they contribute to the creation of millions of green jobs, drive technological innovation 
+                    and ensure that future generations have access to clean energy and a healthy planet. The energy transition 
+                    is one of the main goals of the UN Sustainable Development Goals (SDGs).
+                </p>
+            </div>
+        </div>
+
+        <!-- Galeria de Imagens -->
+        <h2 class="section-title">
+            <span class="text-pt">Galeria</span>
+            <span class="text-en" style="display: none;">Gallery</span>
+        </h2>
+        <p class="section-subtitle">
+            <span class="text-pt">Conheça algumas das tecnologias de energias renováveis que transformam vidas</span>
+            <span class="text-en" style="display: none;">Discover some of the renewable energy technologies that transform lives</span>
+        </p>
+
+        <div class="image-gallery">
+            <div class="gallery-item">
+                <img src="./img/energia-solar-paineis.jpg" alt="Painéis Solares" onerror="this.src='https://via.placeholder.com/400x250/FFB300/ffffff?text=Energia+Solar'">
+            </div>
+            <div class="gallery-item">
+                <img src="./img/biodigestor-rural.jpg" alt="Biodigestor Rural" onerror="this.src='https://via.placeholder.com/400x250/2E7D32/ffffff?text=Biodigestor'">
+            </div>
+            <div class="gallery-item">
+                <img src="./img/energia-eolica.jpg" alt="Energia Eólica" onerror="this.src='https://via.placeholder.com/400x250/2196F3/ffffff?text=Energia+Eólica'">
+            </div>
+            <div class="gallery-item">
+                <img src="./img/hidroeletrica.jpg" alt="Hidrelétrica" onerror="this.src='https://via.placeholder.com/400x250/0D47A1/ffffff?text=Hidrelétrica'">
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h2>
+                <span class="text-pt">Quer saber mais sobre nossas soluções?</span>
+                <span class="text-en" style="display: none;">Want to know more about our solutions?</span>
+            </h2>
+            <p>
+                <span class="text-pt">Entre em contacto e descubra como podemos levar energia limpa até você.</span>
+                <span class="text-en" style="display: none;">Contact us and find out how we can bring clean energy to you.</span>
+            </p>
+            <a href="contacto.html" class="btn-primary">
+                <span class="text-pt">Solicitar Informações</span>
+                <span class="text-en" style="display: none;">Request Information</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="logo-container">
+                        <img src="./img/Logo.png" alt="SolarGas Energy">
+                    </div>
+                    <p class="text-pt">Energia limpa e sustentável</p>
+                    <p class="text-en" style="display: none;">Clean and sustainable energy</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-pt">Links Rápidos</h4>
+                    <h4 class="text-en" style="display: none;">Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html" data-pt="Home" data-en="Home">Home</a></li>
+                        <li><a href="sobre.html" data-pt="Sobre" data-en="About us">Sobre</a></li>
+                        <li><a href="produtos.html" data-pt="Productos" data-en="Products">Productos</a></li>
+                        <li><a href="servicos.html" data-pt="Serviços" data-en="Services">Serviços</a></li>
+                        <li><a href="projectos.html" data-pt="Projectos" data-en="Projects">Projectos</a></li>
+                        <li><a href="contacto.html" data-pt="Contacto" data-en="Contact">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-social">
+                    <h4 class="text-pt">Redes Sociais</h4>
+                    <h4 class="text-en" style="display: none;">Social Media</h4>
+                    <div class="social-icons">
+                        <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/solargas_energy" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/company/solargas-energy-lda/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="text-pt">&copy; 2026 SolarGas Energy. Todos os direitos reservados.</p>
+                <p class="text-en" style="display: none;">&copy; 2026 Solar Gas Energy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/258857530213" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const body = document.body;
+            const dropdowns = document.querySelectorAll('.dropdown');
+
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                    body.classList.toggle('menu-open');
+                });
+
+                document.querySelectorAll('.nav-menu a:not(.dropdown-toggle)').forEach(link => {
+                    link.addEventListener('click', function() {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        body.classList.remove('menu-open');
+                        dropdowns.forEach(drop => drop.classList.remove('active'));
+                    });
+                });
+
+                if (window.innerWidth <= 768) {
+                    dropdowns.forEach(dropdown => {
+                        const link = dropdown.querySelector('.dropdown-toggle');
+                        if (link) {
+                            link.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                dropdown.classList.toggle('active');
+                            });
+                        }
+                    });
+                }
+            }
+
+            // Sistema de Tradução
+            const langButtons = document.querySelectorAll('.lang-btn');
+            
+            function setLanguage(lang) {
+                langButtons.forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.lang === lang);
+                });
+
+                document.querySelectorAll('.text-pt, .text-en').forEach(el => {
+                    el.style.display = el.classList.contains(`text-${lang}`) ? '' : 'none';
+                });
+
+                document.querySelectorAll('.nav-menu a, .footer-links a').forEach(link => {
+                    if (link.dataset && link.dataset[lang]) {
+                        if (link.classList.contains('dropdown-toggle')) {
+                            const span = link.querySelector(`.text-${lang}`);
+                            if (span) span.style.display = '';
+                            const otherSpan = link.querySelector(`.text-${lang === 'pt' ? 'en' : 'pt'}`);
+                            if (otherSpan) otherSpan.style.display = 'none';
+                        } else {
+                            link.textContent = link.dataset[lang];
+                        }
+                    }
+                });
+
+                localStorage.setItem('preferred-language', lang);
+                document.documentElement.lang = lang;
+            }
+
+            langButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    setLanguage(this.dataset.lang);
+                });
+            });
+
+            const savedLang = localStorage.getItem('preferred-language');
+            if (savedLang && (savedLang === 'pt' || savedLang === 'en')) {
+                setLanguage(savedLang);
+            } else {
+                setLanguage('pt');
+            }
+
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(255,255,255,0.98)';
+                    header.style.backdropFilter = 'blur(10px)';
+                } else {
+                    header.style.background = 'var(--white)';
+                    header.style.backdropFilter = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
